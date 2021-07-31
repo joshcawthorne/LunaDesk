@@ -1,7 +1,7 @@
-import React from "react";
+import Onboard from "../src/components/onboard";
 
 function Welcome() {
-  return <div>welcome</div>;
+  return <Onboard />;
 }
 
 export default Welcome;

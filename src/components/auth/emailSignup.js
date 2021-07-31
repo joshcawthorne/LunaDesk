@@ -3,6 +3,9 @@ import styled, { css } from "styled-components";
 import { supabase } from "../../utils/supabaseClient";
 import { validateEmail } from "../../utils";
 
+import InputField from "../shared/inputField";
+import InputButton from "../shared/inputButton";
+
 const EmailContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -101,18 +104,17 @@ function EmailSignup() {
             </ErrorMessage>
           )}
           <EmailContainer>
-            <EmailInput
+            <InputField
               placeholder={"you@email.com"}
-              type="email"
+              type={"email"}
               value={emailInput}
-              onChange={(e) => setEmailInput(e.target.value)}
-            ></EmailInput>
-            <EmailButton
+              setValue={setEmailInput}
+            />
+            <InputButton
               disabled={!validateEmail(emailInput)}
-              onClick={() => handleRegister()}
-            >
-              Email Magic Link
-            </EmailButton>
+              action={handleRegister}
+              text={"Email Magic Link"}
+            />
           </EmailContainer>
         </>
       )}
