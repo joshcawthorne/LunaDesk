@@ -20,6 +20,7 @@
     "styled-components": "^5.3.0"
   },
   "devDependencies": {
+    "encoding": "^0.1.13",
     "eslint": "7.32.0",
     "eslint-config-next": "11.0.1"
   }
