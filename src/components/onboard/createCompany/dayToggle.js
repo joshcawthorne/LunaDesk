@@ -8,10 +8,18 @@ const DayToggleContainer = styled.div`
   user-select: none;
   cursor: pointer;
   margin: 5px 5px;
+  transition: 400ms;
+  :hover {
+    transition: 400ms;
+    transform: translate(-2px, -2px);
+    box-shadow: rgb(0 0 0 / 35%) 12px 14px 32px 0px;
+  }
   ${(props) =>
     props.active &&
     css`
-      background-color: green;
+      background-color: #229484;
+      box-shadow: rgb(31 38 135 / 37%) 0px 8px 32px 0px;
+      transition: 400ms;
     `}
 `;
 

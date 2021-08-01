@@ -137,7 +137,7 @@ function Register() {
   return (
     <RegisterContainer>
       <RegisterModal>
-        <Title>Join Who's In</Title>
+        <Title>Find Out Who's In</Title>
         <Desc>
           You're moments away from revolutionising your office's hybrid work
           woes.

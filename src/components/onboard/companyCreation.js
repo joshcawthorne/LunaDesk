@@ -6,7 +6,11 @@ import WorkingHours from "./createCompany/workingHours";
 import CompanyLogo from "./createCompany/companyLogo";
 import CreateCompany from "./createCompany/index";
 
-function CompanyCreation() {
+function CompanyCreation({
+  setSelectedMasterStage,
+  setCreatingCompany,
+  setCompany,
+}) {
   const [selectedStage, setSelectedStage] = useState(0);
   const [companyName, setCompanyName] = useState("");
   const [basedIn, setBasedIn] = useState("");
@@ -64,6 +68,9 @@ function CompanyCreation() {
             workingDays={workingDays}
             workingHours={workingHours}
             logoUrl={logoUrl}
+            setSelectedMasterStage={setSelectedMasterStage}
+            setCreatingCompany={setCreatingCompany}
+            setCompany={setCompany}
           />
         );
     }

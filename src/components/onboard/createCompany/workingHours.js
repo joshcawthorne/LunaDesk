@@ -2,6 +2,13 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import InputButton from "../../shared/inputButton";
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
 const Desc = styled.div`
   font-size: 20px;
   text-align: center;
@@ -21,7 +28,7 @@ const Desc = styled.div`
 const Title = styled.div`
   font-size: 32px;
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   color: #ebe2ea;
   b {
     font-weight: 500;
@@ -36,8 +43,7 @@ function WorkingHours({ companyName, setSelectedStage }) {
   }
 
   return (
-    <div>
-      {" "}
+    <Container>
       <Title>
         Which hours does <b>{companyName}</b> normally work?
       </Title>
@@ -45,8 +51,9 @@ function WorkingHours({ companyName, setSelectedStage }) {
         Each employee can set their own working hours if they work different
         hours to what you set here.
       </Desc>
+      <Desc>COMING SOON!</Desc>
       <InputButton action={progress} text={"Continue"} />
-    </div>
+    </Container>
   );
 }
 

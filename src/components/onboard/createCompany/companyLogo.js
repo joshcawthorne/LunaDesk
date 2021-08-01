@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { supabase } from "../../../utils/supabaseClient";
 import styled from "styled-components";
 import InputButton from "../../shared/inputButton";
+import { useDropzone } from "react-dropzone";
 
 const Container = styled.div`
   display: flex;
@@ -39,8 +40,8 @@ const Title = styled.div`
 `;
 
 const LogoImage = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: auto;
   object-fit: contain;
 `;
 
@@ -55,21 +56,90 @@ const LogoImageContainer = styled.div`
 const StyledInputButton = styled(InputButton)`
   margin-right: 10px;
 `;
+
 const ButtonsContainer = styled.div``;
+
+const UploadButton = styled.label`
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.25);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  backdrop-filter: blur(12px) saturate(100%);
+  -webkit-backdrop-filter: blur(12px) saturate(50%);
+  cursor: pointer;
+  margin-bottom: 10px;
+`;
+
+const UploadZone = styled.div`
+  width: 400px;
+  height: 200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 2px;
+  border-color: #fff;
+  border-style: dashed;
+`;
+
+const UploadDisclaimer = styled.div`
+  width: 400px;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  text-align: center;
+`;
 
 function CompanyLogo({ companyName, setSelectedStage, setFinalValue }) {
   const [uploading, setUploading] = useState(false);
   const [url, setUrl] = useState(null);
+  const [rejectedCount, setRejectedCount] = useState(0);
+  const [acceptedFile, setAcceptedFile] = useState(false);
+  const [downloadUrl, setDownloadUrl] = useState(null);
 
-  async function uploadAvatar(event) {
+  const onDropAccepted = useCallback((acceptedFiles) => {
+    setUploading(true);
+    setAcceptedFile(true);
+    uploadAvatar(acceptedFiles);
+  }, []);
+
+  const onDropRejected = useCallback((acceptedFiles) => {
+    if (fileRejections && fileRejections.length > 0) {
+      console.log(fileRejections);
+      if (fileRejections[0].errors[0].code === "file-too-large") {
+        alert("Sorry, images must be less than 1mb in size.");
+      } else {
+        alert(fileRejections[0].errors[0].message);
+      }
+      acceptedFiles = [];
+      setAcceptedFile(false);
+      setUploading(false);
+    }
+  }, []);
+
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    acceptedFiles,
+    fileRejections,
+  } = useDropzone({
+    onDropAccepted,
+    onDropRejected,
+    accept: "image/jpeg, image/png, image/jpg",
+    maxFiles: 1,
+    maxSize: 1000000,
+    multiple: false,
+  });
+
+  async function uploadAvatar(upload) {
+    const file = upload[0];
     try {
       setUploading(true);
-
-      if (!event.target.files || event.target.files.length === 0) {
-        throw new Error("You must select an image to upload.");
-      }
-
-      const file = event.target.files[0];
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
@@ -91,7 +161,7 @@ function CompanyLogo({ companyName, setSelectedStage, setFinalValue }) {
   }
 
   function progress() {
-    setFinalValue = { url };
+    setFinalValue(url);
     setSelectedStage(5);
   }
 
@@ -102,6 +172,7 @@ function CompanyLogo({ companyName, setSelectedStage, setFinalValue }) {
   const onUpload = (filepath) => {
     console.log(filepath);
     downloadImage(filepath);
+    setUrl(filepath);
   };
 
   async function downloadImage(path) {
@@ -113,7 +184,7 @@ function CompanyLogo({ companyName, setSelectedStage, setFinalValue }) {
         throw error;
       }
       const url = URL.createObjectURL(data);
-      setUrl(url);
+      setDownloadUrl(url);
     } catch (error) {
       console.log("Error downloading image: ", error.message);
     }
@@ -122,7 +193,7 @@ function CompanyLogo({ companyName, setSelectedStage, setFinalValue }) {
   return (
     <Container>
       <Title>
-        Want to add a logo for <b>Lucky Duck</b>?
+        Want to add a logo for <b>{companyName}</b>?
       </Title>
       <Desc>
         This step is optional, and just intended to help other employees find
@@ -130,26 +201,39 @@ function CompanyLogo({ companyName, setSelectedStage, setFinalValue }) {
       </Desc>
       {url !== null && (
         <LogoImageContainer>
-          <LogoImage src={url} alt={companyName} />
+          <LogoImage src={downloadUrl} alt={companyName} />
         </LogoImageContainer>
       )}
-      <label className="button primary block" htmlFor="single">
-        {uploading ? "Uploading ..." : "Upload"}
-      </label>
-      <input
-        style={{
-          visibility: "hidden",
-          position: "absolute",
-        }}
-        type="file"
-        id="single"
-        accept="image/*"
-        onChange={uploadAvatar}
-        disabled={uploading}
-      />
+
+      <UploadZone {...getRootProps()}>
+        <input {...getInputProps()} />
+        <>
+          {uploading ? (
+            <div>Uploading</div>
+          ) : (
+            <>
+              {isDragActive ? (
+                <p>Drop the file here...</p>
+              ) : (
+                <p>Drag a photo here, or click to select one.</p>
+              )}
+            </>
+          )}
+        </>
+      </UploadZone>
+
+      <UploadDisclaimer>
+        Please note: Your image must be in either PNG, JPG or JPEG format, and
+        no larger than 1mb in size.
+      </UploadDisclaimer>
+
       <ButtonsContainer>
-        <StyledInputButton action={skip} text={"Skip"} />
-        <InputButton action={progress} text={"Continue"} />
+        <InputButton margin={"0 20px 0 0"} action={skip} text={"Skip"} />
+        <InputButton
+          action={progress}
+          text={"Continue"}
+          disabled={!acceptedFile}
+        />
       </ButtonsContainer>
     </Container>
   );

@@ -13,6 +13,24 @@ const InputButtonItem = styled.button`
   backdrop-filter: blur(12px) saturate(100%);
   -webkit-backdrop-filter: blur(12px) saturate(50%);
   cursor: pointer;
+  margin: ${(props) => props.margin};
+  z-index: 10;
+  transition: 400ms;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  ${(props) =>
+    !props.disabled &&
+    css`
+      :hover {
+        background-color: rgba(0, 0, 0, 0.45);
+        transition: 400ms;
+
+        transform: translate(-2px, -2px);
+        box-shadow: rgb(0 0 0 / 25%) 4px 6px 12px 2px;
+      }
+    `};
+
+  }
   ${(props) =>
     props.disabled &&
     css`
@@ -21,9 +39,13 @@ const InputButtonItem = styled.button`
     `}
 `;
 
-function InputButton({ disabled, action, text }) {
+function InputButton({ disabled, action, text, margin }) {
   return (
-    <InputButtonItem disabled={disabled} onClick={() => action()}>
+    <InputButtonItem
+      margin={margin ? margin : "0"}
+      disabled={disabled}
+      onClick={() => action()}
+    >
       {text}
     </InputButtonItem>
   );

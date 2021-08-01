@@ -16,15 +16,18 @@ const InputFieldItem = styled.input`
   backdrop-filter: blur(12px) saturate(100%);
   -webkit-backdrop-filter: blur(12px) saturate(50%);
   outline: none;
+  font-weight: bold;
+  letter-spacing: 0.1px;
 `;
 
-function InputField({ placeholder, value, setValue, type }) {
+function InputField({ placeholder, value, setValue, type, autofocus }) {
   return (
     <InputFieldItem
       placeholder={placeholder}
       value={value}
       onChange={(e) => setValue(e.target.value)}
       type={type}
+      autofocus={autofocus}
     />
   );
 }

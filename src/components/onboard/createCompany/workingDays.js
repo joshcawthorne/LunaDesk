@@ -124,7 +124,7 @@ function WorkingDays({ setSelectedStage, setFinalValue, companyName }) {
       <Title>
         Which days does <b>{companyName}</b> normally work?
       </Title>
-      {activeDays}
+
       <Desc>
         Each employee can set their own working days if they work different days
         to what you set here.
