@@ -338,7 +338,7 @@ function LoadingIcon({ scale, width, animate, ring, intro }) {
   return (
     <LoadingContainer
       scale={scale ? scale : 0.5}
-      width={width ? width : "180px"}
+      width={width ? width : "230px"}
       variants={ContainerIntroAnim}
       initial={intro ? "hidden" : "show"}
       animate={"show"}

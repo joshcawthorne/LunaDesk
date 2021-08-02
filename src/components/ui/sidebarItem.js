@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 const SidebarItemContainer = styled.div`
-  margin: 5px 0;
+  margin: 0px 0;
   font-size: 16px;
   width: ${(props) => props.width};
   color: #646fa7;
@@ -16,10 +16,20 @@ const SidebarItemContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  :hover {
-    background-color: #101237;
-    transition: 400ms;
-  }
+  ${(props) =>
+    !props.disabled &&
+    css`
+      :hover {
+        background-color: #101237;
+        transition: 400ms;
+      }
+    `}
+
+  ${(props) =>
+    props.disabled &&
+    css`
+      cursor: not-allowed;
+    `}
 
   ${(props) =>
     props.active &&
@@ -48,6 +58,20 @@ const SidebarTitle = styled.div`
   margin-top: -3.5px;
 `;
 
+const Label = styled.div`
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+  background-color: rgb(244, 82, 108);
+  color: #fff;
+  padding: 5px 10px;
+  margin-left: 10px;
+  font-weight: bold;
+  margin-top: -3px;
+`;
+
 function SidebarItem({
   title,
   icon,
@@ -57,8 +81,13 @@ function SidebarItem({
   Icon,
   action,
   width,
+  disabled,
+  label,
 }) {
   function handleClick(id) {
+    if (disabled) {
+      return;
+    }
     if (action) {
       action(id);
     } else {
@@ -70,11 +99,13 @@ function SidebarItem({
       width={width ? width : "calc(100% - 55px)"}
       active={active}
       onClick={() => handleClick(id)}
+      disabled={disabled}
     >
       <SidebarIconContainer>
         <Icon width={"25px"} />
       </SidebarIconContainer>
       <SidebarTitle>{title}</SidebarTitle>
+      {label && <Label>{label}</Label>}
       {active && <ActiveIndicator layoutId="outline" />}
     </SidebarItemContainer>
   );

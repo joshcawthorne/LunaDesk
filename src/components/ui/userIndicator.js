@@ -12,6 +12,7 @@ const UserIndicatorContainer = styled.div`
   align-items: center;
   border-radius: 10px;
   margin-bottom: 10px;
+  user-select: none;
 `;
 
 const UserProfilePicture = styled.div`
@@ -56,6 +57,7 @@ const Initials = styled.div`
   align-items: center;
   font-size: 18px;
   font-weight: bold;
+  user-select: none;
 `;
 
 const UserRole = styled.div`

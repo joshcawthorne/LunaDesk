@@ -113,7 +113,7 @@ function JoinCompany({
         setJoined(true);
         setLoading(false);
         setCompany(companyData.title);
-        //setSelectedMasterStage(2);
+        setSelectedMasterStage(2);
       }
     } catch (error) {
       alert("other update error:" + error.message);

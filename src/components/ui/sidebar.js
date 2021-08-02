@@ -30,6 +30,8 @@ const SidebarContainer = styled.div`
   border-color: #5c6499;
   background-color: #040419;
   overflow-y: auto;
+  z-index: 1000;
+  overflow-x: hidden;
 `;
 
 const SidebarContent = styled.div`
@@ -44,7 +46,7 @@ const LogoContainer = styled.div`
   height: 60px;
   border-radius: 10px;
   margin-left: 10px;
-  background-color: #04035a;
+  background-color: #101136;
   margin-bottom: 50px;
   display: flex;
   justify-content: flex-start;
@@ -81,8 +83,8 @@ const LogoTagline = styled.div`
   justify-content: center;
   align-items: center;
   margin-left: 8.5px;
-  margin-top: 0px;
-  padding-top: 2px;
+  margin-top: 4px;
+  padding-top: 1px;
   padding-bottom: 3px;
 `;
 
@@ -129,7 +131,7 @@ const LogoutButton = styled.div`
 
 const LogoOneAnim = {
   standard: {
-    y: 24,
+    y: 26,
     transition: {
       type: "tween",
       duration: 0,
@@ -154,7 +156,7 @@ const LogoTwoAnim = {
     },
   },
   hover: {
-    y: [200, 40, -22],
+    y: [200, 40, -20],
     transition: {
       type: "tween",
       delay: 0.7,
@@ -181,7 +183,14 @@ function Sidebar() {
           id: "dashboard",
           Icon: DashboardIcon,
         },
-        { title: "Teams", link: "/teams", id: "teams", Icon: TeamsIcon },
+        {
+          title: "Teams",
+          link: "/teams",
+          id: "teams",
+          Icon: TeamsIcon,
+          disabled: true,
+          label: "Coming Soon!",
+        },
         { title: "Company", link: "/teams", id: "company", Icon: CompanyIcon },
       ],
     },
@@ -229,13 +238,19 @@ function Sidebar() {
     supabase.auth.signOut();
   }
 
+  function handleHover() {
+    if (!logoHovered) {
+      setLogoHovered(true);
+      setTimeout(() => {
+        setLogoHovered(false);
+      }, 2300);
+    }
+  }
+
   return (
     <SidebarContainer>
       <SidebarContent>
-        <LogoContainer
-          onMouseOver={() => setLogoHovered(true)}
-          onMouseLeave={() => setLogoHovered(false)}
-        >
+        <LogoContainer onMouseOver={() => handleHover()}>
           <LogoItem>
             <LogoItemContainer
               variants={LogoOneAnim}
@@ -274,6 +289,8 @@ function Sidebar() {
                       Icon={item.Icon}
                       id={item.id}
                       setActivePage={setActivePage}
+                      disabled={item.disabled}
+                      label={item.label}
                     />
                   ))}
                 </SidebarItems>
