@@ -28,7 +28,7 @@ function JoinCompany({ session }) {
     }
   }
 
-  async function joinCompany(id) {
+  async function joinCompany(id, title) {
     try {
       setLoading(true);
       const user = supabase.auth.user();
@@ -36,6 +36,7 @@ function JoinCompany({ session }) {
       const updates = {
         id: user.id,
         company: id,
+        company_name: title,
       };
 
       let { data, error } = await supabase.from("profiles").upsert(updates, {});
@@ -64,7 +65,7 @@ function JoinCompany({ session }) {
           {companies.map((company, i) => (
             <div key={i}>
               <div>{company.title}</div>
-              <button onClick={() => joinCompany(company.id)}>
+              <button onClick={() => joinCompany(company.id, company.title)}>
                 Join Company
               </button>
             </div>

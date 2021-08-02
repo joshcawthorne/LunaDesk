@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 import styled from "styled-components";
-import InputButton from "../shared/inputButton";
+import { useRouter } from "next/router";
 
+import InputButton from "../shared/inputButton";
 import { updateProfile } from "../../services/user";
 
 const CreationContainer = styled.div`
@@ -36,6 +37,7 @@ const Desc = styled.div`
 `;
 
 function finishOnboarding({ fullName, firstName, role }) {
+  const router = useRouter();
   async function handleCreate() {
     let updateData = {
       first_name: firstName,
@@ -45,7 +47,7 @@ function finishOnboarding({ fullName, firstName, role }) {
     };
     const update = await updateProfile(updateData);
     if (update) {
-      alert("done");
+      router.push("/dashboard");
     }
   }
 

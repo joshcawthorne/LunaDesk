@@ -12,11 +12,20 @@ import store from "../src/store";
 import "../styles/fonts.css";
 
 import { getProfile, createProfile } from "../src/services/user";
+import Loading from "../src/components/shared/loading";
+import Header from "../src/components/ui/header";
+import Sidebar from "../src/components/ui/sidebar";
 
 const AppContainer = styled.div`
-  font-family: "GT Walsheim";
+  font-family: "GT Walsheim", Sans-Serif;
   padding: 0;
   margin: 0;
+`;
+
+const AppInnerContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
 `;
 
 const App = ({ component: Component, pageProps }) => {
@@ -37,12 +46,21 @@ const App = ({ component: Component, pageProps }) => {
   useEffect(() => {
     if (session) {
       setLoggedIn(true);
-      console.log(router);
       if (router.pathname === "/welcome") {
         createUserData();
       } else {
         loadUserData();
       }
+    }
+    //Dark pattern loading, evil cackle.
+    if (process.env.BASE_DOMAIN === "http://localhost:3000/") {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
+    } else {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 7000);
     }
   }, [session]);
 
@@ -74,13 +92,25 @@ const App = ({ component: Component, pageProps }) => {
   }
 
   return (
-    <AppContainer>
-      {loggedIn ? (
-        <ApplicationLayer Component={Component} pageProps={pageProps} />
-      ) : (
-        <Marketing />
-      )}
-    </AppContainer>
+    <>
+      {isLoading && <Loading />}
+      <AppContainer>
+        {loggedIn ? (
+          <>
+            {router.pathname !== "/welcome" ? (
+              <AppInnerContainer>
+                <Sidebar />
+                <ApplicationLayer Component={Component} pageProps={pageProps} />
+              </AppInnerContainer>
+            ) : (
+              <ApplicationLayer Component={Component} pageProps={pageProps} />
+            )}
+          </>
+        ) : (
+          <Marketing />
+        )}
+      </AppContainer>
+    </>
   );
 };
 

@@ -171,7 +171,7 @@ function NameInput({ setFullname, setSelectedStage, setFinishedStageOne }) {
         >
           <InputField
             placeholder={"John Blogs"}
-            type={"email"}
+            type={"text"}
             value={nameValue}
             setValue={setNameValue}
             autofocus={true}

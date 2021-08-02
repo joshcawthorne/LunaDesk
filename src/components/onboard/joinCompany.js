@@ -46,6 +46,8 @@ function JoinCompany({
     updateUser();
   }
 
+  /* TODO: Move calls to services */
+
   async function updateUser() {
     try {
       const user = supabase.auth.user();
@@ -53,6 +55,7 @@ function JoinCompany({
       const updates = {
         id: user.id,
         company: companyData.id,
+        company_name: companyData.title,
       };
 
       let { data, error } = await supabase.from("profiles").upsert(updates, {

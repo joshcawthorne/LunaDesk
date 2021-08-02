@@ -22,6 +22,25 @@ async function getProfile() {
   }
 }
 
+async function getProfileByEmail(email) {
+  try {
+    let { data, error, status } = await supabase
+      .from("profiles")
+      .select()
+      .eq("email", user.email)
+      .single();
+
+    if (error && status !== 406) {
+      throw error;
+    }
+    if (data) {
+      return data;
+    }
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
 async function updateProfile(updates) {
   try {
     const user = supabase.auth.user();
@@ -71,4 +90,35 @@ async function createProfile() {
   }
 }
 
-export { getProfile, updateProfile, createProfile };
+async function inviteNewUser(email) {
+  try {
+    const userProfile = await getProfile();
+    if (!userProfile) {
+      return "No profile found";
+    }
+    //const userExists = await getProfileByEmail(email);
+    //if (userExists) {
+    //  return "User Exists";
+    //}
+    const { error, data } = await supabase.auth.api.inviteUserByEmail(
+      "midgetman7782@gmail.com"
+    );
+    if (error && status !== 406) {
+      throw error;
+    }
+    if (data) {
+      return data;
+    }
+  } catch (error) {
+    console.log("Invite error", error);
+    alert(error.message);
+  }
+}
+
+export {
+  getProfile,
+  updateProfile,
+  createProfile,
+  inviteNewUser,
+  getProfileByEmail,
+};
