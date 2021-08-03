@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const IntroContainer = styled.div`
-  width: calc(100% - 140px);
-  padding: 30px 70px;
+  width: 100%;
+  margin-bottom: 40px;
 `;
 
 const IntroTopLine = styled.div`

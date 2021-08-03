@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import Container from "../src/components/shared/container";
+import WeeklyScheduleBoard from "../src/components/dashboard/weeklyScheduleBoard";
 import Intro from "../src/components/dashboard/intro";
 import LoadingAnimation from "../src/components/shared/loadingAnimation";
 
@@ -40,6 +41,15 @@ const LoadingText = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+`;
+
+const DashboardContentContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: calc(100% - 140px);
+  padding: 30px 70px;
 `;
 
 function Dashboard() {
@@ -88,7 +98,7 @@ function Dashboard() {
           <LoadingText>Fuelling up</LoadingText>
         </LoadingContainer>
       ) : (
-        <>
+        <DashboardContentContainer>
           {console.log("dd", companyData)}
           <Intro
             userProfile={userProfile}
@@ -96,7 +106,13 @@ function Dashboard() {
             employeeData={employeeData}
             loading={loading}
           />
-        </>
+          <WeeklyScheduleBoard
+            userProfile={userProfile}
+            companyData={companyData[0]}
+            employeeData={employeeData}
+            loading={loading}
+          />
+        </DashboardContentContainer>
       )}
     </DashboardContainer>
   );

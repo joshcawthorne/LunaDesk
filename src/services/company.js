@@ -5,9 +5,7 @@ async function getCompany(id) {
   try {
     let { data, error } = await supabase
       .from("companies")
-      .select(
-        "title, company_logo, created_by, based_in, default_working_days, default_working_hours"
-      )
+      .select()
       .eq("id", id);
 
     if (error && status !== 406) {
@@ -26,7 +24,7 @@ async function getEmployees(id) {
   try {
     let { data, error } = await supabase
       .from("profiles")
-      .select(`id, full_name, email, avatar_url, employee_role, default_office`)
+      .select()
       .filter("company", "eq", id);
 
     if (error && status !== 406) {

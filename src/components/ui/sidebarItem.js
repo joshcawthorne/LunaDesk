@@ -6,7 +6,7 @@ const SidebarItemContainer = styled.div`
   margin: 0px 0;
   font-size: 16px;
   width: ${(props) => props.width};
-  color: #646fa7;
+  color: #6978c7;
   padding: 15px 10px;
   border-radius: 10px;
   cursor: pointer;
