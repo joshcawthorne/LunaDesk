@@ -56,11 +56,11 @@ const App = ({ component: Component, pageProps }) => {
     if (process.env.BASE_DOMAIN === "http://localhost:3000/") {
       setTimeout(() => {
         setIsLoading(false);
-      }, 2000);
+      }, 4000);
     } else {
       setTimeout(() => {
         setIsLoading(false);
-      }, 7000);
+      }, 4000);
     }
   }, [session]);
 
@@ -100,7 +100,11 @@ const App = ({ component: Component, pageProps }) => {
             {router.pathname !== "/welcome" ? (
               <AppInnerContainer>
                 <Sidebar />
-                <ApplicationLayer Component={Component} pageProps={pageProps} />
+                <ApplicationLayer
+                  isLoading={isLoading}
+                  Component={Component}
+                  pageProps={pageProps}
+                />
               </AppInnerContainer>
             ) : (
               <ApplicationLayer Component={Component} pageProps={pageProps} />

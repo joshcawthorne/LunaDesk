@@ -18,6 +18,23 @@ async function getOffices(id) {
   }
 }
 
+async function getSpecificOffice(id) {
+  console.log(id);
+  try {
+    let { data, error } = await supabase.from("offices").select().eq("id", id);
+    console.log("specific office resp", data);
+    console.log(id);
+    if (error && status !== 406) {
+      throw error;
+    }
+    if (data) {
+      return data;
+    }
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
 async function createOffice(office) {
   try {
     let { data, error, status } = await supabase.from("offices").insert(office);
@@ -32,4 +49,4 @@ async function createOffice(office) {
   }
 }
 
-export { getOffices, createOffice };
+export { getOffices, createOffice, getSpecificOffice };

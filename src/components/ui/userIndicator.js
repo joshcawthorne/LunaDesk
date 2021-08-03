@@ -13,6 +13,13 @@ const UserIndicatorContainer = styled.div`
   border-radius: 10px;
   margin-bottom: 10px;
   user-select: none;
+  @media (max-width: 1100px) {
+    width: 100%;
+    margin-left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const UserProfilePicture = styled.div`
@@ -27,10 +34,16 @@ const UserProfilePicture = styled.div`
   user-select: none;
   overflow: hidden;
   box-shadow: rgba(17, 12, 46, 0.45) 0px 28px 100px 0px;
+  @media (max-width: 1100px) {
+    margin: 0;
+  }
 `;
 
 const UserInfoContainer = styled.div`
   user-select: none;
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 const UserName = styled.div`

@@ -32,6 +32,9 @@ const SidebarContainer = styled.div`
   overflow-y: auto;
   z-index: 1000;
   overflow-x: hidden;
+  @media (max-width: 1100px) {
+    width: 80px;
+  }
 `;
 
 const SidebarContent = styled.div`
@@ -39,6 +42,9 @@ const SidebarContent = styled.div`
   padding-left: 10px;
   padding-top: 30px;
   flex: 1 0 auto;
+  @media (max-width: 1100px) {
+    padding-left: 0;
+  }
 `;
 
 const LogoContainer = styled.div`
@@ -54,10 +60,22 @@ const LogoContainer = styled.div`
   cursor: pointer;
   user-select: none;
   overflow: hidden;
+  @media (max-width: 1100px) {
+    width: 80%;
+    margin: 0;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+  }
 `;
 
 const LogoItem = styled.div`
   margin-left: 10px;
+  @media (max-width: 1100px) {
+    margin: 0;
+  }
 `;
 
 const LogoTextContainer = styled.div`
@@ -65,6 +83,9 @@ const LogoTextContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 const LogoText = styled.div`
@@ -100,6 +121,10 @@ const SidebarTitle = styled.div`
   color: #a7aed6;
   margin-bottom: 10px;
   padding: 0px 10px;
+  @media (max-width: 1100px) {
+    text-align: center;
+    font-size: 12px;
+  }
 `;
 
 const LogoItemContainer = styled(motion.div)`
@@ -122,11 +147,17 @@ const SidebarBottomContentContainer = styled.div`
   padding-bottom: 33px;
   margin: 10px 0 0px 0;
   flex-shrink: 0;
+  @media (max-width: 1100px) {
+    margin: 0;
+  }
 `;
 
-const LogoutButton = styled.div`
+const FooterButton = styled.div`
   width: 100%;
   padding-left: 20px;
+  @media (max-width: 1100px) {
+    padding: 0;
+  }
 `;
 
 const LogoOneAnim = {
@@ -301,7 +332,7 @@ function Sidebar() {
       </SidebarContent>
       <SidebarBottomContentContainer>
         <UserIndicator />
-        <LogoutButton>
+        <FooterButton>
           <SidebarItem
             title={"User Settings"}
             Icon={SettingsIcon}
@@ -315,7 +346,7 @@ function Sidebar() {
             action={handleLogout}
             width={"calc(100% - 40px)"}
           />
-        </LogoutButton>
+        </FooterButton>
       </SidebarBottomContentContainer>
     </SidebarContainer>
   );

@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 const InputButtonItem = styled.button`
-  padding: 12px 24px;
+  padding: ${(props) => props.padding};
   border: 2px solid transparent;
   border-radius: 12px;
   background-color: rgba(0, 0, 0, 0.25);
@@ -39,12 +39,13 @@ const InputButtonItem = styled.button`
     `}
 `;
 
-function InputButton({ disabled, action, text, margin }) {
+function InputButton({ disabled, action, text, margin, padding }) {
   return (
     <InputButtonItem
       margin={margin ? margin : "0"}
       disabled={disabled}
       onClick={() => action()}
+      padding={padding ? padding : "12px 24px"}
     >
       {text}
     </InputButtonItem>

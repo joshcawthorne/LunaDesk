@@ -1,22 +1,33 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 import ScheduleDates from "./scheduleDates";
 import ScheduleItem from "./scheduleItem";
 
 const ScheduleContainer = styled.div`
   width: 100%;
-  height: 400px;
-  background-color: #101136;
+  max-height: 900px;
+  background-color: #131432;
   border-radius: 10px;
+  overflow: auto;
+  margin-bottom: 25px;
 `;
 
-const ScheduleBoard = styled.div`
+const ScheduleBoard = styled(motion.div)`
   display: grid;
-  min-width: 1000px;
+  min-width: 1200px;
   width: 100%;
-  overflow: auto;
-  grid-template-columns: 200px repeat(7, 1fr);
+  grid-template-columns: 275px repeat(7, 1fr);
+  grid-template-rows: 40px repeat(7, 70px);
+  overflow: hidden;
+  padding: 30px;
+  box-sizing: border-box;
+  margin-top: -30px;
+  color: #fff;
+  @media (max-width: 1100px) {
+    grid-template-columns: 80px repeat(7, 1fr);
+  }
 `;
 
 const Day = styled.div`
@@ -27,19 +38,81 @@ const Day = styled.div`
   height: 100px;
 `;
 
+const ScheduleTopRow = styled.div`
+  padding: 20px;
+`;
+
+const Title = styled.div`
+  color: #81818b;
+  font-size: 32px;
+
+  margin-top: 0px;
+
+  span {
+    font-weight: bold;
+    color: #fff;
+  }
+`;
+
+const AnimLayer = styled(motion.div)``;
+
+const ContainerAnim = {
+  hidden: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+      when: "afterChildren",
+      delayChildren: 0,
+    },
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.005,
+      when: "afterChildren",
+      delayChildren: 0,
+    },
+  },
+};
+
 function WeeklyScheduleBoard({
   userProfile,
   companyData,
   employeeData,
   loading,
+  isLoading,
+  officeData,
 }) {
-  console.log(employeeData);
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    if (!loading && !isLoading) {
+      setAnimate(true);
+    }
+  }, [loading, isLoading]);
+
+  console.log(officeData);
   return (
     <ScheduleContainer>
-      <ScheduleBoard>
+      <ScheduleTopRow>
+        <Title>
+          <span>{officeData.title}'s</span> schedule at a glance
+        </Title>
+      </ScheduleTopRow>
+      <ScheduleBoard
+        variants={ContainerAnim}
+        initial="hidden"
+        animate={animate ? "show" : "hidden"}
+      >
         <ScheduleDates />
         {employeeData.map((employee, i) => (
-          <ScheduleItem key={i} data={employee} />
+          <ScheduleItem
+            firstItem={i === 0}
+            lastItem={i === employeeData.length - 1}
+            key={i}
+            data={employee}
+            companyData={companyData}
+          />
         ))}
       </ScheduleBoard>
     </ScheduleContainer>

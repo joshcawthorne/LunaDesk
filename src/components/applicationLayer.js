@@ -1,5 +1,7 @@
-function ApplicationLayer({ Component, pageProps }) {
-  return <div>{Component && <Component {...pageProps} />}</div>;
+function ApplicationLayer({ Component, pageProps, isLoading }) {
+  return (
+    <div>{Component && <Component {...pageProps} isLoading={isLoading} />}</div>
+  );
 }
 
 export default ApplicationLayer;

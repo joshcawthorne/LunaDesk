@@ -36,6 +36,14 @@ const SidebarItemContainer = styled.div`
     css`
       color: #f5516c;
     `}
+    @media (max-width: 1100px) {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const ActiveIndicator = styled(motion.div)`
@@ -52,10 +60,16 @@ const ActiveIndicator = styled(motion.div)`
 
 const SidebarIconContainer = styled.div`
   margin-right: 5px;
+  @media (max-width: 1100px) {
+    margin: 0;
+  }
 `;
 
 const SidebarTitle = styled.div`
   margin-top: -3.5px;
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 const Label = styled.div`
@@ -70,6 +84,9 @@ const Label = styled.div`
   margin-left: 10px;
   font-weight: bold;
   margin-top: -3px;
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 function SidebarItem({

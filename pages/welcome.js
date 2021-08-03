@@ -11,11 +11,8 @@ function Welcome() {
 
   if (!onboarded && loggedIn) {
     return <Onboard />;
-  } else if (!loggedIn) {
-    router.replace("/");
-    return null;
   } else {
-    router.replace("/dashboard");
+    router.replace("/");
     return null;
   }
 }
