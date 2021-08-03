@@ -57,25 +57,25 @@ function ScheduleDates() {
         <Label small>Employees</Label>
       </LabelContainer>
       <LabelContainer>
-        <Label>Monlabel</Label>
+        <Label>Monday</Label>
       </LabelContainer>
       <LabelContainer>
-        <Label>Tueslabel</Label>
+        <Label>Tuesday</Label>
       </LabelContainer>
       <LabelContainer>
-        <Label>Wedneslabel</Label>
+        <Label>Wednesday</Label>
       </LabelContainer>
       <LabelContainer>
-        <Label>Thurslabel</Label>
+        <Label>Thursday</Label>
       </LabelContainer>
       <LabelContainer>
-        <Label>Frilabel</Label>
+        <Label>Friday</Label>
       </LabelContainer>
       <LabelContainer>
-        <Label>Saturlabel</Label>
+        <Label>Saturday</Label>
       </LabelContainer>
       <LabelContainer>
-        <Label>Sunlabel</Label>
+        <Label>Sunday</Label>
       </LabelContainer>
     </>
   );
