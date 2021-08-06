@@ -3,7 +3,8 @@ import styled, { css } from "styled-components";
 
 const DayToggleContainer = styled.div`
   padding: 8px 15px;
-  background-color: #000;
+  background-color: ${(props) => props.disabledColor};
+  color: ${(props) => props.disabledColorText};
   border-radius: 5px;
   user-select: none;
   cursor: pointer;
@@ -23,7 +24,14 @@ const DayToggleContainer = styled.div`
     `}
 `;
 
-function DayToggle({ day, enabled, id, updateArr }) {
+function DayToggle({
+  day,
+  enabled,
+  id,
+  updateArr,
+  disabledColor,
+  disabledColorText,
+}) {
   const [active, setActive] = useState(false);
   useEffect(() => {
     if (enabled) {
@@ -39,7 +47,12 @@ function DayToggle({ day, enabled, id, updateArr }) {
   }
 
   return (
-    <DayToggleContainer onClick={() => handleClick()} active={active}>
+    <DayToggleContainer
+      onClick={() => handleClick()}
+      active={active}
+      disabledColor={disabledColor ? disabledColor : "#000"}
+      disabledColorText={disabledColorText ? disabledColorText : "#fff"}
+    >
       {day.title}
     </DayToggleContainer>
   );

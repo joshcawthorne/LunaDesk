@@ -80,7 +80,39 @@ const InOfficeContainer = styled.div`
   padding-bottom: 20px;
 `;
 
-function TodayInOfficeBlock({}) {
+const NoOne = styled.div`
+  font-size: 22px;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+`;
+
+function TodayInOfficeBlock({
+  userProfile,
+  companyData,
+  employeeData,
+  loading,
+  isLoading,
+  officeData,
+}) {
+  var d = new Date();
+  var n = d.getDay() - 1;
+
+  const [activeEmployees, setActiveEmployees] = useState([]);
+
+  useEffect(() => {
+    setActiveEmployees([]);
+    employeeData.forEach((employee) => {
+      if (employee.default_days.includes(n)) {
+        setActiveEmployees((activeEmployees) => [...activeEmployees, employee]);
+      }
+    });
+    console.log(activeEmployees);
+  }, [employeeData]);
+
   return (
     <TodayInOfficeBlockContainer>
       {/*}
@@ -93,10 +125,10 @@ function TodayInOfficeBlock({}) {
       <InOfficeInfo>
         <InOfficeTitle>In today</InOfficeTitle>
         <InOfficeContainer>
-          <InOfficeCard />
-          <InOfficeCard />
-          <InOfficeCard />
-          <InOfficeCard />
+          {activeEmployees.map((employee, i) => (
+            <InOfficeCard key={i} employee={employee} />
+          ))}
+          {activeEmployees.length === 0 && <NoOne>No one's in today!</NoOne>}
         </InOfficeContainer>
       </InOfficeInfo>
     </TodayInOfficeBlockContainer>

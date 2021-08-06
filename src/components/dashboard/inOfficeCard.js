@@ -58,15 +58,19 @@ const CardRole = styled.div`
   font-weight: 200;
 `;
 
-function InOfficeCard() {
+function InOfficeCard({ employee }) {
+  let name = employee.full_name.split(" ");
+  let firstInitial = name[0].split("")[0];
+  let secondInitial = name[1].split("")[0];
+  let initials = firstInitial + secondInitial;
   return (
     <InOfficeCardContainer>
       <CardAvatar>
-        <Initials>JH</Initials>
+        <Initials>{initials}</Initials>
       </CardAvatar>
       <CardMetadata>
-        <CardTitle>Michael Scottingham</CardTitle>
-        <CardRole>Salesman</CardRole>
+        <CardTitle>{employee.full_name}</CardTitle>
+        <CardRole>{employee.employee_role}</CardRole>
       </CardMetadata>
     </InOfficeCardContainer>
   );

@@ -9,6 +9,7 @@ import RestIcon from "../../../assets/svg/icons/moon.svg";
 const DayContainer = styled(motion.div)`
   width: 100%;
   height: 100%;
+  min-height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,6 +220,8 @@ function ScheduleItem({ data, companyData, firstItem, lastItem, key }) {
         if (companyData.default_rest_days.includes(i)) {
           restDay = true;
         }
+
+        console.log(data);
 
         if (data.default_days.includes(i)) {
           active = true;

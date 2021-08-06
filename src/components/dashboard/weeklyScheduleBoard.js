@@ -123,9 +123,7 @@ function WeeklyScheduleBoard({
         animate={animate ? "show" : "hidden"}
       >
         <ScheduleDates />
-        <DayIndicatorContainer>
-          <DayIndicator />
-        </DayIndicatorContainer>
+
         {employeeData.map((employee, i) => (
           <ScheduleItem
             firstItem={i === 0}

@@ -3,9 +3,11 @@ import styled, { css } from "styled-components";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import { motion } from "framer-motion";
 import useOnclickOutside from "react-cool-onclickoutside";
+import { supabase } from "../../utils/supabaseClient";
 
 import { scrollLocker } from "../../utils/scrollLocker";
 import InputButton from "../shared/inputButton";
+import DayToggle from "../onboard/createCompany/dayToggle";
 import DateItem from "./dateItem";
 
 const ChangeDayStatusContainerOuter = styled.div`
@@ -101,12 +103,12 @@ const MenuContainerAnim = {
   },
 };
 
-const PRE_SET_DAYS = [
-  { id: 0, title: "Monday", enabled: true },
-  { id: 1, title: "Tuesday", enabled: true },
-  { id: 2, title: "Wednesday", enabled: true },
-  { id: 3, title: "Thursday", enabled: true },
-  { id: 4, title: "Friday", enabled: true },
+const DEFAULT_DAYS = [
+  { id: 0, title: "Monday", enabled: false },
+  { id: 1, title: "Tuesday", enabled: false },
+  { id: 2, title: "Wednesday", enabled: false },
+  { id: 3, title: "Thursday", enabled: false },
+  { id: 4, title: "Friday", enabled: false },
   { id: 5, title: "Saturday", enabled: false },
   { id: 6, title: "Sunday", enabled: false },
 ];
@@ -117,7 +119,8 @@ function ChangeDayStatus({ userProfile }) {
   const [unmount, setUnmount] = useState(false);
   const { displayModifyDayStatus } = appState;
   const { setDisplayModifyDayStatus } = appActions;
-  const [activeDays, setActiveDays] = useState([]);
+  const [userDefaultDays, setUserDefaultDays] = useState([]);
+  const [days, setDays] = useState(DEFAULT_DAYS);
 
   const ref = useOnclickOutside(() => {
     if (displayModifyDayStatus) {
@@ -126,8 +129,13 @@ function ChangeDayStatus({ userProfile }) {
   });
 
   useEffect(() => {
+    setUnmount(false);
+  }, []);
+
+  useEffect(() => {
     let defaultDays = userProfile.default_days;
-    let days = PRE_SET_DAYS.map((day) => {
+    console.log(defaultDays);
+    let days = DEFAULT_DAYS.map((day) => {
       if (defaultDays.includes(day.id)) {
         let updObj = { ...day, enabled: true };
         return updObj;
@@ -136,7 +144,7 @@ function ChangeDayStatus({ userProfile }) {
         return updObj;
       }
     });
-    console.log(days);
+    setDays(days);
   }, [userProfile]);
 
   useEffect(() => {
@@ -150,10 +158,10 @@ function ChangeDayStatus({ userProfile }) {
   function handleClose() {
     setUnmount(true);
 
-    setTimeout(() => {
+    setUnmount(false);
+    if (displayModifyDayStatus) {
       setDisplayModifyDayStatus(false);
-      setUnmount(false);
-    }, 1200);
+    }
   }
 
   function updateArr(id, updatedObj, added) {
@@ -162,6 +170,33 @@ function ChangeDayStatus({ userProfile }) {
   }
 
   console.log(userProfile);
+
+  function updateArr(id, updatedObj, added) {
+    let updDays = days.map((d) => (d.id !== id ? d : updatedObj));
+    console.log("upd", updDays);
+    setDays(updDays);
+  }
+
+  async function saveUpdates() {
+    console.log("DAYAYAYAYAYAY", days);
+    const selectedDays = days
+      .filter((d) => d.enabled)
+      .map(function (d) {
+        return d.id;
+      });
+    const updates = {
+      id: userProfile.id,
+      default_days: selectedDays,
+    };
+
+    console.log(days);
+
+    let { data, error } = await supabase.from("profiles").upsert(updates, {
+      returning: "minimal",
+    });
+
+    handleClose();
+  }
 
   if (!displayModifyDayStatus) {
     return null;
@@ -174,15 +209,27 @@ function ChangeDayStatus({ userProfile }) {
         <NewDatesContainer>
           <NewDateTitle>Modify your schedule for this week</NewDateTitle>
           <NewDatesItems>
-            <DateItem title={"Monday"} id={0} state={0} />
-            <DateItem title={"Tuesday"} id={0} state={0} />
-            <DateItem title={"Wednesday"} id={0} state={0} />
-            <DateItem title={"Thursday"} id={0} state={0} />
-            <DateItem title={"Friday"} id={0} state={0} />
-            <DateItem title={"Saturday"} id={0} state={0} />
-            <DateItem title={"Sunday"} id={0} state={0} />
+            {days.map((day, i) => (
+              <DayToggle
+                key={i}
+                id={i}
+                day={day}
+                enabled={day.enabled}
+                updateArr={updateArr}
+                disabledColor={"#514dec"}
+                disabledColorText={"#fff"}
+              />
+            ))}
           </NewDatesItems>
         </NewDatesContainer>
+        <InputButton
+          text={"Save"}
+          action={saveUpdates}
+          backgroundColor={"#fff"}
+          margin={"20px 0 0 10px"}
+          color={"#131432"}
+          hoverBackgroundColor={"#fff"}
+        />
       </MondalContainer>
       <BackgroundLayer
         variants={MenuContainerAnim}

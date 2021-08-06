@@ -33,15 +33,16 @@ const TodayStateContainer = styled.div`
   position: relative;
   overflow: hidden;
   ${(props) =>
-    props.workingFrom === "home" &&
+    props.workingFromOffice &&
     css`
       background-color: #6ecd96;
       color: #000;
     `};
   ${(props) =>
-    props.workingFrom === "office" &&
+    !props.workingFromOffice &&
     css`
       background-color: #514dec;
+      color: #fff;
     `};
   @media (max-width: 1100px) {
     width: 100%;
@@ -68,8 +69,15 @@ const TodayStateButton = styled.div`
   z-index: 5;
 `;
 
-function TodayStateBlock() {
-  const workFrom = "home";
+function TodayStateBlock({
+  userProfile,
+  companyData,
+  employeeData,
+  loading,
+  isLoading,
+  officeData,
+}) {
+  const [inOffice, setInOffice] = useState(false);
   const appActions = useStoreActions((actions) => actions.app);
   const { setDisplayModifyDayStatus } = appActions;
 
@@ -77,11 +85,21 @@ function TodayStateBlock() {
     setDisplayModifyDayStatus(true);
   }
 
+  var d = new Date();
+  var n = d.getDay() - 1;
+
+  useEffect(() => {
+    if (userProfile.default_days.includes(n)) {
+      setInOffice(true);
+    }
+  }, [userProfile]);
+
   return (
     <TodayState>
-      <TodayStateContainer workingFrom={"home"}>
+      <TodayStateContainer workingFromOffice={inOffice}>
         <TodayStateText>
-          You're working from <span>home</span> today
+          You're working from <span>{inOffice ? "the Office" : "home"}</span>{" "}
+          today
         </TodayStateText>
         <TodayStateButton>
           <InputButton
@@ -90,13 +108,16 @@ function TodayStateBlock() {
             padding={"10px 16px"}
           />
         </TodayStateButton>
-        {workFrom === "office" ? (
-          <WorkFromOfficeImage />
-        ) : (
-          <WorkFromHomeImage />
-        )}
+        {inOffice ? <WorkFromOfficeImage /> : <WorkFromHomeImage />}
       </TodayStateContainer>
-      <TodayInOfficeBlock />
+      <TodayInOfficeBlock
+        userProfile={userProfile}
+        companyData={companyData}
+        employeeData={employeeData}
+        loading={loading}
+        isLoading={isLoading}
+        officeData={officeData}
+      />
     </TodayState>
   );
 }

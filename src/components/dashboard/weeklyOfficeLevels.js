@@ -24,7 +24,8 @@ const OfficeLevelsContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   padding: 30px;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   box-sizing: border-box;
 `;
 
@@ -32,6 +33,18 @@ const ChartContainer = styled.div`
   width: 100%;
   height: 100%;
   max-width: 1200px;
+`;
+
+const Title = styled.div`
+  color: #81818b;
+  font-size: 32px;
+  margin-bottom: 30px;
+  margin-top: 0px;
+
+  span {
+    font-weight: bold;
+    color: #fff;
+  }
 `;
 
 const data = [
@@ -62,7 +75,14 @@ const data = [
   },
 ];
 
-function WeeklyOfficeLevels({}) {
+function WeeklyOfficeLevels({
+  userProfile,
+  companyData,
+  employeeData,
+  loading,
+  isLoading,
+  officeData,
+}) {
   const [displayInOffice, setDisplayInOffice] = useState(false);
   const [displayRemote, setDisplayRemote] = useState(false);
 
@@ -79,6 +99,9 @@ function WeeklyOfficeLevels({}) {
 
   return (
     <OfficeLevelsContainer>
+      <Title>
+        <span>{officeData.title}'s</span> in person levels this week
+      </Title>
       <ChartContainer ref={observe}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart width={150} height={40} data={data}>

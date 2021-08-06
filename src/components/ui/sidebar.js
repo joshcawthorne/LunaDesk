@@ -338,6 +338,7 @@ function Sidebar() {
             Icon={SettingsIcon}
             id={"settings"}
             width={"calc(100% - 40px)"}
+            setActivePage={setActivePage}
           />
           <SidebarItem
             title={"Logout"}

@@ -23,7 +23,14 @@ function TodayWidget({
 }) {
   return (
     <TodayWidgetContainer>
-      <TodayStateBlock />
+      <TodayStateBlock
+        userProfile={userProfile}
+        companyData={companyData}
+        employeeData={employeeData}
+        loading={loading}
+        isLoading={isLoading}
+        officeData={officeData}
+      />
     </TodayWidgetContainer>
   );
 }

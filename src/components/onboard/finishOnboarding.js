@@ -44,10 +44,11 @@ function FinishOnboarding({ fullName, firstName, role }) {
       full_name: fullName,
       employee_role: role,
       onboarded: true,
+      default_days: [3, 4],
     };
     const update = await updateProfile(updateData);
     if (update) {
-      router.push("/dashboard");
+      router.push("/");
     }
   }
 
