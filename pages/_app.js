@@ -118,7 +118,7 @@ const App = ({ component: Component, pageProps }) => {
   );
 };
 
-const WhosInApp = ({ Component, pageProps }) => {
+const WorkFromApp = ({ Component, pageProps }) => {
   const GlobalStyle = createGlobalStyle`
   body {
     margin: 0
@@ -137,4 +137,4 @@ const WhosInApp = ({ Component, pageProps }) => {
   );
 };
 
-export default WhosInApp;
+export default WorkFromApp;
