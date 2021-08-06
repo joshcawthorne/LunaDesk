@@ -1,3 +1,5 @@
+![Work From Logo](https://work-from.netlify.app/images/hostedLogo.jpg)
+
 # Work From
 
 ### What is Work From?
