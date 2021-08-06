@@ -1,34 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Work From
 
-## Getting Started
+### What is Work From?
 
-First, run the development server:
+Work from is a web app created by Josh Cawthorne for the Supabase Hackathon.
 
-```bash
-npm run dev
-# or
-yarn dev
+The concept of the app is for companies to be able to sign-up, and enable employees to share which days they're working in the office, and which days they're working from home, to allow better planning on when teams should be in the office.
+
+### Do you have a demo video?
+
+Funny you should ask. I do! Here's a short walk-through video explaining the app: https://www.loom.com/share/b6a4f67bcc8b405da4038665262d8805. 
+
+_Just so you know, Loom offers the ability to watch videos in double speed... so you can get through my rambling at double the speed._
+
+### LET ME AT IT!
+You're eager! A link to a live version is available here: https://work-from.netlify.app/, though perhaps you'd like to finish reading this readme first? Or don't, I'm not your boss.
+
+### How did you build Work from?
+
+This project was created using **NextJS** with **Supabase Auth, Storage and Database**. It also utilises libraries including (but not limited to) Framer Motion, easy-peasy, styled-components and recharts.
+
+### How does Work From use Supabase?
+
+As stated above, this project uses quite a few features of Supabase. It uses Auth to allow users to both sign-up and login using either an email address, Google account or Apple account. It uses Supabase's databases to store all data, and uses storage to store avatars for companies.
+
+### How can I run Work From on my local machine
+
+To run the project, all you need to do is download the project to your local machine, followed by running `npm i` to install the required packages, and then `npm run-script dev` to boot it up. **Please note:** an `.env.local` file is required in the following structure to run locally:
+
+```
+PUBLIC_SUPABASE_URL=[your_url]
+PUBLIC_SUPABASE_ANON_KEY=[your_key]
+BASE_DOMAIN=http://localhost:3000/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For your convencience, you can use this handy Netlify site to view the project live instead. Nifty, huh?
+https://work-from.netlify.app/
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Alternatively, feel free to reach out to me via email (joshcawthorne97@gmail.com), and I'd be happy to provide you with the required keys to hook it up to the existing database, plus my banking details should you have any large sums of money from a recently deceased distant relative I've never heard of.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### It isn't finished?!
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+No 😔  
 
-## Learn More
+Like all great visionaries, I bit off more than I could chew. I do plan to keep working on it though...
 
-To learn more about Next.js, take a look at the following resources:
+### Who was Work From created by?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Designed by: Josh Cawthorne
+- Branded by: Josh Cawthorne
+- Developed by: Josh Cawthorne
+- Readme by: Josh Cawthorne
+- Credits writen by: Josh Cawthorne
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+We're a good team. Very in sync.
 
-## Deploy on Vercel
+Github: https://github.com/joshcawthorne/
+Twitter: https://twitter.com/cawthornejosh
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
