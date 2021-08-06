@@ -54,7 +54,6 @@ function OfficeList({ session }) {
       }
 
       if (data) {
-        console.log(data);
         setOffices(data);
       }
     } catch (error) {

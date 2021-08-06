@@ -90,7 +90,6 @@ function Dashboard({ isLoading }) {
   async function getUserData() {
     const data = await getProfile();
     setUserProfile(data);
-    console.log(userProfile);
     if (data.company !== undefined) {
       getCompanyData(data);
     }
@@ -98,21 +97,18 @@ function Dashboard({ isLoading }) {
 
   async function getCompanyData(data) {
     const companyDataObj = await getCompany(data.company);
-    console.log("companyDataObj", companyDataObj);
     setCompanyData(companyDataObj);
     getEmployeeData(data);
   }
 
   async function getEmployeeData(data) {
     const employeeDataObj = await getEmployees(data.company);
-    console.log("employeeDataObj", employeeDataObj);
     setEmployeeData(employeeDataObj);
     getEmployeeOffice(data);
   }
 
   async function getEmployeeOffice(data) {
     const employeeOfficeObj = await getSpecificOffice(data.default_office);
-    console.log("here", employeeOfficeObj);
     setOfficeData(employeeOfficeObj);
     setTimeout(() => {
       setLoading(false);

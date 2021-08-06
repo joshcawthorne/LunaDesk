@@ -51,7 +51,6 @@ function JoinCompany({
   async function updateUser() {
     try {
       const user = supabase.auth.user();
-      console.log(companyData);
       const updates = {
         id: user.id,
         company: companyData.id,
@@ -62,7 +61,6 @@ function JoinCompany({
         returning: "minimal",
       });
       if (error) {
-        console.log("User update error: ", error.message);
         setLoading(false);
       } else {
         handleJoinCompany(user);
@@ -83,7 +81,6 @@ function JoinCompany({
         throw error;
       }
       let updates;
-      console.log(data);
       if (data[0].employees !== null && data[0].employees.includes(user.id)) {
         setLoading(false);
         setCompany(companyData.title);
@@ -102,11 +99,10 @@ function JoinCompany({
         };
       }
 
-      let { error1 } = await supabase.from("companies").upsert(updates, {
+      let { error: error1 } = await supabase.from("companies").upsert(updates, {
         returning: "minimal",
       });
       if (error1 && status !== 406) {
-        console.log(error1);
         setLoading(false);
         throw error1;
       } else {

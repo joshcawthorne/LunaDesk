@@ -44,10 +44,6 @@ function JoinCompany({ session }) {
       if (error && status !== 406) {
         throw error;
       }
-
-      if (data) {
-        console.log(data);
-      }
     } catch (error) {
       alert(error.message);
     } finally {

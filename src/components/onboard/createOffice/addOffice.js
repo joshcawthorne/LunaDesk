@@ -41,7 +41,6 @@ function AddOffice({ officeName, officeLocation, setCreatingOffice }) {
   const [profile, setProfile] = useState({});
 
   useEffect(() => {
-    console.log(profile);
     if (!isEmpty(profile)) {
       addOffice();
     }

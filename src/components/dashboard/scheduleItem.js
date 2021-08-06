@@ -189,10 +189,6 @@ function ScheduleItem({ data, companyData, firstItem, lastItem, key }) {
     setInitials(firstInitial + secondInitial);
   }
 
-  function getDates() {
-    console.log(data);
-  }
-
   return (
     <>
       <DayContainer variants={ItemAnim} key={key}>
@@ -220,9 +216,6 @@ function ScheduleItem({ data, companyData, firstItem, lastItem, key }) {
         if (companyData.default_rest_days.includes(i)) {
           restDay = true;
         }
-
-        console.log(data);
-
         if (data.default_days.includes(i)) {
           active = true;
         }
@@ -247,11 +240,6 @@ function ScheduleItem({ data, companyData, firstItem, lastItem, key }) {
         }
 
         if (restDay && !companyData.default_rest_days.includes(i - 1)) {
-          if (i === 6) {
-            console.log("act", i);
-            console.log(i - 1);
-            console.log(companyData.default_rest_days);
-          }
           restStart = true;
         }
 

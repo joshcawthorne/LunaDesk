@@ -106,7 +106,6 @@ function UserIndicator() {
   async function getUserData() {
     const data = await getProfile();
     setUserData(data);
-    console.log(userData);
   }
 
   useEffect(() => {

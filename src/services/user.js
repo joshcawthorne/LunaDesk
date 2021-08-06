@@ -14,7 +14,6 @@ async function getProfile() {
       throw error;
     }
     if (data) {
-      console.log("USER RESPONSE", data);
       return data;
     }
   } catch (error) {
@@ -63,7 +62,6 @@ async function updateProfile(updates) {
 async function createProfile() {
   try {
     const user = supabase.auth.user();
-    console.log(user);
     const userProfileExists = await getProfile();
     if (userProfileExists) {
       return userProfileExists;

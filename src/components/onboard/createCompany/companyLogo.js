@@ -109,7 +109,6 @@ function CompanyLogo({ companyName, setSelectedStage, setFinalValue }) {
 
   const onDropRejected = useCallback((acceptedFiles) => {
     if (fileRejections && fileRejections.length > 0) {
-      console.log(fileRejections);
       if (fileRejections[0].errors[0].code === "file-too-large") {
         alert("Sorry, images must be less than 1mb in size.");
       } else {
@@ -170,7 +169,6 @@ function CompanyLogo({ companyName, setSelectedStage, setFinalValue }) {
   }
 
   const onUpload = (filepath) => {
-    console.log(filepath);
     downloadImage(filepath);
     setUrl(filepath);
   };

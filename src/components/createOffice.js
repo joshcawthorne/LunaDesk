@@ -43,22 +43,17 @@ function CreateOffice() {
     try {
       setLoading(true);
       const user = supabase.auth.user();
-      console.log(companyData);
-      console.log(user);
-      let { data, error } = await supabase
-        .from("offices")
-        .insert([
-          {
-            title: officeName,
-            created_by: user.id,
-            owned_by: companyData.company.id,
-          },
-        ]);
+      let { data, error } = await supabase.from("offices").insert([
+        {
+          title: officeName,
+          created_by: user.id,
+          owned_by: companyData.company.id,
+        },
+      ]);
       if (error && status !== 406) {
         throw error;
       }
 
-      console.log(data);
       if (data) {
         const updates = {
           id: user.id,

@@ -56,7 +56,6 @@ function OfficeSelect({ setSelectedStage }) {
   }, []);
 
   useEffect(() => {
-    console.log(profile);
     if (!isEmpty(profile)) {
       loadOffices();
     }
@@ -82,8 +81,6 @@ function OfficeSelect({ setSelectedStage }) {
     setCompanyOffices(offices);
 
     if (offices.length === 0) {
-      console.log(offices);
-      console.log("office length 0");
       setNoOffices(true);
     } else {
       setNoOffices(false);

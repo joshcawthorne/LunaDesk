@@ -89,13 +89,11 @@ function CompanyListItem({ company, handleCompanySelect }) {
   const imageObj = useRef();
 
   async function getAvatar(url) {
-    console.log(url);
     const data = await getFile("avatars", url);
     setImage(data.publicURL);
   }
 
   useEffect(() => {
-    console.log(company);
     if (company.company_logo !== null) {
       getAvatar(company.company_logo);
     }
@@ -104,10 +102,7 @@ function CompanyListItem({ company, handleCompanySelect }) {
   useEffect(() => {
     if (image !== null) {
       const fac = new FastAverageColor();
-      console.log(imageObj.current);
       imageObj.current.crossOrigin = "anonymous";
-      console.log(imageObj.current.width);
-      console.log(imageObj.current.height);
       const color = fac.getColor(imageObj.current);
 
       setAvgColor(color.hex);

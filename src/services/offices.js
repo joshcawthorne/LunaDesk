@@ -19,11 +19,8 @@ async function getOffices(id) {
 }
 
 async function getSpecificOffice(id) {
-  console.log(id);
   try {
     let { data, error } = await supabase.from("offices").select().eq("id", id);
-    console.log("specific office resp", data);
-    console.log(id);
     if (error && status !== 406) {
       throw error;
     }

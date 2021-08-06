@@ -134,7 +134,6 @@ function ChangeDayStatus({ userProfile }) {
 
   useEffect(() => {
     let defaultDays = userProfile.default_days;
-    console.log(defaultDays);
     let days = DEFAULT_DAYS.map((day) => {
       if (defaultDays.includes(day.id)) {
         let updObj = { ...day, enabled: true };
@@ -169,16 +168,12 @@ function ChangeDayStatus({ userProfile }) {
     setDays(updDays);
   }
 
-  console.log(userProfile);
-
   function updateArr(id, updatedObj, added) {
     let updDays = days.map((d) => (d.id !== id ? d : updatedObj));
-    console.log("upd", updDays);
     setDays(updDays);
   }
 
   async function saveUpdates() {
-    console.log("DAYAYAYAYAYAY", days);
     const selectedDays = days
       .filter((d) => d.enabled)
       .map(function (d) {
@@ -188,8 +183,6 @@ function ChangeDayStatus({ userProfile }) {
       id: userProfile.id,
       default_days: selectedDays,
     };
-
-    console.log(days);
 
     let { data, error } = await supabase.from("profiles").upsert(updates, {
       returning: "minimal",

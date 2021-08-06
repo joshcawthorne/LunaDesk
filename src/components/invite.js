@@ -18,6 +18,7 @@ function Invite() {
   }, [emailValue]);
 
   async function handleInvite() {
+    const upgradeRole = await upgradeRole();
     const inviteState = await inviteNewUser(emailValue);
   }
 

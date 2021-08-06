@@ -12,7 +12,6 @@ async function getFile(bucket, url) {
       throw error;
     }
     if (data) {
-      console.log("USER RESPONSE", data);
       return data;
     }
   } catch (error) {

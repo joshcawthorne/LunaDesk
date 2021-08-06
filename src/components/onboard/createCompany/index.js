@@ -45,7 +45,6 @@ function CreateCompany({
 }) {
   const [loading, setLoading] = useState(true);
   async function handleCreate() {
-    console.log(typeof workingDays);
     try {
       setLoading(true);
       const user = supabase.auth.user();
@@ -74,7 +73,6 @@ function CreateCompany({
 
   async function updateUser(companyData, user) {
     try {
-      console.log(companyData);
       const updates = {
         id: user.id,
         company: companyData[0].id,

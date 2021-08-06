@@ -16,7 +16,6 @@ function CreateCompany({ session }) {
         throw error;
       }
 
-      console.log(data);
       if (data) {
         const updates = {
           id: user.id,

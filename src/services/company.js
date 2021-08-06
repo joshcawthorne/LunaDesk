@@ -1,7 +1,6 @@
 import { supabase } from "../utils/supabaseClient";
 
 async function getCompany(id) {
-  console.log(id);
   try {
     let { data, error } = await supabase
       .from("companies")
@@ -20,7 +19,6 @@ async function getCompany(id) {
 }
 
 async function getEmployees(id) {
-  console.log(id);
   try {
     let { data, error } = await supabase
       .from("profiles")

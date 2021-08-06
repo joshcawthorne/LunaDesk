@@ -110,7 +110,6 @@ function TodayInOfficeBlock({
         setActiveEmployees((activeEmployees) => [...activeEmployees, employee]);
       }
     });
-    console.log(activeEmployees);
   }, [employeeData]);
 
   return (

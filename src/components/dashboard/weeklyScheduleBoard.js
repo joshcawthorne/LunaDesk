@@ -109,7 +109,6 @@ function WeeklyScheduleBoard({
     }
   }, [loading, isLoading]);
 
-  console.log(officeData);
   return (
     <ScheduleContainer>
       <ScheduleTopRow>
