@@ -179,7 +179,6 @@ function ScheduleItem({ data, companyData, firstItem, lastItem, key }) {
 
   useEffect(() => {
     getInitals();
-    getDates();
   }, []);
 
   function getInitals() {
