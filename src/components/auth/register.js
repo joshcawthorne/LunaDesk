@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { supabase } from "../../utils/supabaseClient";
 
 import EmailSignup from "./emailSignup";
+import useOnclickOutside from "react-cool-onclickoutside";
 
 import GoogleLogo from "../../../assets/svg/google.svg";
 import AppleLogo from "../../../assets/svg/apple.svg";
@@ -116,7 +117,7 @@ const ButtonText = styled.div`
   font-size: 18px;
 `;
 
-function Register() {
+function Register({ setShowRegister, showRegister }) {
   const [loginWithEmail, setLoginWithEmail] = useState(false);
 
   const handleLoginWithGoogle = async () => {
@@ -134,10 +135,16 @@ function Register() {
     setLoginWithEmail(true);
   };
 
+  const ref = useOnclickOutside(() => {
+    if (showRegister) {
+      setShowRegister(false);
+    }
+  });
+
   return (
     <RegisterContainer>
-      <RegisterModal>
-        <Title>Find Out Who's In</Title>
+      <RegisterModal ref={ref}>
+        <Title>Welcome to Work From</Title>
         <Desc>
           You're moments away from revolutionising your office's hybrid work
           woes.

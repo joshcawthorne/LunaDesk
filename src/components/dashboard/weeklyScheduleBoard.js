@@ -25,6 +25,7 @@ const ScheduleBoard = styled(motion.div)`
   box-sizing: border-box;
   margin-top: -30px;
   color: #fff;
+  position: relative;
   @media (max-width: 1100px) {
     grid-template-columns: 80px repeat(7, 1fr);
   }
@@ -55,6 +56,23 @@ const Title = styled.div`
 `;
 
 const AnimLayer = styled(motion.div)``;
+
+const DayIndicator = styled.div`
+  grid-column: 6 / 8;
+  height: 100%;
+  width: 5px;
+  background-color: yellow;
+`;
+
+const DayIndicatorContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin-left: 50%;
+  z-index: 5;
+`;
 
 const ContainerAnim = {
   hidden: {
@@ -105,6 +123,9 @@ function WeeklyScheduleBoard({
         animate={animate ? "show" : "hidden"}
       >
         <ScheduleDates />
+        <DayIndicatorContainer>
+          <DayIndicator />
+        </DayIndicatorContainer>
         {employeeData.map((employee, i) => (
           <ScheduleItem
             firstItem={i === 0}

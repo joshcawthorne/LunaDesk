@@ -3588,6 +3588,11 @@
   "resolved" "https://registry.npmjs.org/react-cool-inview/-/react-cool-inview-2.0.7.tgz"
   "version" "2.0.7"
 
+"react-cool-onclickoutside@^1.6.2":
+  "integrity" "sha512-x999CH2gHLYnW7LvaLOFNt4/CEWaFiqMrGCkzjDZJC+7FuIsgZZ8CZ4urb9K9lSukmlv8WFGU94BzWPhQRJ4lQ=="
+  "resolved" "https://registry.npmjs.org/react-cool-onclickoutside/-/react-cool-onclickoutside-1.6.2.tgz"
+  "version" "1.6.2"
+
 "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0", "react-dom@^16.0.0 || ^17.0.0", "react-dom@^17.0.2", "react-dom@>= 16.8.0", "react-dom@>=15.0.0", "react-dom@>=16.8 || ^17.0.0", "react-dom@17.0.2":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"

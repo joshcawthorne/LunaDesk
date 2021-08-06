@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import InputButton from "../shared/inputButton";
 import { motion } from "framer-motion";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 import TodayInOfficeBlock from "./todayInOfficeBlock";
 import mq from "../../utils/mq";
@@ -64,10 +65,18 @@ const TodayStateButton = styled.div`
   left: 0;
   margin-bottom: 20px;
   margin-left: 20px;
+  z-index: 5;
 `;
 
 function TodayStateBlock() {
   const workFrom = "home";
+  const appActions = useStoreActions((actions) => actions.app);
+  const { setDisplayModifyDayStatus } = appActions;
+
+  function handleClick() {
+    setDisplayModifyDayStatus(true);
+  }
+
   return (
     <TodayState>
       <TodayStateContainer workingFrom={"home"}>
@@ -75,7 +84,11 @@ function TodayStateBlock() {
           You're working from <span>home</span> today
         </TodayStateText>
         <TodayStateButton>
-          <InputButton text={"Changed plans?"} padding={"10px 16px"} />
+          <InputButton
+            text={"Changed plans?"}
+            action={handleClick}
+            padding={"10px 16px"}
+          />
         </TodayStateButton>
         {workFrom === "office" ? (
           <WorkFromOfficeImage />

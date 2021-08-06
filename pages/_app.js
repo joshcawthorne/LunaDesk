@@ -128,7 +128,7 @@ const WhosInApp = ({ Component, pageProps }) => {
     <StoreProvider store={store}>
       <AppContainer>
         <Head>
-          <title>Who's In</title>
+          <title>Work From</title>
         </Head>
         <GlobalStyle />
         <App component={Component} pageProps={pageProps} />

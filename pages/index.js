@@ -6,6 +6,7 @@ import Intro from "../src/components/dashboard/intro";
 import TodayWidget from "../src/components/dashboard/todayWidget";
 import LoadingAnimation from "../src/components/shared/loadingAnimation";
 import WeeklyOfficeLevels from "../src/components/dashboard/weeklyOfficeLevels";
+import ChangeDayStatus from "../src/components/dashboard/changeDayStatus";
 import mq from "../src/utils/mq";
 
 import { getProfile } from "../src/services/user";
@@ -127,6 +128,7 @@ function Dashboard({ isLoading }) {
         </LoadingContainer>
       ) : (
         <DashboardContentContainer>
+          <ChangeDayStatus userProfile={userProfile} />
           <Intro
             userProfile={userProfile}
             companyData={companyData[0]}

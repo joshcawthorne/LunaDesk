@@ -27,7 +27,7 @@ function Register() {
   return (
     <div className="row flex flex-center">
       <div className="col-6 form-widget">
-        <h1 className="header">Welcome To Who's In!</h1>
+        <h1 className="header">Welcome To Work From!</h1>
         <p className="description">Sign Up with a magic email link</p>
         <div>
           <input

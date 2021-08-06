@@ -36,7 +36,7 @@ const Desc = styled.div`
   }
 `;
 
-function finishOnboarding({ fullName, firstName, role }) {
+function FinishOnboarding({ fullName, firstName, role }) {
   const router = useRouter();
   async function handleCreate() {
     let updateData = {
@@ -60,4 +60,4 @@ function finishOnboarding({ fullName, firstName, role }) {
   );
 }
 
-export default finishOnboarding;
+export default FinishOnboarding;
