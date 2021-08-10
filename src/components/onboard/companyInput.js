@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../../utils/supabaseClient";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { detect } from "detect-browser";
 
 import InputField from "../shared/inputField";
 import InputButton from "../shared/inputButton";
@@ -106,19 +107,6 @@ const ControlsContainer = styled.div`
   width: 100%;
 `;
 
-const ContainerAnim = {
-  hidden: {
-    height: 0,
-  },
-  show: {
-    height: "fit-content",
-    transition: {
-      duration: 0.4,
-      delay: 0.5,
-    },
-  },
-};
-
 const SearchContainerAnim = {
   inactive: {
     height: "80px",
@@ -183,6 +171,39 @@ function CompanyInput({ setCompany, setSelectedStage, firstName }) {
   function handleCompanySelect(company) {
     setSelectedCompanyData(company);
     setSelectedCompany(company);
+  }
+
+  const browser = detect();
+
+  let ContainerAnim;
+  if (browser) {
+    if (browser.name === "firefox") {
+      ContainerAnim = {
+        hidden: {
+          height: 0,
+        },
+        show: {
+          height: "-moz-max-content",
+          transition: {
+            duration: 0.4,
+            delay: 0.5,
+          },
+        },
+      };
+    } else {
+      ContainerAnim = {
+        hidden: {
+          height: 0,
+        },
+        show: {
+          height: "fit-content",
+          transition: {
+            duration: 0.4,
+            delay: 0.5,
+          },
+        },
+      };
+    }
   }
 
   if (selectedCompany) {

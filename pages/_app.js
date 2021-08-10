@@ -34,6 +34,7 @@ const App = ({ component: Component, pageProps }) => {
   const userActions = useStoreActions((actions) => actions.user);
   const { session, loggedIn } = userState;
   const { setSession, setLoggedIn, setUserDetails } = userActions;
+  const [onboarded, setOnboarded] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -46,10 +47,15 @@ const App = ({ component: Component, pageProps }) => {
   useEffect(() => {
     if (session) {
       setLoggedIn(true);
+
       if (router.pathname === "/welcome") {
         createUserData();
       } else {
         loadUserData();
+        checkOnboarded();
+        if (!onboarded) {
+          router.replace("/welcome");
+        }
       }
     }
     //Dark pattern loading, evil cackle.
@@ -63,6 +69,15 @@ const App = ({ component: Component, pageProps }) => {
       }, 4000);
     }
   }, [session]);
+
+  async function checkOnboarded() {
+    const userProfile = await createProfile();
+    if (!userProfile.onboarded) {
+      setOnboarded(false);
+    } else {
+      setOnboarded(true);
+    }
+  }
 
   async function createUserData() {
     const userProfile = await createProfile();

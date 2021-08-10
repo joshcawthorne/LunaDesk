@@ -12,6 +12,7 @@
     "@babel/runtime": "^7.14.8",
     "@supabase/supabase-js": "^1.21.0",
     "babel-loader": "^8.2.2",
+    "detect-browser": "^5.2.0",
     "easy-peasy": "^5.0.3",
     "fast-average-color": "^6.4.1",
     "framer-motion": "^4.1.17",
