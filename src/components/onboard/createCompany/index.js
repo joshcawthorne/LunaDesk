@@ -55,6 +55,7 @@ function CreateCompany({
           based_in: basedIn,
           default_working_days: JSON.parse(JSON.stringify(workingDays)),
           default_working_hours: [9, 18],
+          default_rest_days: [5, 6],
           company_logo: logoUrl,
           employees: [user.id],
         },
