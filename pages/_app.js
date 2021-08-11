@@ -35,6 +35,7 @@ const App = ({ component: Component, pageProps }) => {
   const { session, loggedIn } = userState;
   const { setSession, setLoggedIn, setUserDetails } = userActions;
   const [onboarded, setOnboarded] = useState(false);
+  const [checkedOnboard, setCheckedOnboard] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -72,11 +73,12 @@ const App = ({ component: Component, pageProps }) => {
 
   async function checkOnboarded() {
     const userProfile = await createProfile();
-    if (!userProfile.onboarded) {
+    if (!userProfile || !userProfile.onboarded) {
       setOnboarded(false);
     } else {
       setOnboarded(true);
     }
+    setCheckedOnboard(true);
   }
 
   async function createUserData() {
@@ -110,7 +112,7 @@ const App = ({ component: Component, pageProps }) => {
     <>
       {isLoading && <Loading />}
       <AppContainer>
-        {loggedIn ? (
+        {loggedIn && checkedOnboard ? (
           <>
             {router.pathname !== "/welcome" ? (
               <AppInnerContainer>
