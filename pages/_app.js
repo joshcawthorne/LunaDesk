@@ -48,12 +48,12 @@ const App = ({ component: Component, pageProps }) => {
   useEffect(() => {
     if (session) {
       setLoggedIn(true);
-
+      checkOnboarded();
       if (router.pathname === "/welcome") {
         createUserData();
       } else {
         loadUserData();
-        checkOnboarded();
+
         if (!onboarded) {
           router.replace("/welcome");
         }
