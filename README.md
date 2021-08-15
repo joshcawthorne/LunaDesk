@@ -8,12 +8,6 @@ LunaDesk is a web app created by Josh Cawthorne for the Supabase Hackathon.
 
 The concept of the app is for companies to be able to sign-up, and enable employees to share which days they're working in the office, and which days they're working from home, to allow better planning on when teams should be in the office.
 
-### Do you have a demo video?
-
-Funny you should ask. I do! Here's a short walk-through video explaining the app: https://www.loom.com/share/b6a4f67bcc8b405da4038665262d8805. 
-
-_Just so you know, Loom offers the ability to watch videos in double speed... so you can get through my rambling at double the speed._
-
 ### LET ME AT IT!
 You're eager! A link to a live version is available here: https://lunadesk.netlify.app/, though perhaps you'd like to finish reading this readme first? Or don't, I'm not your boss.
 
