@@ -1,4 +1,4 @@
-![LunaDesk Logo](https://lunadesk.netlify.app/images/githubPhoto.jpg)
+![LunaDesk Logo](https://lunadesk-freeze.netlify.app/images/githubPhoto.jpg)
 
 # LunaDesk
 
@@ -9,7 +9,7 @@ LunaDesk is a web app created by Josh Cawthorne for the Supabase Hackathon.
 The concept of the app is for companies to be able to sign-up, and enable employees to share which days they're working in the office, and which days they're working from home, to allow better planning on when teams should be in the office.
 
 ### LET ME AT IT!
-You're eager! A link to a live version is available here: https://lunadesk.netlify.app/, though perhaps you'd like to finish reading this readme first? Or don't, I'm not your boss.
+You're eager! A link to a live version is available here: https://lunadesk-freeze.netlify.app/, though perhaps you'd like to finish reading this readme first? Or don't, I'm not your boss.
 
 ### How did you build LunaDesk?
 
@@ -30,7 +30,7 @@ BASE_DOMAIN=http://localhost:3000/
 ```
 
 For your convencience, you can use this handy Netlify site to view the project live instead. Nifty, huh?
-https://lunadesk.netlify.app/
+https://lunadesk-freeze.netlify.app/
 
 Alternatively, feel free to reach out to me via email (joshcawthorne97@gmail.com), and I'd be happy to provide you with the required keys to hook it up to the existing database, plus my banking details should you have any large sums of money from a recently deceased distant relative I've never heard of.
 
