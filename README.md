@@ -1,4 +1,4 @@
-![LunaDesk Logo](https://work-from.netlify.app/images/githubPhoto.jpg)
+![LunaDesk Logo](https://lunadesk.netlify.app/images/githubPhoto.jpg)
 
 # LunaDesk
 
@@ -15,7 +15,7 @@ Funny you should ask. I do! Here's a short walk-through video explaining the app
 _Just so you know, Loom offers the ability to watch videos in double speed... so you can get through my rambling at double the speed._
 
 ### LET ME AT IT!
-You're eager! A link to a live version is available here: https://work-from.netlify.app/, though perhaps you'd like to finish reading this readme first? Or don't, I'm not your boss.
+You're eager! A link to a live version is available here: https://lunadesk.netlify.app/, though perhaps you'd like to finish reading this readme first? Or don't, I'm not your boss.
 
 ### How did you build LunaDesk?
 
@@ -36,7 +36,7 @@ BASE_DOMAIN=http://localhost:3000/
 ```
 
 For your convencience, you can use this handy Netlify site to view the project live instead. Nifty, huh?
-https://work-from.netlify.app/
+https://lunadesk.netlify.app/
 
 Alternatively, feel free to reach out to me via email (joshcawthorne97@gmail.com), and I'd be happy to provide you with the required keys to hook it up to the existing database, plus my banking details should you have any large sums of money from a recently deceased distant relative I've never heard of.
 
