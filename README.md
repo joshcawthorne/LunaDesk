@@ -1,10 +1,10 @@
-![Work From Logo](https://work-from.netlify.app/images/hostedLogo.jpg)
+![LunaDesk Logo](https://work-from.netlify.app/images/hostedLogo.jpg)
 
-# Work From
+# LunaDesk
 
-### What is Work From?
+### What is LunaDesk?
 
-Work from is a web app created by Josh Cawthorne for the Supabase Hackathon.
+LunaDesk is a web app created by Josh Cawthorne for the Supabase Hackathon.
 
 The concept of the app is for companies to be able to sign-up, and enable employees to share which days they're working in the office, and which days they're working from home, to allow better planning on when teams should be in the office.
 
@@ -17,15 +17,15 @@ _Just so you know, Loom offers the ability to watch videos in double speed... so
 ### LET ME AT IT!
 You're eager! A link to a live version is available here: https://work-from.netlify.app/, though perhaps you'd like to finish reading this readme first? Or don't, I'm not your boss.
 
-### How did you build Work from?
+### How did you build LunaDesk?
 
 This project was created using **NextJS** with **Supabase Auth, Storage and Database**. It also utilises libraries including (but not limited to) Framer Motion, easy-peasy, styled-components and recharts.
 
-### How does Work From use Supabase?
+### How does LunaDesk use Supabase?
 
 As stated above, this project uses quite a few features of Supabase. It uses Auth to allow users to both sign-up and login using either an email address, Google account or Apple account. It uses Supabase's databases to store all data, and uses storage to store avatars for companies.
 
-### How can I run Work From on my local machine
+### How can I run LunaDesk on my local machine
 
 To run the project, all you need to do is download the project to your local machine, followed by running `npm i` to install the required packages, and then `npm run-script dev` to boot it up. **Please note:** an `.env.local` file is required in the following structure to run locally:
 
@@ -46,7 +46,7 @@ No 😔
 
 Like all great visionaries, I bit off more than I could chew. I do plan to keep working on it though...
 
-### Who was Work From created by?
+### Who was LunaDesk created by?
 
 - Designed by: Josh Cawthorne
 - Branded by: Josh Cawthorne
