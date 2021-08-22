@@ -28,23 +28,45 @@ const OrbitInnerContainer = styled.div`
   align-items: center;
 `;
 
+const PlutoOrbit = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 700px;
+  height: 700px;
+  animation: ${Spin} 14s linear 0s infinite;
+`;
+
+const Pluto = styled.div`
+  position: absolute;
+  top: -7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffaa62;
+  z-index: 0;
+`;
+
 const EarthOrbit = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 4px solid rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  width: 100%;
-  height: 100%;
+  width: 550px;
+  height: 550px;
   animation: ${Spin} 12s linear 0s infinite;
 `;
 
 const Earth = styled.div`
   position: absolute;
-  top: -10.5px;
-  width: 17px;
-  height: 17px;
+  top: -7px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #ffaa62;
   z-index: 0;
@@ -55,18 +77,18 @@ const VenusOrbit = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 4px solid rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  width: 75%;
-  height: 75%;
+  width: 400px;
+  height: 400px;
   animation: ${Spin} 7.4s linear 0s infinite;
 `;
 
 const Venus = styled.div`
   position: absolute;
-  top: -10.5px;
-  width: 17px;
-  height: 17px;
+  top: -7px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #ffaa62;
   z-index: 0;
@@ -77,18 +99,18 @@ const MercuryOrbit = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 4px solid rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  width: 62%;
-  height: 62%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 500%;
+  width: 250px;
+  height: 250px;
   animation: ${Spin} 5s linear 0s infinite;
 `;
 
 const Mercury = styled.div`
   position: absolute;
-  top: -10.5px;
-  width: 17px;
-  height: 17px;
+  top: -7px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #ffaa62;
   z-index: 0;
@@ -111,15 +133,18 @@ function Orbit() {
   return (
     <OrbitContainer>
       <OrbitInnerContainer>
-        <EarthOrbit>
-          <Earth />
-          <VenusOrbit>
-            <Venus />
-            <MercuryOrbit>
-              <Mercury />
-            </MercuryOrbit>
-          </VenusOrbit>
-        </EarthOrbit>
+        <PlutoOrbit>
+          <Pluto />
+          <EarthOrbit>
+            <Earth />
+            <VenusOrbit>
+              <Venus />
+              <MercuryOrbit>
+                <Mercury />
+              </MercuryOrbit>
+            </VenusOrbit>
+          </EarthOrbit>
+        </PlutoOrbit>
       </OrbitInnerContainer>
       <LunadeskLogoContainer>
         <Logo />

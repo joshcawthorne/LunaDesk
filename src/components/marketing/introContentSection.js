@@ -2,8 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 import Button from "../shared/button";
+import dynamic from "next/dynamic";
+
+const StarfieldAnimation = dynamic(() => import("react-starfield-animation"), {
+  ssr: false,
+});
 
 const IntroContentSectionContainer = styled.div`
+  overflow: hidden;
   background: linear-gradient(
     247.16deg,
     rgba(4, 3, 90, 0.15) 1.51%,
@@ -46,6 +52,13 @@ const Subtitle = styled.div`
 function IntroContentSection() {
   return (
     <IntroContentSectionContainer>
+      <StarfieldAnimation
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+        }}
+      />
       <Title>The scheduling tool that pulls teams into orbit</Title>
       <Subtitle>
         LunaDesk helps create harmony among Hybrid teams to free-up more time

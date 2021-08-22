@@ -72,13 +72,15 @@ const App = ({ component: Component, pageProps }) => {
   }, [session]);
 
   async function checkOnboarded() {
-    const userProfile = await createProfile();
-    if (!userProfile || !userProfile.onboarded) {
-      setOnboarded(false);
-    } else {
-      setOnboarded(true);
+    if (router.pathname !== "/logout") {
+      const userProfile = await createProfile();
+      if (!userProfile || !userProfile.onboarded) {
+        setOnboarded(false);
+      } else {
+        setOnboarded(true);
+      }
+      setCheckedOnboard(true);
     }
-    setCheckedOnboard(true);
   }
 
   async function createUserData() {

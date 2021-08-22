@@ -1,6 +1,11 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const StarfieldAnimation = dynamic(() => import("react-starfield-animation"), {
+  ssr: false,
+});
 
 import Container from "./marketingContainer";
 import WinnerTooltip from "./introWinnerTooltip";
@@ -13,6 +18,7 @@ const OuterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   background: linear-gradient(180deg, #060606 27.6%, #00055d 100%);
   position: relative;
   overflow: hidden;

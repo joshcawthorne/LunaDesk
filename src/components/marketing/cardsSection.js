@@ -48,7 +48,7 @@ function CardsSection() {
     <CardsOuterContainer>
       <Container>
         <CardsInnerContainer>
-          <Title>Improve your team’s harmony in minutes</Title>
+          <Title>Improve your team’s harmony in minutes.</Title>
           <Subtitle>Getting started with LunaDesk is a piece of cake.</Subtitle>
           <CardContentContainer>
             <Card
