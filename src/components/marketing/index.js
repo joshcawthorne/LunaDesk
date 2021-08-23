@@ -4,6 +4,7 @@ import Header from "./header";
 import Intro from "./introMarketingSection";
 import CardsSection from "./cardsSection";
 import OrganiseMeetings from "./organiseMeetings";
+import Teams from "./teamsMarketing";
 import Analytics from "./analyticsMarketing";
 import WinnerSection from "./winnerSection";
 import EarlyAccess from "./earlyAccess";
@@ -16,7 +17,9 @@ function Marketing() {
       <Intro />
       <CardsSection />
       <OrganiseMeetings />
+
       <Analytics />
+      <Teams />
       <WinnerSection />
       <EarlyAccess />
       <Footer />

@@ -4,6 +4,18 @@ import styled, { keyframes } from "styled-components";
 import SupabaseLogo from "../../../assets/svg/supabaseLogo.svg";
 import Arrow from "../../../assets/svg/buttonArrow.svg";
 
+const Fade = keyframes`
+  0% {
+    opacity:1;
+  }
+  50% {
+      opacity: 0.5;
+  }
+  100%{
+    opacity: 1;
+  }
+`;
+
 const IntroWinnerTooltipContainer = styled.div`
   margin-top: 90px;
   margin-bottom: 55px;
@@ -38,6 +50,7 @@ const BackgroundLayer = styled.div`
   z-index: 0;
   height: 100%;
   width: 100%;
+  animation: ${Fade} 3.5s linear 0s infinite;
 `;
 
 const SupabaseLogoContainer = styled.div`
