@@ -144,7 +144,7 @@ function Register({ setShowRegister, showRegister }) {
   return (
     <RegisterContainer>
       <RegisterModal ref={ref}>
-        <Title>Welcome to Work From</Title>
+        <Title>Welcome to LunaDesk</Title>
         <Desc>
           You're moments away from revolutionising your office's hybrid work
           woes.

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Header from "./header";
 import Intro from "./introMarketingSection";
@@ -9,19 +9,24 @@ import Analytics from "./analyticsMarketing";
 import WinnerSection from "./winnerSection";
 import EarlyAccess from "./earlyAccess";
 import Footer from "./footer";
+import PreRegsiterPrompt from "./preRegsiterPrompt";
 
 function Marketing() {
+  const [preRegisterOpen, setPreRegisterOpen] = useState(false);
   return (
     <div>
-      <Header />
-      <Intro />
+      <PreRegsiterPrompt
+        preRegisterOpen={preRegisterOpen}
+        setPreRegisterOpen={setPreRegisterOpen}
+      />
+      <Header setPreRegisterOpen={setPreRegisterOpen} />
+      <Intro setPreRegisterOpen={setPreRegisterOpen} />
       <CardsSection />
       <OrganiseMeetings />
-
       <Analytics />
       <Teams />
       <WinnerSection />
-      <EarlyAccess />
+      <EarlyAccess setPreRegisterOpen={setPreRegisterOpen} />
       <Footer />
     </div>
   );

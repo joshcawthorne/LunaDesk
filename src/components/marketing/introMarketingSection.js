@@ -40,13 +40,13 @@ const OrbitContainer = styled.div`
   z-index: 0;
 `;
 
-function IntroMarketingSection() {
+function IntroMarketingSection({ setPreRegisterOpen }) {
   return (
     <OuterContainer>
       <Container>
         <InnerContainer>
           <WinnerTooltip />
-          <IntroContentSection />
+          <IntroContentSection setPreRegisterOpen={setPreRegisterOpen} />
           <OrbitContainer>
             <Orbit />
           </OrbitContainer>

@@ -26,7 +26,7 @@ const ImageContainer = styled.div`
   align-items: center;
 `;
 
-const CardImage = styled.img`
+const CardImage = styled.picture`
   width: 60%;
 `;
 
@@ -78,7 +78,14 @@ function TeamsMarketing() {
           </Text>
         </TextContainer>
         <ImageContainer>
-          <CardImage src={"images/team.png"} />
+          <CardImage>
+            <source
+              style={{ width: "100%" }}
+              type="image/webp"
+              srcSet="images/team.webp"
+            />
+            <img style={{ width: "100%" }} src="images/team.png" alt="Team" />
+          </CardImage>
         </ImageContainer>
       </TeamsInnerContainer>
     </TeamsOuterContainer>

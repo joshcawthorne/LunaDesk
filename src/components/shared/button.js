@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import Arrow from "../../../assets/svg/buttonArrow.svg";
 
@@ -11,6 +11,16 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition: 400ms;
+  ${(props) =>
+    props.disabled &&
+    css`
+      cursor: not-allowed;
+      opacity: 0.4;
+      transition: 400ms;
+    `}
 `;
 
 const ButtonText = styled.div``;
@@ -19,12 +29,22 @@ const ArrowContainer = styled.div`
   margin-left: 10px;
 `;
 
-function Button({ text, action, backgroundColor, color, style, arrow }) {
+function Button({
+  text,
+  action,
+  backgroundColor,
+  color,
+  style,
+  arrow,
+  disabled,
+}) {
   return (
     <ButtonContainer
       style={{ ...style }}
       backgroundColor={backgroundColor}
       color={color}
+      onClick={() => action && action()}
+      disabled={disabled}
     >
       <ButtonText>{text}</ButtonText>
       {arrow && (

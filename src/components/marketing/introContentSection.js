@@ -49,7 +49,10 @@ const Subtitle = styled.div`
   width: 630px;
 `;
 
-function IntroContentSection() {
+function IntroContentSection({ setPreRegisterOpen }) {
+  function handleClick() {
+    setPreRegisterOpen(true);
+  }
   return (
     <IntroContentSectionContainer>
       <StarfieldAnimation
@@ -69,6 +72,8 @@ function IntroContentSection() {
         arrow
         backgroundColor={"#010960"}
         color={"#fff"}
+        action={handleClick}
+        style={{ zIndex: 100 }}
       />
     </IntroContentSectionContainer>
   );
