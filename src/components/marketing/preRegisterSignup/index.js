@@ -208,7 +208,7 @@ function PreRegsiterPrompt({ preRegisterOpen, setPreRegisterOpen }) {
   const [registered, setRegistered] = useState(false);
 
   const ref = useOnclickOutside(() => {
-    if (preRegisterOpen) {
+    if (preRegisterOpen && !loading) {
       handleClose();
     }
   });
