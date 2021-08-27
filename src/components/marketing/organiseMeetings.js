@@ -74,7 +74,7 @@ const ImageContainer = styled.div`
 `;
 
 const CardImage = styled.img`
-  width: 70%;
+  height: 100%;
 `;
 
 function OrganiseMeetings() {

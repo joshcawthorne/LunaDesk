@@ -9,7 +9,7 @@ import Analytics from "./analyticsMarketing";
 import WinnerSection from "./winnerSection";
 import EarlyAccess from "./earlyAccess";
 import Footer from "./footer";
-import PreRegsiterPrompt from "./preRegsiterPrompt";
+import PreRegsiterPrompt from "./preRegisterSignup";
 
 function Marketing() {
   const [preRegisterOpen, setPreRegisterOpen] = useState(false);

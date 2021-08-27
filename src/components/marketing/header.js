@@ -32,7 +32,10 @@ const LeftContent = styled.div``;
 
 const RightContent = styled.div``;
 
-function Header() {
+function Header({ setPreRegisterOpen }) {
+  function handleClick() {
+    setPreRegisterOpen(true);
+  }
   return (
     <HeaderOuterContainer>
       <Container>
@@ -46,6 +49,7 @@ function Header() {
               arrow
               backgroundColor={"#010960"}
               color={"#fff"}
+              action={handleClick}
             />
           </RightContent>
         </HeaderContainer>

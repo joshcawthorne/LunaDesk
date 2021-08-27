@@ -26,6 +26,9 @@ const IntroContentSectionContainer = styled.div`
   flex-direction: column;
   margin-bottom: 135px;
   z-index: 2;
+  @media (max-width: 500px) {
+    padding: 64px 30px;
+  }
 `;
 
 const Title = styled.h1`
@@ -36,6 +39,13 @@ const Title = styled.h1`
   color: #ffffff;
   text-align: center;
   width: 825px;
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+  @media (max-width: 500px) {
+    font-size: 44px;
+    line-height: 50px;
+  }
 `;
 
 const Subtitle = styled.div`
@@ -47,6 +57,13 @@ const Subtitle = styled.div`
   margin-bottom: 35px;
   text-align: center;
   width: 630px;
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+  @media (max-width: 500px) {
+    font-size: 20px;
+    line-height: 24px;
+  }
 `;
 
 function IntroContentSection({ setPreRegisterOpen }) {

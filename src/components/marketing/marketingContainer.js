@@ -14,6 +14,11 @@ const StyledContainer = styled.div`
     css`
       position: relative;
     `}
+  @media (max-width: 500px) {
+    padding: 10px 20px;
+    max-width: 100%;
+    margin: 0;
+  }
 `;
 
 function Container(props) {

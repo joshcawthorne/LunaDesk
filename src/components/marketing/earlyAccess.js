@@ -55,7 +55,10 @@ const Desc = styled.div`
   margin-bottom: 30px;
 `;
 
-function EarlyAccess() {
+function EarlyAccess({ setPreRegisterOpen }) {
+  function handleClick() {
+    setPreRegisterOpen(true);
+  }
   return (
     <EarlyAccessOuterContainer>
       <Container>
@@ -75,6 +78,7 @@ function EarlyAccess() {
             text={"Request Early Access"}
             backgroundColor={"#010960"}
             color={"#fff"}
+            action={handleClick}
             arrow
           />
         </EarlyAccessInnerContainer>

@@ -22,6 +22,10 @@ const IntroWinnerTooltipContainer = styled.div`
   width: 470px;
   height: 60px;
   position: relative;
+  @media (max-width: 550px) {
+    width: 240px;
+    height: 120px;
+  }
 `;
 
 const ContentLayer = styled.div`
@@ -33,8 +37,19 @@ const ContentLayer = styled.div`
   mix-blend-mode: normal;
   border-radius: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0px 10px;
   align-items: center;
+  display: flex;
+  flex: initial;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `;
 
 const BackgroundLayer = styled.div`
@@ -59,6 +74,10 @@ const SupabaseLogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 550px) {
+    margin: 0;
+    height: 55px;
+  }
 `;
 
 const WinnerText = styled.div`
@@ -66,26 +85,55 @@ const WinnerText = styled.div`
   font-size: 15px;
   line-height: 23px;
   color: #f7f8f8;
+  white-space: nowrap;
+  display: flex;
+  flex-shrink: initial;
+  flex-basis: initial;
+  flex-direction: column;
+  align-items: flex-start;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+
+  margin-left: 24px;
+  @media (max-width: 550px) {
+    font-size: 13px;
+    line-height: 13px;
+    margin: 0;
+    -webkit-box-flex: 0;
+    flex-grow: 0;
+    margin-bottom: 5px;
+  }
 `;
 
 const Divider = styled.div`
   width: 1px;
   height: 37px;
   background: #424b57;
-  margin: 0px 30px;
+  margin-left: 24px;
+  @media (max-width: 550px) {
+    display: none;
+  }
 `;
 
 const LearnMoreContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 24px;
+  @media (max-width: 550px) {
+    margin: 0;
+  }
 `;
 
 const LearnMoreText = styled.div`
   font-size: 15px;
   line-height: 23px;
   letter-spacing: 0.01em;
+  white-space: nowrap;
   color: #ffffff;
+  @media (max-width: 550px) {
+    font-size: 12px;
+  }
 `;
 
 const LearnMoreArrowContainer = styled.div`
@@ -100,6 +148,7 @@ function IntroWinnerTooltip() {
           <SupabaseLogo />
         </SupabaseLogoContainer>
         <WinnerText>Winner, “Best Overall Project”</WinnerText>
+
         <Divider />
         <LearnMoreContainer>
           <LearnMoreText>Learn More</LearnMoreText>
