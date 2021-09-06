@@ -10,6 +10,9 @@ import WinnerSection from "./winnerSection";
 import EarlyAccess from "./earlyAccess";
 import Footer from "./footer";
 import PreRegsiterPrompt from "./preRegisterSignup";
+import HybridHarmony from "./hybridHarmony";
+import GetStarted from "./getStarted";
+import Rescheduling from "./rescheduling";
 
 function Marketing() {
   const [preRegisterOpen, setPreRegisterOpen] = useState(false);
@@ -21,11 +24,9 @@ function Marketing() {
       />
       <Header setPreRegisterOpen={setPreRegisterOpen} />
       <Intro setPreRegisterOpen={setPreRegisterOpen} />
-      <CardsSection />
-      <OrganiseMeetings />
-      <Analytics />
-      <Teams />
-      <WinnerSection />
+      <HybridHarmony />
+      <GetStarted />
+      <Rescheduling />
       <EarlyAccess setPreRegisterOpen={setPreRegisterOpen} />
       <Footer />
     </div>

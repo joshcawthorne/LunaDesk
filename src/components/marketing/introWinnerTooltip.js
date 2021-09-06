@@ -17,8 +17,6 @@ const Fade = keyframes`
 `;
 
 const IntroWinnerTooltipContainer = styled.div`
-  margin-top: 90px;
-  margin-bottom: 55px;
   width: 470px;
   height: 60px;
   position: relative;
@@ -33,7 +31,7 @@ const ContentLayer = styled.div`
   z-index: 1;
   height: 100%;
   width: 100%;
-  background: #0b0b0b;
+  background: #021b2a;
   mix-blend-mode: normal;
   border-radius: 10px;
   display: flex;
@@ -53,19 +51,16 @@ const ContentLayer = styled.div`
 `;
 
 const BackgroundLayer = styled.div`
-  background: linear-gradient(
-    90.9deg,
-    rgba(255, 170, 98, 0.55) 0%,
-    #373597 100%
-  );
-
+  background: linear-gradient(90.9deg, #ffaa62 0%, #373597 100%);
   mix-blend-mode: normal;
   filter: blur(21.2793px);
+
+  mix-blend-mode: normal;
   position: absolute;
   z-index: 0;
   height: 100%;
-  width: 100%;
-  animation: ${Fade} 3.5s linear 0s infinite;
+  width: 108%;
+  animation: ${Fade} 5s linear 0s infinite;
 `;
 
 const SupabaseLogoContainer = styled.div`

@@ -72,17 +72,18 @@ function IntroContentSection({ setPreRegisterOpen }) {
   }
   return (
     <IntroContentSectionContainer>
+      {/*}
       <StarfieldAnimation
         style={{
           position: "absolute",
           width: "100%",
           height: "100%",
         }}
-      />
+      />*/}
       <Title>The scheduling tool that pulls teams into orbit</Title>
       <Subtitle>
-        LunaDesk helps create harmony among Hybrid teams to free-up more time
-        for the things that matter.
+        Understand when your team members are going to be in the office or
+        working remotely.
       </Subtitle>
       <Button
         text={"Request Early Access"}

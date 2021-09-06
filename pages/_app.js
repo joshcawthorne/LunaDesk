@@ -17,7 +17,7 @@ import Header from "../src/components/ui/header";
 import Sidebar from "../src/components/ui/sidebar";
 
 const AppContainer = styled.div`
-  font-family: "GT Walsheim", Sans-Serif;
+  font-family: "Inter", sans-serif;
   padding: 0;
   margin: 0;
 `;
