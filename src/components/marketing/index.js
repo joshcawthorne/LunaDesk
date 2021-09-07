@@ -25,8 +25,10 @@ function Marketing() {
       <Header setPreRegisterOpen={setPreRegisterOpen} />
       <Intro setPreRegisterOpen={setPreRegisterOpen} />
       <HybridHarmony />
+
       <GetStarted />
       <Rescheduling />
+      <Analytics />
       <EarlyAccess setPreRegisterOpen={setPreRegisterOpen} />
       <Footer />
     </div>

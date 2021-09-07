@@ -67,7 +67,9 @@ function Rescheduling() {
     <ReschedulingContainer>
       <Container>
         <InnerContainer>
-          <SectionTitle title={"Rescheduling"} subtext={"has met its match"} />
+          <SectionTitle text={"RESCHEDULING"} title />
+          <SectionTitle text={"HAS MET ITS MATCH"} marginTop={"-3.5%"} />
+
           <LowerContent>
             <LeftContent>
               <Paragraph>

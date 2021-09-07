@@ -35,9 +35,10 @@ function HybridHarmony() {
     <HybridHarmonyContainer>
       <Container>
         <InnerContainer>
+          <SectionTitle text={"HYBRID HARMONY"} title />
           <SectionTitle
-            title={"Hybrid Harmony"}
-            subtext={"Your Team's never known anything like it"}
+            text={"YOUR TEAM'S NEVER KNOWN ANYTHING LIKE IT"}
+            marginTop={"-2%"}
           />
           <SectionText>
             No more spreadsheets, calendar invites or complex calculations.

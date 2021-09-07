@@ -16,6 +16,7 @@
     "easy-peasy": "^5.0.3",
     "fast-average-color": "^6.4.1",
     "framer-motion": "^4.1.17",
+    "lodash": "^4.17.21",
     "next": "11.0.1",
     "next-images": "^1.8.1",
     "next-transpile-modules": "^8.0.0",

@@ -1,114 +1,57 @@
 import React from "react";
 import styled from "styled-components";
 
-import Container from "./marketingContainer";
+import Container from "../../components/shared/container";
+import SectionTitle from "./shared/sectionTitle";
 
 const AnalyticsOuterContainer = styled.div`
   padding: 100px 0;
   position: relative;
-  height: 600px;
-  background-color: #04035a;
+
+  background: radial-gradient(
+      circle at 15% 50%,
+      #2c2250,
+      rgba(255, 255, 255, 0) 25%
+    ),
+    radial-gradient(circle at 85% 30%, #3340b963, rgba(255, 255, 255, 0) 25%);
+  background-color: #141718;
+  color: #fff;
 `;
 
 const AnalyticsInnerContainer = styled.div`
   height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-`;
-
-const TextContainer = styled.div`
-  text-align: right;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  flex-direction: column;
-  height: 100%;
-`;
-
-const Title = styled.div`
-  font-weight: bold;
-  font-size: 44px;
-  line-height: 55px;
-  color: #ffffff;
-  margin-bottom: 30px;
-  width: 360px;
-  text-align: right;
-`;
-
-const Text = styled.div`
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 32px;
-  color: #8a8f98;
-  width: 460px;
-  span {
-    font-weight: bold;
-    color: #fff;
-  }
-`;
-
-const LeftContentBoxContainer = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
-  width: 100%;
+  flex-direction: column;
 `;
 
-const LeftContentBox = styled.div`
-  min-width: 738px;
-  width: 50%;
-  height: 600px;
-
-  background: url("images/organiseBackground.jpg");
-  background: url("images/organiseBackground.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  box-shadow: inset -2px -2px 100px rgba(255, 255, 255, 0.1),
-    inset 2px 2px 100px rgba(66, 66, 66, 0.1);
-  backdrop-filter: blur(50px);
-  /* Note: backdrop-filter has minimal browser support */
-  border-radius: 0px 40px 40px 0px;
-`;
-
-const ImageContainer = styled.div`
-  width: 100%;
-`;
-
-const CardImage = styled.img`
-  height: 100%;
-`;
+const ContentSection = styled.div``;
+const LeftContent = styled.div``;
+const RightContent = styled.div``;
+const Paragraph = styled.div``;
 
 function Analytics() {
   return (
     <AnalyticsOuterContainer>
       <Container style={{ height: "100%" }}>
         <AnalyticsInnerContainer>
-          <TextContainer>
-            <Title>Stay in the know with Analytics</Title>
-            <Text>
-              <span>Understand your team better.</span> With built-in analytics,
-              LunaDesk allows you to better understand how your team is adapting
-              to Hybrid work, see which days are the busiest in-office, and
-              shape future plans.
-            </Text>
-          </TextContainer>
+          <SectionTitle text={"START BEING ITK"} title />
+          <SectionTitle text={"THANKS TO ANALYTICS"} marginTop={"-3%"} />
+          <ContentSection>
+            <LeftContent></LeftContent>
+            <RightContent>
+              <Paragraph>
+                Understand your team better. LunaDesk comes chock with built-in
+                analytics to help you understand which Office days are the
+                busiest, maximise face-to-face contact without reducing Home
+                days, and discover how your team is adapting to the new normal.
+              </Paragraph>
+            </RightContent>
+          </ContentSection>
         </AnalyticsInnerContainer>
       </Container>
-      <LeftContentBoxContainer>
-        <LeftContentBox>
-          <ImageContainer>
-            <CardImage
-              src={"images/analysisImage.png"}
-              alt={"Group meeting round table"}
-            />
-          </ImageContainer>
-        </LeftContentBox>
-      </LeftContentBoxContainer>
     </AnalyticsOuterContainer>
   );
 }
