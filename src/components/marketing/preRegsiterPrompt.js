@@ -27,8 +27,8 @@ const PreRegsiterPromptOuter = styled(motion.div)`
 
 const PreRegsiterPromptInner = styled.div`
   padding: 40px;
-  background-color: #121212;
-  z-index: 5002;
+  background: linear-gradient(311deg, #151819 0%, #0a2b3e 100%);
+  z-index: 5001;
   position: relative;
   border-radius: 10px;
 `;

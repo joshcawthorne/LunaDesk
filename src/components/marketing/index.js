@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+import dynamic from "next/dynamic";
 
 import Header from "./header";
 import Intro from "./introMarketingSection";
@@ -14,10 +16,28 @@ import HybridHarmony from "./hybridHarmony";
 import GetStarted from "./getStarted";
 import Rescheduling from "./rescheduling";
 
+const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
+  ssr: false,
+});
+
+const Container = styled.div`
+  width: 100%;
+  overflow: hidden;
+`;
+
 function Marketing() {
   const [preRegisterOpen, setPreRegisterOpen] = useState(false);
+
   return (
-    <div>
+    <Container>
+      <AnimatedCursor
+        innerSize={8}
+        outerSize={50}
+        color="230,36,187"
+        outerAlpha={0.3}
+        innerScale={0.7}
+        outerScale={1.75}
+      />
       <PreRegsiterPrompt
         preRegisterOpen={preRegisterOpen}
         setPreRegisterOpen={setPreRegisterOpen}
@@ -32,7 +52,7 @@ function Marketing() {
 
       <EarlyAccess setPreRegisterOpen={setPreRegisterOpen} />
       <Footer />
-    </div>
+    </Container>
   );
 }
 

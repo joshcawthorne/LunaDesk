@@ -19,6 +19,12 @@ const OuterContainer = styled.div`
   position: relative;
   overflow: hidden;
   padding-top: 160px;
+  @media (max-width: 550px) {
+    padding-top: 215px;
+  }
+  @media (max-width: 480px) {
+    padding-top: 120px;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -43,7 +49,13 @@ const ContentContainer = styled.div`
   background-color: #f5a87c;
   @media (max-width: 900px) {
     height: unset;
+    width: 92.5%;
     padding-bottom: 400px;
+  }
+  @media (max-width: 550px) {
+    height: unset;
+    width: 92.5%;
+    padding-bottom: 275px;
   }
 `;
 
@@ -62,9 +74,18 @@ const InnerContentContainer = styled.div`
     padding: 0px 30px;
   }
   @media (max-width: 900px) {
+    padding: 0;
+    padding-top: 50px;
+  }
+  @media (max-width: 650px) {
+    padding: 0;
+    padding-top: 30px;
+  }
+
+  @media (max-width: 550px) {
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 60px 0px;
+    padding: 0px 0px;
   }
 `;
 
@@ -74,7 +95,7 @@ const Title = styled.div`
   line-height: 79px;
   margin-bottom: 30px;
   background-color: #fc9238;
-  background-image: linear-gradient(98.66deg, #ff9bb5 2.42%, #fc9238 77.94%);
+  background-image: linear-gradient(90deg, #031a8d 0%, #12043b 100%);
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -89,14 +110,16 @@ const Title = styled.div`
     margin-bottom: 10px;
     background-image: linear-gradient(90deg, #031a8d 0%, #12043b 100%);
   }
-  @media (max-width: 650px) {
+  @media (max-width: 750px) {
     font-size: 50px;
     padding: 0px 30px;
     line-height: 55px;
+    text-align: center;
+    margin-top: 30px;
   }
-  @media (max-width: 480px) {
-    font-size: 40px;
-    line-height: 45px;
+  @media (max-width: 650px) {
+    font-size: 32px;
+    line-height: 37px;
   }
 `;
 
@@ -115,14 +138,22 @@ const Subtext = styled.div`
 
     padding: 0px 60px;
   }
-  @media (max-width: 650px) {
+  @media (max-width: 750px) {
     font-size: 20px;
     padding: 0px 30px;
     line-height: 26px;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: unset;
   }
   @media (max-width: 480px) {
     font-size: 18px;
     line-height: 22px;
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -147,6 +178,10 @@ const BackgroundImage = styled.div`
     background-image: url("images/headerBackgroundMobileImage.png");
     background-size: cover;
     background-position: center bottom;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 35px;
+    border-bottom-left-radius: 35px;
+    height: 100%;
   }
 `;
 
@@ -158,6 +193,20 @@ const TooltipContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 550px) {
+    top: -100px;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  z-index: 5;
+  @media (max-width: 900px) {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 function IntroMarketingSection({ setPreRegisterOpen }) {
@@ -176,14 +225,16 @@ function IntroMarketingSection({ setPreRegisterOpen }) {
             Understand when your team members are going to be in the office or
             working remotely.
           </Subtext>
-          <Button
-            text={"Request Early Access"}
-            arrow
-            backgroundColor={"#010960"}
-            color={"#fff"}
-            action={handleClick}
-            style={{ zIndex: 100 }}
-          />
+          <ButtonContainer>
+            <Button
+              text={"Request Early Access"}
+              arrow
+              backgroundColor={"#010960"}
+              color={"#fff"}
+              action={handleClick}
+              style={{ zIndex: 100 }}
+            />
+          </ButtonContainer>
         </InnerContentContainer>
         <BackgroundImage />
       </ContentContainer>

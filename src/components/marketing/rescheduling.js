@@ -12,6 +12,9 @@ const ReschedulingContainer = styled.div`
   padding-top: 100px;
   padding-bottom: 200px;
   position: relative;
+  @media (max-width: 1150px) {
+    padding-bottom: 100px;
+  }
 `;
 
 const InnerContainer = styled.div`
@@ -28,6 +31,9 @@ const LowerContent = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 50px;
+  @media (max-width: 1200px) {
+    flex-wrap: wrap;
+  }
 `;
 
 const LeftContent = styled.div`
@@ -36,6 +42,9 @@ const LeftContent = styled.div`
   align-items: flex-start;
   flex-direction: column;
   width: 50%;
+  @media (max-width: 1150px) {
+    width: 100%;
+  }
 `;
 
 const Paragraph = styled.div`
@@ -59,10 +68,20 @@ const Paragraph = styled.div`
     -moz-text-fill-color: transparent;
     letter-spacing: 0.3px;
   }
+  @media (max-width: 1150px) {
+    max-width: unset;
+  }
 `;
 
 const RightContent = styled.div`
   width: 50%;
+  @media (max-width: 1150px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+  }
 `;
 
 const BottomHillContainer = styled.div`
@@ -71,10 +90,16 @@ const BottomHillContainer = styled.div`
   left: 0;
   width: 100%;
   z-index: 1;
+  @media (max-width: 1150px) {
+    margin-top: 100px;
+  }
 `;
 
 const ImageContainer = styled.div`
   width: 555px;
+  @media (max-width: 650px) {
+    width: 100%;
+  }
 `;
 const ImageItem = styled.img`
   width: 100%;

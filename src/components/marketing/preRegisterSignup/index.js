@@ -17,7 +17,7 @@ import { preRegister } from "../../../services/marketing";
 const PreRegsiterPromptOuter = styled(motion.div)`
   width: 100vw;
   height: 100%;
-  z-index: 5001;
+  z-index: 998;
   position: fixed;
   top: 0;
   overflow-x: hidden;

@@ -19,10 +19,16 @@ const Fade = keyframes`
 const IntroWinnerTooltipContainer = styled.div`
   width: 470px;
   height: 60px;
+  margin-left: -20px;
   position: relative;
   @media (max-width: 550px) {
-    width: 240px;
-    height: 120px;
+    padding: 0px 20px;
+    width: calc(100% - 40px);
+    margin-left: -60px;
+    box-sizing: border-box;
+  }
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
@@ -45,7 +51,7 @@ const ContentLayer = styled.div`
   align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
-  @media (max-width: 550px) {
+  @media (max-width: 480px) {
     flex-direction: column;
   }
 `;
@@ -90,7 +96,7 @@ const WinnerText = styled.div`
   flex-grow: 1;
 
   margin-left: 24px;
-  @media (max-width: 550px) {
+  @media (max-width: 480px) {
     font-size: 13px;
     line-height: 13px;
     margin: 0;
@@ -105,17 +111,20 @@ const Divider = styled.div`
   height: 37px;
   background: #424b57;
   margin-left: 24px;
-  @media (max-width: 550px) {
+  @media (max-width: 480px) {
     display: none;
   }
 `;
 
-const LearnMoreContainer = styled.div`
+const LearnMoreContainer = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 24px;
-  @media (max-width: 550px) {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #fff;
+  @media (max-width: 350px) {
     margin: 0;
   }
 `;
@@ -126,7 +135,7 @@ const LearnMoreText = styled.div`
   letter-spacing: 0.01em;
   white-space: nowrap;
   color: #ffffff;
-  @media (max-width: 550px) {
+  @media (max-width: 480px) {
     font-size: 12px;
   }
 `;
@@ -145,7 +154,12 @@ function IntroWinnerTooltip() {
         <WinnerText>Winner, “Best Overall Project”</WinnerText>
 
         <Divider />
-        <LearnMoreContainer>
+        <LearnMoreContainer
+          className="link"
+          href="https://supabase.io/blog/2021/08/09/hackathon-winners"
+          target="_blank"
+          rel="noreferrer"
+        >
           <LearnMoreText>Learn More</LearnMoreText>
           <LearnMoreArrowContainer>
             <Arrow />

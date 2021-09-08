@@ -32,7 +32,11 @@ const LeftContent = styled.div`
   cursor: pointer;
 `;
 
-const RightContent = styled.div``;
+const RightContent = styled.div`
+  @media (max-width: 500px) {
+    display: none;
+  }
+`;
 
 function Header({ setPreRegisterOpen }) {
   function handleClick() {

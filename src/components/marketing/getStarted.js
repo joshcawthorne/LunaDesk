@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Parallax } from "react-scroll-parallax";
 
-import Container from "../shared/container";
+import Container from "./marketingContainer";
 import TopHills from "../../../assets/svg/topHills.svg";
 
 const GetStartedContainer = styled.div`
@@ -10,6 +10,20 @@ const GetStartedContainer = styled.div`
   position: relative;
   padding-bottom: 900px;
   overflow: hidden;
+  z-index: 5;
+  @media (max-width: 1000px) {
+    padding-bottom: 400px;
+  }
+  @media (max-width: 500px) {
+    padding-bottom: 250px;
+  }
+`;
+
+const TitleContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Title = styled.div`
@@ -20,14 +34,15 @@ const Title = styled.div`
   align-items: center;
   text-transform: uppercase;
   color: #fff;
+  display: inline-block;
   letter-spacing: 0.5px;
-  z-index: 1;
+
+  z-index: 5;
   span {
     background-color: #fc9238;
     background-image: linear-gradient(90deg, #e623bb 0%, #f8b84f 100%),
       linear-gradient(0deg, #ffffff, #ffffff);
-    margin-left: 10px;
-
+    margin-left: 4px;
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -43,6 +58,21 @@ const StartedCards = styled.div`
   margin-top: 50px;
   .parallax-outer {
     z-index: 3;
+  }
+  @media (max-width: 1125px) {
+    display: none;
+  }
+`;
+
+const StartedCardsMobile = styled.div`
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+  flex-wrap: wrap;
+
+  @media (max-width: 1125px) {
+    display: flex;
   }
 `;
 
@@ -62,6 +92,13 @@ const StartedCard = styled.div`
   text-align: left;
   margin: ${(props) => props.margin};
   z-index: 1;
+  @media (max-width: 1125px) {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 40px;
+    height: unset;
+    padding: 20px;
+  }
 `;
 
 const CardTitle = styled.div`
@@ -117,6 +154,12 @@ const BaseLayer = styled.div`
   z-index: -1;
   position: absolute;
   top: -200px;
+  @media (max-width: 1000px) {
+    top: -100px;
+  }
+  @media (max-width: 500px) {
+    top: 50px;
+  }
 `;
 
 const HillContainer = styled.div`
@@ -131,10 +174,12 @@ const HillContainer = styled.div`
 function GetStarted() {
   return (
     <GetStartedContainer>
-      <Container>
-        <Title>
-          Get Started In <span>Minutes</span>
-        </Title>
+      <Container style={{ zIndex: 5 }}>
+        <TitleContainer>
+          <Title>
+            Get Started In <span>Minutes</span>
+          </Title>
+        </TitleContainer>
         <StartedCards>
           <Parallax y={[-20, 20]} tagOuter="one">
             <StartedCard borderColor={"#FFAA62"} margin={"100px 0 0 0"}>
@@ -164,6 +209,31 @@ function GetStarted() {
             </StartedCard>
           </Parallax>
         </StartedCards>
+        <StartedCardsMobile>
+          <StartedCard borderColor={"#FFAA62"} margin={"100px 0 0 0"}>
+            <CardTitle>Register your Company</CardTitle>
+            <CardText>
+              You can register your company with LunaDesk in under two minutes -
+              we’ve timed it.
+            </CardText>
+          </StartedCard>
+
+          <StartedCard borderColor={"#F14DC6"} margin={"50px 25px 0px 25px"}>
+            <CardTitle>Invite your Team</CardTitle>
+            <CardText>
+              You can invite your entire team to join you on LunaDesk with just
+              a few short clicks.
+            </CardText>
+          </StartedCard>
+
+          <StartedCard borderColor={"#C43BFE"} margin={"0"}>
+            <CardTitle>Enjoy Hybrid Harmony</CardTitle>
+            <CardText>
+              That’s it! Your team can now enjoy something we like to call
+              “Hybrid Harmony” - pretty nifty, huh?
+            </CardText>
+          </StartedCard>
+        </StartedCardsMobile>
       </Container>
       <HillContainer>
         <TopHills />

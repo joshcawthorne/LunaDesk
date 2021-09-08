@@ -11,7 +11,7 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+
   user-select: none;
   transition: 400ms;
   ${(props) =>
@@ -45,6 +45,8 @@ function Button({
       color={color}
       onClick={() => action && action()}
       disabled={disabled}
+      className="link"
+      role="button"
     >
       <ButtonText>{text}</ButtonText>
       {arrow && (

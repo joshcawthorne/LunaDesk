@@ -13,6 +13,9 @@ const EarlyAccessOuterContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 0;
+  @media (max-width: 1000px) {
+    padding-top: 0px;
+  }
 `;
 
 const EarlyAccessInnerContainer = styled.div`
@@ -49,6 +52,9 @@ const EarlyAccessInnerContainer = styled.div`
     radial-gradient(at 89% 0%, hsla(43, 77%, 61%, 1) 0, transparent 45%),
     radial-gradient(at 75% 44%, hsla(343, 75%, 77%, 1) 0, transparent 51%),
     radial-gradient(at 38% 44%, hsla(220, 86%, 72%, 1) 0, transparent 54%);
+  @media (max-width: 600px) {
+    padding: 48px 20px;
+  }
 `;
 
 const IconContainer = styled.div`
@@ -76,6 +82,11 @@ const Title = styled.div`
   text-align: center;
   margin-bottom: 20px;
   width: 470px;
+  @media (max-width: 600px) {
+    width: unset;
+    font-size: 30px;
+    line-height: 36px;
+  }
 `;
 
 const Desc = styled.div`
@@ -86,6 +97,11 @@ const Desc = styled.div`
   font-size: 22px;
   line-height: 32px;
   color: #ffffff;
+  @media (max-width: 600px) {
+    width: unset;
+    font-size: 20px;
+    line-height: 26px;
+  }
 `;
 
 function EarlyAccess({ setPreRegisterOpen }) {

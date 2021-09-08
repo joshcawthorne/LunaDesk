@@ -9,6 +9,9 @@ const HybridHarmonyContainer = styled.div`
   color: #fff;
   width: 100%;
   padding-top: 150px;
+  @media (max-width: 1000px) {
+    padding-top: 50px;
+  }
 `;
 
 const InnerContainer = styled.div`
@@ -30,16 +33,38 @@ const SectionText = styled.div`
   margin-bottom: 75px;
 `;
 
+const Desktop = styled.div`
+  width: 100%;
+  display: block;
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
+
+const Mobile = styled.div`
+  width: 100%;
+  display: none;
+  @media (max-width: 600px) {
+    display: block;
+  }
+`;
+
 function HybridHarmony() {
   return (
     <HybridHarmonyContainer>
       <Container>
         <InnerContainer>
           <SectionTitle text={"HYBRID HARMONY"} title />
-          <SectionTitle
-            text={"YOUR TEAM'S NEVER KNOWN ANYTHING LIKE IT"}
-            marginTop={"-2%"}
-          />
+          <Desktop>
+            <SectionTitle
+              text={"YOUR TEAM'S NEVER KNOWN ANYTHING LIKE IT"}
+              marginTop={"-2%"}
+            />
+          </Desktop>
+          <Mobile>
+            <SectionTitle text={"YOUR TEAM'S NEVER"} />
+            <SectionTitle text={"KNOWN ANYTHING LIKE IT"} />
+          </Mobile>
           <SectionText>
             No more spreadsheets, calendar invites or complex calculations.
             Instantly see who’s where and when.

@@ -80,7 +80,7 @@ const FooterMenuItem = styled.div`
   letter-spacing: 0.5px;
   color: #ffffff;
   text-decoration: none;
-  cursor: pointer;
+
   margin-left: 15px;
 `;
 
@@ -120,11 +120,12 @@ function Footer() {
               <Link
                 href={"mailto:hello@joshcawthorne.com?subject=LunaDesk"}
                 passHref
+                className="link"
               >
-                <FooterMenuItem>Contact</FooterMenuItem>
+                <FooterMenuItem className="link">Contact</FooterMenuItem>
               </Link>
-              <Link href={"/privacy-policy"} passHref>
-                <FooterMenuItem>Privacy Policy</FooterMenuItem>
+              <Link className="link" href={"/privacy-policy"} passHref>
+                <FooterMenuItem className="link">Privacy Policy</FooterMenuItem>
               </Link>
             </RightContent>
           </UpperLayer>
@@ -132,13 +133,13 @@ function Footer() {
           <LowerLayer>
             <LowerLeftContent>
               <SocialItems>
-                <SocialItem>
+                <SocialItem className="link">
                   <FacebookIcon />
                 </SocialItem>
-                <SocialItem>
+                <SocialItem className="link">
                   <LinkedInIcon />
                 </SocialItem>
-                <SocialItem>
+                <SocialItem className="link">
                   <TwitterIcon />
                 </SocialItem>
               </SocialItems>
