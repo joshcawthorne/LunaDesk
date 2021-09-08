@@ -23,6 +23,11 @@ const StyledContainer = styled.div`
     css`
       position: relative;
     `}
+  ${(props) =>
+    props.noPadding &&
+    css`
+      padding: 0;
+    `}
 `;
 
 function Container(props) {

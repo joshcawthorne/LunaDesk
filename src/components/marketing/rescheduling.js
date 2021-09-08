@@ -1,14 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-import Container from "../../components/shared/container";
+import Container from "./marketingContainer";
 import SectionTitle from "./shared/sectionTitle";
+import BottomHill from "../../../assets/svg/bottomHill.svg";
 
 const ReschedulingContainer = styled.div`
   background-color: #0011fc;
   color: #fff;
   width: 100%;
-  padding-top: 150px;
+  padding-top: 100px;
+  padding-bottom: 200px;
+  position: relative;
 `;
 
 const InnerContainer = styled.div`
@@ -24,7 +27,7 @@ const LowerContent = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 50px;
 `;
 
 const LeftContent = styled.div`
@@ -62,6 +65,21 @@ const RightContent = styled.div`
   width: 50%;
 `;
 
+const BottomHillContainer = styled.div`
+  position: absolute;
+  margin-top: 180px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+`;
+
+const ImageContainer = styled.div`
+  width: 555px;
+`;
+const ImageItem = styled.img`
+  width: 100%;
+`;
+
 function Rescheduling() {
   return (
     <ReschedulingContainer>
@@ -85,10 +103,20 @@ function Rescheduling() {
                 common with your colleagues.
               </Paragraph>
             </LeftContent>
-            <RightContent></RightContent>
+            <RightContent>
+              <ImageContainer>
+                <ImageItem
+                  src={"/images/uiPreview.png"}
+                  alt={"Lunadesk UI Components"}
+                />
+              </ImageContainer>
+            </RightContent>
           </LowerContent>
         </InnerContainer>
       </Container>
+      <BottomHillContainer>
+        <BottomHill width={"100%"} />
+      </BottomHillContainer>
     </ReschedulingContainer>
   );
 }

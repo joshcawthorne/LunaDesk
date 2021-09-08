@@ -60,7 +60,7 @@ function SectionTitle({ title, text, marginTop }) {
         style={{ marginTop: marginTop }}
         textStyle={{
           fontWeight: 900,
-
+          letterSpacing: "1px",
           fill: "#fff",
         }}
       >

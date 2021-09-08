@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Container from "../../components/shared/container";
+import Container from "./marketingContainer";
 import SectionTitle from "./shared/sectionTitle";
 
 const HybridHarmonyContainer = styled.div`

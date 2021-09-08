@@ -29,6 +29,7 @@ function Marketing() {
       <GetStarted />
       <Rescheduling />
       <Analytics />
+
       <EarlyAccess setPreRegisterOpen={setPreRegisterOpen} />
       <Footer />
     </div>

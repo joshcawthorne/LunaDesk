@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { Parallax } from "react-scroll-parallax";
 
 import Container from "../shared/container";
+import TopHills from "../../../assets/svg/topHills.svg";
 
 const GetStartedContainer = styled.div`
   background: #012031;
@@ -38,15 +40,19 @@ const StartedCards = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 50px;
+  .parallax-outer {
+    z-index: 3;
+  }
 `;
 
 const StartedCard = styled.div`
   width: 340px;
   height: 150px;
-  background: rgba(24, 41, 57, 0.5);
+  background: rgba(24, 41, 57, 0.3);
   border: 2px solid ${(props) => props.borderColor};
   box-sizing: border-box;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(5px);
   border-radius: 25px;
   display: flex;
   justify-content: center;
@@ -80,6 +86,10 @@ const Background = styled.div`
   width: 100%;
   height: 100%;
   z-index: 0;
+  .parallax-inner {
+    width: 100%;
+    z-index: 2;
+  }
 `;
 
 const Mountains = styled.div`
@@ -109,6 +119,15 @@ const BaseLayer = styled.div`
   top: -200px;
 `;
 
+const HillContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  background: linear-gradient(360deg, #0011fc 0%, rgba(0, 17, 252, 0) 67.71%);
+`;
+
 function GetStarted() {
   return (
     <GetStartedContainer>
@@ -117,31 +136,40 @@ function GetStarted() {
           Get Started In <span>Minutes</span>
         </Title>
         <StartedCards>
-          <StartedCard borderColor={"#FFAA62"} margin={"100px 0 0 0"}>
-            <CardTitle>Register your Company</CardTitle>
-            <CardText>
-              You can register your company with LunaDesk in under two minutes -
-              we’ve timed it.
-            </CardText>
-          </StartedCard>
-          <StartedCard borderColor={"#F14DC6"} margin={"50px 25px 0px 25px"}>
-            <CardTitle>Invite your Team</CardTitle>
-            <CardText>
-              You can invite your entire team to join you on LunaDesk with just
-              a few short clicks.
-            </CardText>
-          </StartedCard>
-          <StartedCard borderColor={"#C43BFE"} margin={"0"}>
-            <CardTitle>Enjoy Hybrid Harmony</CardTitle>
-            <CardText>
-              That’s it! Your team can now enjoy something we like to call
-              “Hybrid Harmony” - pretty nifty, huh?
-            </CardText>
-          </StartedCard>
+          <Parallax y={[-20, 20]} tagOuter="one">
+            <StartedCard borderColor={"#FFAA62"} margin={"100px 0 0 0"}>
+              <CardTitle>Register your Company</CardTitle>
+              <CardText>
+                You can register your company with LunaDesk in under two minutes
+                - we’ve timed it.
+              </CardText>
+            </StartedCard>
+          </Parallax>
+          <Parallax y={[-40, 40]} tagOuter="two">
+            <StartedCard borderColor={"#F14DC6"} margin={"50px 25px 0px 25px"}>
+              <CardTitle>Invite your Team</CardTitle>
+              <CardText>
+                You can invite your entire team to join you on LunaDesk with
+                just a few short clicks.
+              </CardText>
+            </StartedCard>
+          </Parallax>
+          <Parallax y={[-60, 60]} tagOuter="three">
+            <StartedCard borderColor={"#C43BFE"} margin={"0"}>
+              <CardTitle>Enjoy Hybrid Harmony</CardTitle>
+              <CardText>
+                That’s it! Your team can now enjoy something we like to call
+                “Hybrid Harmony” - pretty nifty, huh?
+              </CardText>
+            </StartedCard>
+          </Parallax>
         </StartedCards>
       </Container>
+      <HillContainer>
+        <TopHills />
+      </HillContainer>
+
       <Background>
-        <Mountains />
         <BaseLayer />
       </Background>
     </GetStartedContainer>

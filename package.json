@@ -30,6 +30,7 @@
     "react-fitty": "^1.0.1",
     "react-loader-spinner": "^4.0.0",
     "react-player": "^2.9.0",
+    "react-scroll-parallax": "^2.4.0",
     "react-starfield-animation": "^1.0.1",
     "react-svg-loader": "^3.0.3",
     "recharts": "^2.0.10",

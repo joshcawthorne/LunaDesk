@@ -3513,7 +3513,7 @@
   "resolved" "https://registry.npmjs.org/progress/-/progress-2.0.3.tgz"
   "version" "2.0.3"
 
-"prop-types@^15.5.4", "prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@15.7.2":
+"prop-types@^15.5.10", "prop-types@^15.5.4", "prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@15.7.2":
   "integrity" "sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -3635,7 +3635,7 @@
   "resolved" "https://registry.npmjs.org/react-div-100vh/-/react-div-100vh-0.6.0.tgz"
   "version" "0.6.0"
 
-"react-dom@*", "react-dom@^0.14.0 || ^15.0.0-0 || ^16.0.0", "react-dom@^15.0.0 || ^16.0.0", "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0", "react-dom@^16.0.0 || ^17.0.0", "react-dom@^17.0.2", "react-dom@>= 16.8.0", "react-dom@>=15.0.0", "react-dom@>=16.8 || ^17.0.0", "react-dom@17.0.2":
+"react-dom@*", "react-dom@^0.14.0 || ^15.0.0-0 || ^16.0.0", "react-dom@^15.0.0 || ^16.0.0", "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0", "react-dom@^16.0.0 || ^17.0.0", "react-dom@^16.3.0-0 || >=17.0.1", "react-dom@^17.0.2", "react-dom@>= 16.8.0", "react-dom@>=15.0.0", "react-dom@>=16.8 || ^17.0.0", "react-dom@17.0.2":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -3723,6 +3723,13 @@
     "lodash.throttle" "^4.1.1"
     "resize-observer-polyfill" "^1.5.1"
 
+"react-scroll-parallax@^2.4.0":
+  "integrity" "sha512-lFbf2SIEyxyIko/edR8Fx2mnn4T0t2WzLBa4E5ApoGwDsSWS1crL+LjRYtin+f3EV+rmBDzWqqr7vB5GsRpg9Q=="
+  "resolved" "https://registry.npmjs.org/react-scroll-parallax/-/react-scroll-parallax-2.4.0.tgz"
+  "version" "2.4.0"
+  dependencies:
+    "prop-types" "^15.5.10"
+
 "react-sizeme@^2.4.2":
   "integrity" "sha512-tL4sCgfmvapYRZ1FO2VmBmjPVzzqgHA7kI8lSJ6JS6L78jXFNRdOZFpXyK6P1NBZvKPPCZxReNgzZNUajAerZw=="
   "resolved" "https://registry.npmjs.org/react-sizeme/-/react-sizeme-2.6.12.tgz"
@@ -3781,7 +3788,7 @@
     "prop-types" "^15.6.2"
     "react-lifecycles-compat" "^3.0.4"
 
-"react@*", "react@^0.14.0 || ^15.0.0-0 || ^16.0.0", "react@^15.0.0 || ^16.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.0.0 || ^17.0.0", "react@^16.3.0 || ^17.0.1", "react@^16.8.0 || ^17.0.0", "react@^17.0.2", "react@>= 16.8", "react@>= 16.8.0", "react@>=15.0.0", "react@>=16.6.0", "react@>=16.8", "react@>=16.8 || ^17.0.0", "react@>=16.8.0", "react@15.x.x || 16.x.x || 17.x.x", "react@17.0.2":
+"react@*", "react@^0.14.0 || ^15.0.0-0 || ^16.0.0", "react@^15.0.0 || ^16.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.0.0 || ^17.0.0", "react@^16.3.0 || ^17.0.1", "react@^16.3.0-0 || >=17.0.1", "react@^16.8.0 || ^17.0.0", "react@^17.0.2", "react@>= 16.8", "react@>= 16.8.0", "react@>=15.0.0", "react@>=16.6.0", "react@>=16.8", "react@>=16.8 || ^17.0.0", "react@>=16.8.0", "react@15.x.x || 16.x.x || 17.x.x", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

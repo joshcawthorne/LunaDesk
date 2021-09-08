@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-
+import Link from "next/link";
 import Button from "../shared/button";
 import Container from "./marketingContainer";
 import Logo from "../../../assets/svg/logo.svg";
@@ -17,7 +17,7 @@ const HeaderOuterContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 20;
+  z-index: 200;
 `;
 
 const HeaderContainer = styled.div`
@@ -28,7 +28,9 @@ const HeaderContainer = styled.div`
   align-items: center;
 `;
 
-const LeftContent = styled.div``;
+const LeftContent = styled.div`
+  cursor: pointer;
+`;
 
 const RightContent = styled.div``;
 
@@ -40,9 +42,11 @@ function Header({ setPreRegisterOpen }) {
     <HeaderOuterContainer>
       <Container>
         <HeaderContainer>
-          <LeftContent>
-            <Logo />
-          </LeftContent>
+          <Link href={"/"} passHref>
+            <LeftContent>
+              <Logo />
+            </LeftContent>
+          </Link>
           <RightContent>
             <Button
               text={"Request Early Access"}
