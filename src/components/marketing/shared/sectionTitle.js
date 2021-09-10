@@ -1,6 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import FullWidthText from "../../../utils/fullWidthText";
+import useInView from "react-cool-inview";
+import { motion } from "framer-motion";
 
 const SectionTitleContainer = styled.div`
   width: 100%;
@@ -52,8 +54,37 @@ const Subtext = styled.div`
 `;
 
 function SectionTitle({ title, text, marginTop }) {
+  const { observe, unobserve, inView, scrollDirection, entry } = useInView({
+    threshold: 0.4,
+  });
+
+  let delay = 0.1;
+
+  if (!title) {
+    delay = 0.3;
+  }
+
+  const ItemAnim = {
+    hidden: {
+      opacity: 0,
+      y: "20px",
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: delay,
+      },
+    },
+  };
   return (
-    <div style={{ marginTop: marginTop, width: "100%" }}>
+    <motion.div
+      style={{ marginTop: marginTop, width: "100%" }}
+      variants={ItemAnim}
+      initial="hidden"
+      animate={inView ? "show" : "hidden"}
+      ref={observe}
+    >
       <FullWidthText
         font="Monument Extended"
         title={title}
@@ -66,7 +97,7 @@ function SectionTitle({ title, text, marginTop }) {
       >
         {text}
       </FullWidthText>
-    </div>
+    </motion.div>
   );
 }
 

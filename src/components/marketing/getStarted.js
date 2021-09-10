@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Parallax } from "react-scroll-parallax";
+import useInView from "react-cool-inview";
+import { motion } from "framer-motion";
 
 import Container from "./marketingContainer";
 import TopHills from "../../../assets/svg/topHills.svg";
@@ -26,7 +28,7 @@ const TitleContainer = styled.div`
   align-items: center;
 `;
 
-const Title = styled.div`
+const Title = styled(motion.div)`
   font-weight: 900;
   font-size: 36px;
   line-height: 55px;
@@ -44,6 +46,7 @@ const Title = styled.div`
       linear-gradient(0deg, #ffffff, #ffffff);
     margin-left: 4px;
     background-size: 100%;
+    background-clip: text;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -51,7 +54,7 @@ const Title = styled.div`
   }
 `;
 
-const StartedCards = styled.div`
+const StartedCards = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,7 +67,7 @@ const StartedCards = styled.div`
   }
 `;
 
-const StartedCardsMobile = styled.div`
+const StartedCardsMobile = styled(motion.div)`
   display: none;
   justify-content: space-between;
   align-items: center;
@@ -76,7 +79,7 @@ const StartedCardsMobile = styled.div`
   }
 `;
 
-const StartedCard = styled.div`
+const StartedCard = styled(motion.div)`
   width: 340px;
   height: 150px;
   background: rgba(24, 41, 57, 0.3);
@@ -171,18 +174,65 @@ const HillContainer = styled.div`
   background: linear-gradient(360deg, #0011fc 0%, rgba(0, 17, 252, 0) 67.71%);
 `;
 
+const TextAnim = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.3,
+    },
+  },
+};
+
+const CardContainerAnim = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.4,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0 },
+};
+
 function GetStarted() {
+  const { observe, inView } = useInView({
+    threshold: 0.5,
+  });
   return (
     <GetStartedContainer>
       <Container style={{ zIndex: 5 }}>
         <TitleContainer>
-          <Title>
+          <Title
+            variants={TextAnim}
+            initial="hidden"
+            animate={inView ? "show" : "hidden"}
+          >
             Get Started In <span>Minutes</span>
           </Title>
         </TitleContainer>
-        <StartedCards>
+        <StartedCards
+          ref={observe}
+          variants={CardContainerAnim}
+          initial="hidden"
+          animate={inView ? "show" : "hidden"}
+        >
           <Parallax y={[-20, 20]} tagOuter="one">
-            <StartedCard borderColor={"#FFAA62"} margin={"100px 0 0 0"}>
+            <StartedCard
+              variants={item}
+              key={0}
+              borderColor={"#FFAA62"}
+              margin={"100px 0 0 0"}
+            >
               <CardTitle>Register your Company</CardTitle>
               <CardText>
                 You can register your company with LunaDesk in under two minutes
@@ -191,7 +241,12 @@ function GetStarted() {
             </StartedCard>
           </Parallax>
           <Parallax y={[-40, 40]} tagOuter="two">
-            <StartedCard borderColor={"#F14DC6"} margin={"50px 25px 0px 25px"}>
+            <StartedCard
+              variants={item}
+              key={1}
+              borderColor={"#F14DC6"}
+              margin={"50px 25px 0px 25px"}
+            >
               <CardTitle>Invite your Team</CardTitle>
               <CardText>
                 You can invite your entire team to join you on LunaDesk with
@@ -200,7 +255,12 @@ function GetStarted() {
             </StartedCard>
           </Parallax>
           <Parallax y={[-60, 60]} tagOuter="three">
-            <StartedCard borderColor={"#C43BFE"} margin={"0"}>
+            <StartedCard
+              variants={item}
+              key={2}
+              borderColor={"#C43BFE"}
+              margin={"0"}
+            >
               <CardTitle>Enjoy Hybrid Harmony</CardTitle>
               <CardText>
                 That’s it! Your team can now enjoy something we like to call
@@ -209,8 +269,17 @@ function GetStarted() {
             </StartedCard>
           </Parallax>
         </StartedCards>
-        <StartedCardsMobile>
-          <StartedCard borderColor={"#FFAA62"} margin={"100px 0 0 0"}>
+        <StartedCardsMobile
+          variants={CardContainerAnim}
+          initial="hidden"
+          animate={inView ? "show" : "hidden"}
+        >
+          <StartedCard
+            variants={item}
+            key={0}
+            borderColor={"#FFAA62"}
+            margin={"100px 0 0 0"}
+          >
             <CardTitle>Register your Company</CardTitle>
             <CardText>
               You can register your company with LunaDesk in under two minutes -
@@ -218,7 +287,12 @@ function GetStarted() {
             </CardText>
           </StartedCard>
 
-          <StartedCard borderColor={"#F14DC6"} margin={"50px 25px 0px 25px"}>
+          <StartedCard
+            variants={item}
+            key={1}
+            borderColor={"#F14DC6"}
+            margin={"50px 25px 0px 25px"}
+          >
             <CardTitle>Invite your Team</CardTitle>
             <CardText>
               You can invite your entire team to join you on LunaDesk with just
@@ -226,7 +300,12 @@ function GetStarted() {
             </CardText>
           </StartedCard>
 
-          <StartedCard borderColor={"#C43BFE"} margin={"0"}>
+          <StartedCard
+            variants={item}
+            key={2}
+            borderColor={"#C43BFE"}
+            margin={"0"}
+          >
             <CardTitle>Enjoy Hybrid Harmony</CardTitle>
             <CardText>
               That’s it! Your team can now enjoy something we like to call

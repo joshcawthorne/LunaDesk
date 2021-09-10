@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import useInView from "react-cool-inview";
+import { motion } from "framer-motion";
 
 import Container from "./marketingContainer";
 import SectionTitle from "./shared/sectionTitle";
 
-const HybridHarmonyContainer = styled.div`
-  background-color: #012031;
+const HybridHarmonyContainer = styled(motion.div)`
+  background-color: #0a1e2f;
   color: #fff;
   width: 100%;
   padding-top: 150px;
@@ -22,7 +24,7 @@ const InnerContainer = styled.div`
   flex-direction: column;
 `;
 
-const SectionText = styled.div`
+const SectionText = styled(motion.div)`
   margin-top: 50px;
   max-width: 749px;
   font-weight: 600;
@@ -49,9 +51,40 @@ const Mobile = styled.div`
   }
 `;
 
-function HybridHarmony() {
+const TextAnim = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.3,
+    },
+  },
+};
+
+const ContainerAnim = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+    },
+  },
+};
+
+function HybridHarmony({ introAnim }) {
+  const { observe, unobserve, inView, scrollDirection, entry } = useInView({
+    threshold: 0.25,
+  });
   return (
-    <HybridHarmonyContainer>
+    <HybridHarmonyContainer
+      variants={ContainerAnim}
+      initial="hidden"
+      animate={introAnim ? "show" : "hidden"}
+    >
       <Container>
         <InnerContainer>
           <SectionTitle text={"HYBRID HARMONY"} title />
@@ -65,7 +98,12 @@ function HybridHarmony() {
             <SectionTitle text={"YOUR TEAM'S NEVER"} />
             <SectionTitle text={"KNOWN ANYTHING LIKE IT"} />
           </Mobile>
-          <SectionText>
+          <SectionText
+            ref={observe}
+            variants={TextAnim}
+            initial="hidden"
+            animate={inView ? "show" : "hidden"}
+          >
             No more spreadsheets, calendar invites or complex calculations.
             Instantly see who’s where and when.
           </SectionText>

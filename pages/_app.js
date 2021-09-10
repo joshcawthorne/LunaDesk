@@ -32,6 +32,7 @@ const AppInnerContainer = styled.div`
 
 const App = ({ component: Component, pageProps }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [unmountLoading, setUnmountLoading] = useState(false);
   const userState = useStoreState((state) => state.user);
   const userActions = useStoreActions((actions) => actions.user);
   const { session, loggedIn } = userState;
@@ -67,12 +68,18 @@ const App = ({ component: Component, pageProps }) => {
       router.pathname === ""
     ) {
       setTimeout(() => {
-        setIsLoading(false);
-      }, 0);
+        setUnmountLoading(true);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
+      }, 5000);
     } else {
       setTimeout(() => {
-        setIsLoading(false);
-      }, 4000);
+        setUnmountLoading(true);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
+      }, 5000);
     }
   }, [session]);
 
@@ -117,7 +124,7 @@ const App = ({ component: Component, pageProps }) => {
 
   return (
     <>
-      {isLoading && <Loading />}
+      {isLoading && <Loading unmount={unmountLoading} />}
       <AppContainer>
         {loggedIn && checkedOnboard ? (
           <>
@@ -139,7 +146,7 @@ const App = ({ component: Component, pageProps }) => {
             {router.pathname === "/privacy-policy" ? (
               <PrivacyPolicy />
             ) : (
-              <Marketing />
+              <Marketing isLoading={isLoading} />
             )}
           </>
         )}

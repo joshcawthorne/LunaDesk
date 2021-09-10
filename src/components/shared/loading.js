@@ -27,6 +27,7 @@ const Text = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 `;
 
 function Loading({ unmount }) {
@@ -40,34 +41,17 @@ function Loading({ unmount }) {
 
   const ContainerAnim = {
     hidden: {
-      backgroundColor: "#000",
-    },
-    show: {
-      backgroundColor: "#040419",
-      transition: {
-        duration: 0.4,
-      },
-    },
-  };
-
-  const TitleAnim = {
-    hidden: {
       opacity: 0,
-      y: 10,
     },
     show: {
       opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.4,
-        duration: 0.4,
-      },
     },
   };
+
   return (
     <LoadingContainer
       variants={ContainerAnim}
-      initial="hidden"
+      initial="show"
       animate={!unmount ? "show" : "hidden"}
     >
       {ready && (
@@ -79,13 +63,6 @@ function Loading({ unmount }) {
             ring={true}
             intro
           />
-          <Text
-            variants={TitleAnim}
-            initial="hidden"
-            animate={!unmount ? "show" : "hidden"}
-          >
-            Preparing for Lift Off...
-          </Text>
         </>
       )}
     </LoadingContainer>

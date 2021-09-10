@@ -9,7 +9,7 @@ import Button from "../shared/button";
 import IntroContentSection from "./introContentSection";
 import Orbit from "./orbit";
 
-const OuterContainer = styled.div`
+const OuterContainer = styled(motion.div)`
   width: 100%;
   padding: 40px 0px;
   display: flex;
@@ -27,13 +27,20 @@ const OuterContainer = styled.div`
   }
 `;
 
-const ContentContainer = styled.div`
+const ContentContainerSpacer = styled.div`
   max-width: 1440px;
   width: 95%;
   height: 780px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ContentContainer = styled(motion.div)`
   position: relative;
   background-image: #ffd699;
-
+  height: 100%;
+  width: 100%;
   border-radius: 40px;
   background-image: radial-gradient(
       at 85% 17%,
@@ -59,7 +66,7 @@ const ContentContainer = styled.div`
   }
 `;
 
-const InnerContentContainer = styled.div`
+const InnerContentContainer = styled(motion.div)`
   padding: 0px 120px;
   height: 100%;
   display: flex;
@@ -89,7 +96,7 @@ const InnerContentContainer = styled.div`
   }
 `;
 
-const Title = styled.div`
+const Title = styled(motion.h1)`
   font-weight: bold;
   font-size: 66px;
   line-height: 79px;
@@ -103,8 +110,10 @@ const Title = styled.div`
   -moz-text-fill-color: transparent;
   max-width: 646px;
   z-index: 2;
+  margin-top: -20px;
   @media (max-width: 900px) {
     text-align: left;
+    margin-top: 0;
     max-width: 650px;
     padding: 0px 60px;
     margin-bottom: 10px;
@@ -123,7 +132,7 @@ const Title = styled.div`
   }
 `;
 
-const Subtext = styled.div`
+const Subtext = styled(motion.div)`
   font-weight: 600;
   font-size: 24px;
   line-height: 36px;
@@ -157,7 +166,7 @@ const Subtext = styled.div`
   }
 `;
 
-const BackgroundImage = styled.div`
+const BackgroundImage = styled(motion.div)`
   background-image: url("images/headerBackgroundImage.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -185,7 +194,7 @@ const BackgroundImage = styled.div`
   }
 `;
 
-const TooltipContainer = styled.div`
+const TooltipContainer = styled(motion.div)`
   position: absolute;
   top: -30px;
   left: 0;
@@ -198,7 +207,7 @@ const TooltipContainer = styled.div`
   }
 `;
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled(motion.div)`
   z-index: 5;
   @media (max-width: 900px) {
     width: 100%;
@@ -209,35 +218,209 @@ const ButtonContainer = styled.div`
   }
 `;
 
-function IntroMarketingSection({ setPreRegisterOpen }) {
+const OuterContainerAnim = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+    },
+  },
+};
+
+const ContentContainerAnim = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      delay: 0.2,
+    },
+  },
+};
+
+const InnerContentAnim = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      delay: 0.2,
+    },
+  },
+};
+
+const ImageAnim = {
+  hidden: {
+    x: 100,
+    opacity: 0,
+  },
+  show: {
+    opacity: [0, 1, 1, 1],
+    x: 0,
+
+    transition: {
+      duration: 2.5,
+      delay: 1.7,
+      type: "spring",
+      velocity: 100,
+      stiffness: 700,
+      damping: 100,
+    },
+  },
+};
+
+const TitleAnim = {
+  hidden: {
+    y: 80,
+    opacity: 0,
+  },
+  show: {
+    opacity: [0, 1, 1, 1],
+    y: 0,
+
+    transition: {
+      duration: 1.5,
+      delay: 1.3,
+      type: "spring",
+      velocity: 100,
+      stiffness: 700,
+      damping: 100,
+    },
+  },
+};
+
+const SubtextAnim = {
+  hidden: {
+    y: 80,
+    opacity: 0,
+  },
+  show: {
+    opacity: [0, 1, 1, 1],
+    y: 0,
+
+    transition: {
+      duration: 1.5,
+      delay: 1.4,
+      type: "spring",
+      velocity: 100,
+      stiffness: 700,
+      damping: 100,
+    },
+  },
+};
+
+const ButtonAnim = {
+  hidden: {
+    y: 80,
+    opacity: 0,
+  },
+  show: {
+    opacity: [0, 1, 1, 1],
+    y: 0,
+
+    transition: {
+      duration: 1.5,
+      delay: 1.5,
+      type: "spring",
+      velocity: 100,
+      stiffness: 700,
+      damping: 100,
+    },
+  },
+};
+
+const TooltipAnim = {
+  hidden: {
+    y: -60,
+    opacity: 0,
+  },
+  show: {
+    opacity: [0, 1, 1, 1],
+    y: 0,
+
+    transition: {
+      duration: 1.5,
+      delay: 1.8,
+      type: "spring",
+      velocity: 100,
+      stiffness: 700,
+      damping: 100,
+    },
+  },
+};
+
+function IntroMarketingSection({ setPreRegisterOpen, introAnim }) {
   function handleClick() {
     setPreRegisterOpen(true);
   }
   return (
-    <OuterContainer>
-      <ContentContainer>
-        <TooltipContainer>
-          <WinnerTooltip />
-        </TooltipContainer>
-        <InnerContentContainer>
-          <Title>The scheduling tool that pulls teams into orbit.</Title>
-          <Subtext>
-            Understand when your team members are going to be in the office or
-            working remotely.
-          </Subtext>
-          <ButtonContainer>
-            <Button
-              text={"Request Early Access"}
-              arrow
-              backgroundColor={"#010960"}
-              color={"#fff"}
-              action={handleClick}
-              style={{ zIndex: 100 }}
-            />
-          </ButtonContainer>
-        </InnerContentContainer>
-        <BackgroundImage />
-      </ContentContainer>
+    <OuterContainer
+      variants={OuterContainerAnim}
+      initial="hidden"
+      animate={introAnim ? "show" : "hidden"}
+    >
+      <ContentContainerSpacer>
+        <ContentContainer
+          variants={ContentContainerAnim}
+          initial="hidden"
+          animate={introAnim ? "show" : "hidden"}
+        >
+          <TooltipContainer
+            variants={TooltipAnim}
+            initial="hidden"
+            animate={introAnim ? "show" : "hidden"}
+          >
+            <WinnerTooltip />
+          </TooltipContainer>
+          <InnerContentContainer
+            variants={InnerContentAnim}
+            initial="hidden"
+            animate={introAnim ? "show" : "hidden"}
+          >
+            <Title
+              variants={TitleAnim}
+              initial="hidden"
+              animate={introAnim ? "show" : "hidden"}
+            >
+              The scheduling tool that pulls teams into orbit.
+            </Title>
+            <Subtext
+              variants={SubtextAnim}
+              initial="hidden"
+              animate={introAnim ? "show" : "hidden"}
+            >
+              Understand when your team members are going to be in the office or
+              working remotely.
+            </Subtext>
+            <ButtonContainer
+              variants={ButtonAnim}
+              initial="hidden"
+              animate={introAnim ? "show" : "hidden"}
+            >
+              <Button
+                text={"Request Early Access"}
+                arrow
+                backgroundColor={"#010960"}
+                color={"#fff"}
+                action={handleClick}
+                style={{ zIndex: 100 }}
+              />
+            </ButtonContainer>
+          </InnerContentContainer>
+          <BackgroundImage
+            variants={ImageAnim}
+            initial="hidden"
+            animate={introAnim ? "show" : "hidden"}
+          />
+        </ContentContainer>
+      </ContentContainerSpacer>
     </OuterContainer>
   );
 }

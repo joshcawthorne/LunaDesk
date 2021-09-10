@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import dynamic from "next/dynamic";
 
@@ -16,35 +16,38 @@ import HybridHarmony from "./hybridHarmony";
 import GetStarted from "./getStarted";
 import Rescheduling from "./rescheduling";
 
-const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
-  ssr: false,
-});
+import { scrollLocker } from "../../utils/scrollLocker";
 
 const Container = styled.div`
   width: 100%;
   overflow: hidden;
+  background-color: #000;
 `;
 
-function Marketing() {
+function Marketing({ isLoading }) {
   const [preRegisterOpen, setPreRegisterOpen] = useState(false);
+  const [introAnim, setIntroAnim] = useState(false);
+  const [introComplete, setIntroComplete] = useState(false);
+
+  useEffect(() => {
+    scrollLocker.lock();
+    if (!isLoading) {
+      setIntroAnim(true);
+      setTimeout(() => {
+        scrollLocker.unlock();
+      }, 3000);
+    }
+  }, [isLoading]);
 
   return (
     <Container>
-      <AnimatedCursor
-        innerSize={8}
-        outerSize={50}
-        color="230,36,187"
-        outerAlpha={0.3}
-        innerScale={0.7}
-        outerScale={1.75}
-      />
       <PreRegsiterPrompt
         preRegisterOpen={preRegisterOpen}
         setPreRegisterOpen={setPreRegisterOpen}
       />
       <Header setPreRegisterOpen={setPreRegisterOpen} />
-      <Intro setPreRegisterOpen={setPreRegisterOpen} />
-      <HybridHarmony />
+      <Intro introAnim={introAnim} setPreRegisterOpen={setPreRegisterOpen} />
+      <HybridHarmony introAnim={introAnim} />
 
       <GetStarted />
       <Rescheduling />
