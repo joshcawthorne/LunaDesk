@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import FullWidthText from "../../../utils/fullWidthText";
 import useInView from "react-cool-inview";
@@ -54,9 +54,17 @@ const Subtext = styled.div`
 `;
 
 function SectionTitle({ title, text, marginTop }) {
-  const { observe, unobserve, inView, scrollDirection, entry } = useInView({
-    threshold: 0.4,
+  const { observe, inView } = useInView({
+    threshold: 0.5,
   });
+
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setAnimate(true);
+    }
+  }, [inView]);
 
   let delay = 0.1;
 
@@ -82,7 +90,7 @@ function SectionTitle({ title, text, marginTop }) {
       style={{ marginTop: marginTop, width: "100%" }}
       variants={ItemAnim}
       initial="hidden"
-      animate={inView ? "show" : "hidden"}
+      animate={animate ? "show" : "hidden"}
       ref={observe}
     >
       <FullWidthText

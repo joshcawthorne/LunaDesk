@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Parallax } from "react-scroll-parallax";
 import useInView from "react-cool-inview";
@@ -208,6 +208,15 @@ function GetStarted() {
   const { observe, inView } = useInView({
     threshold: 0.5,
   });
+
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setAnimate(true);
+    }
+  }, [inView]);
+
   return (
     <GetStartedContainer>
       <Container style={{ zIndex: 5 }}>
@@ -215,7 +224,7 @@ function GetStarted() {
           <Title
             variants={TextAnim}
             initial="hidden"
-            animate={inView ? "show" : "hidden"}
+            animate={animate ? "show" : "hidden"}
           >
             Get Started In <span>Minutes</span>
           </Title>
@@ -224,7 +233,7 @@ function GetStarted() {
           ref={observe}
           variants={CardContainerAnim}
           initial="hidden"
-          animate={inView ? "show" : "hidden"}
+          animate={animate ? "show" : "hidden"}
         >
           <Parallax y={[-20, 20]} tagOuter="one">
             <StartedCard
@@ -272,7 +281,7 @@ function GetStarted() {
         <StartedCardsMobile
           variants={CardContainerAnim}
           initial="hidden"
-          animate={inView ? "show" : "hidden"}
+          animate={animate ? "show" : "hidden"}
         >
           <StartedCard
             variants={item}

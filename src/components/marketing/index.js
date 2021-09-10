@@ -35,7 +35,7 @@ function Marketing({ isLoading }) {
       setIntroAnim(true);
       setTimeout(() => {
         scrollLocker.unlock();
-      }, 3000);
+      }, 2300);
     }
   }, [isLoading]);
 

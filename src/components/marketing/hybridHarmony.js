@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import useInView from "react-cool-inview";
 import { motion } from "framer-motion";
@@ -76,9 +76,17 @@ const ContainerAnim = {
 };
 
 function HybridHarmony({ introAnim }) {
-  const { observe, unobserve, inView, scrollDirection, entry } = useInView({
-    threshold: 0.25,
+  const { observe, inView } = useInView({
+    threshold: 0.2,
   });
+
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setAnimate(true);
+    }
+  }, [inView]);
   return (
     <HybridHarmonyContainer
       variants={ContainerAnim}
@@ -102,7 +110,7 @@ function HybridHarmony({ introAnim }) {
             ref={observe}
             variants={TextAnim}
             initial="hidden"
-            animate={inView ? "show" : "hidden"}
+            animate={animate ? "show" : "hidden"}
           >
             No more spreadsheets, calendar invites or complex calculations.
             Instantly see who’s where and when.
