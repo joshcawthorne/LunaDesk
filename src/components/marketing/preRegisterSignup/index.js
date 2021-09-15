@@ -32,10 +32,20 @@ const PreRegsiterPromptOuter = styled(motion.div)`
 
 const PreRegsiterPromptInner = styled(motion.div)`
   padding: 40px;
-  background-color: #121212;
+  background: rgba(21, 37, 50, 0.1);
+  backdrop-filter: blur(24px);
+  border-radius: 10px;
+  padding: 30px;
   z-index: 5002;
   position: relative;
   border-radius: 10px;
+  border-style: solid;
+  border-color: #fc9238;
+  border-width: 2px;
+  @-moz-document url-prefix() {
+    background: rgba(21, 37, 50, 1);
+    border-width: 0;
+  }
 `;
 
 const BackgroundLayer = styled(motion.div)`
@@ -59,18 +69,75 @@ const BackArrow = styled(motion.div)`
 `;
 
 const Title = styled(motion.div)`
-  font-size: 36px;
+  font-size: 46px;
   font-weight: bold;
   color: #fff;
-  max-width: 450px;
+  max-width: 530px;
+
+  margin: 0;
+  margin-bottom: 10px;
+  text-align: left;
+
+  letter-spacing: 1px;
+  z-index: 4;
+
+  padding: 0;
+
+  color: #fc9238;
+  background-color: #fc9238;
+  background-image: linear-gradient(90deg, #e623bb 0%, #f8b84f 100%),
+    linear-gradient(0deg, #ffffff, #ffffff);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+
+  @media (max-width: 600px) {
+    font-size: 55px;
+    line-height: 60px;
+  }
+  @media (max-width: 450px) {
+    font-size: 40px;
+    line-height: 50px;
+  }
 `;
 
 const Subtext = styled(motion.div)`
-  font-size: 18px;
   color: #fff;
-  max-width: 500px;
-  margin-top: 10px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  color: #ffffff;
+  z-index: 4;
+  max-width: 550px;
   margin-bottom: 25px;
+  span {
+    background-color: #fc9238;
+    background-image: linear-gradient(90deg, #e623bb 0%, #f8b84f 100%),
+      linear-gradient(0deg, #ffffff, #ffffff);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    font-weight: 900;
+  }
+  a {
+    font-weight: 900;
+    text-decoration: underline;
+    color: #ffaa62;
+  }
+  @media (max-width: 1000px) {
+    max-width: 100%;
+  }
+  @media (max-width: 425px) {
+    font-size: 18px;
+    line-height: 26px;
+    margin-top: 0;
+  }
 `;
 
 const EmailInput = styled.input`
@@ -122,7 +189,7 @@ const ContainerAnim = {
     opacity: 0,
   },
   show: {
-    opacity: 0.7,
+    opacity: 0.5,
   },
   unmount: {
     opacity: 0,
@@ -375,7 +442,7 @@ function PreRegsiterPrompt({ preRegisterOpen, setPreRegisterOpen }) {
                   initial="hidden"
                   animate={preRegisterOpen ? "show" : "hidden"}
                 >
-                  Register for LunaDesk Early Access
+                  Get Early Access
                 </Title>
                 <Subtext
                   variants={SubtextAnim}

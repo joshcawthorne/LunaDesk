@@ -52,6 +52,15 @@ const Title = styled(motion.div)`
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
   }
+  @media (max-width: 900px) {
+    text-align: center;
+    font-size: 26px;
+    line-height: 28px;
+  }
+  @media (max-width: 400px) {
+    font-size: 22px;
+    line-height: 26px;
+  }
 `;
 
 const StartedCards = styled(motion.div)`
@@ -102,6 +111,9 @@ const StartedCard = styled(motion.div)`
     height: unset;
     padding: 20px;
   }
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const CardTitle = styled.div`
@@ -110,6 +122,9 @@ const CardTitle = styled.div`
   color: #ffffff;
   text-align: left;
   margin-bottom: 10px;
+  @media (max-width: 400px) {
+    font-size: 22px;
+  }
 `;
 
 const CardText = styled.div`
@@ -206,7 +221,7 @@ const item = {
 
 function GetStarted() {
   const { observe, inView } = useInView({
-    threshold: 0.5,
+    threshold: 0.2,
   });
 
   const [animate, setAnimate] = useState(false);
@@ -218,7 +233,7 @@ function GetStarted() {
   }, [inView]);
 
   return (
-    <GetStartedContainer>
+    <GetStartedContainer ref={observe}>
       <Container style={{ zIndex: 5 }}>
         <TitleContainer>
           <Title
@@ -230,7 +245,6 @@ function GetStarted() {
           </Title>
         </TitleContainer>
         <StartedCards
-          ref={observe}
           variants={CardContainerAnim}
           initial="hidden"
           animate={animate ? "show" : "hidden"}

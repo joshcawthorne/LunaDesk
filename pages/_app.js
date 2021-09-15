@@ -126,30 +126,13 @@ const App = ({ component: Component, pageProps }) => {
     <>
       {isLoading && <Loading unmount={unmountLoading} />}
       <AppContainer>
-        {loggedIn && checkedOnboard ? (
-          <>
-            {router.pathname !== "/welcome" ? (
-              <AppInnerContainer>
-                <Sidebar />
-                <ApplicationLayer
-                  isLoading={isLoading}
-                  Component={Component}
-                  pageProps={pageProps}
-                />
-              </AppInnerContainer>
-            ) : (
-              <ApplicationLayer Component={Component} pageProps={pageProps} />
-            )}
-          </>
-        ) : (
-          <>
-            {router.pathname === "/privacy-policy" ? (
-              <PrivacyPolicy />
-            ) : (
-              <Marketing isLoading={isLoading} />
-            )}
-          </>
-        )}
+        <>
+          {router.pathname === "/privacy-policy" ? (
+            <PrivacyPolicy />
+          ) : (
+            <Marketing isLoading={isLoading} />
+          )}
+        </>
       </AppContainer>
     </>
   );

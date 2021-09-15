@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { Parallax } from "react-scroll-parallax";
+import { motion } from "framer-motion";
+import useInView from "react-cool-inview";
 
 import Container from "./marketingContainer";
 import SectionTitle from "./shared/sectionTitle";
@@ -61,16 +63,8 @@ const ContentSection = styled.div`
   margin-top: 30px;
   @media (max-width: 900px) {
     flex-direction: column-reverse;
-    margin-top: 80px;
-  }
-  @media (max-width: 650px) {
-    margin-top: 120px;
-  }
-  @media (max-width: 550px) {
-    margin-top: 180px;
-  }
-  @media (max-width: 370px) {
-    margin-top: 220px;
+    height: unset;
+    margin-top: 0;
   }
 `;
 
@@ -98,7 +92,7 @@ const RightContent = styled.div`
   }
 `;
 
-const Paragraph = styled.div`
+const Paragraph = styled(motion.div)`
   color: #fff;
   font-weight: 500;
   font-size: 22px;
@@ -115,6 +109,7 @@ const Paragraph = styled.div`
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     font-weight: 900;
@@ -123,9 +118,13 @@ const Paragraph = styled.div`
     text-align: center;
     max-width: unset;
   }
+  @media (max-width: 768px) {
+    font-size: 18px;
+    line-height: 26px;
+  }
 `;
 
-const ImageContainer = styled.div`
+const ImageContainer = styled(motion.div)`
   height: 400px;
   width: 600px;
 
@@ -166,6 +165,7 @@ const WinnerInnerContainer = styled.div`
   margin-top: 200px;
   @media (max-width: 1000px) {
     flex-wrap: wrap;
+    margin-top: 0px;
   }
 `;
 
@@ -181,6 +181,10 @@ const TextBoxContainer = styled.div`
   }
   @media (max-width: 450px) {
     padding: 30px 10px;
+  }
+  @-moz-document url-prefix() {
+    background: rgba(21, 37, 50, 1);
+    border-width: 0;
   }
 `;
 
@@ -199,15 +203,8 @@ const WinnerTitle = styled.div`
   line-height: 67px;
   padding: 0;
   text-transform: uppercase;
+  color: #fc9238;
 
-  background-color: #fc9238;
-  background-image: linear-gradient(90deg, #e623bb 0%, #f8b84f 100%),
-    linear-gradient(0deg, #ffffff, #ffffff);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
   @media (max-width: 600px) {
     font-size: 55px;
     line-height: 60px;
@@ -234,17 +231,23 @@ const WinnerSubtext = styled.div`
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     font-weight: 900;
   }
   a {
     font-weight: 900;
-    text-decoration: none;
+    text-decoration: underline;
     color: #ffaa62;
   }
   @media (max-width: 1000px) {
     max-width: 100%;
+  }
+  @media (max-width: 425px) {
+    font-size: 18px;
+    line-height: 26px;
+    margin-top: 0;
   }
 `;
 
@@ -294,7 +297,10 @@ const WinnerRowOne = styled.div`
     top: 270px;
   }
   @media (max-width: 600px) {
-    top: 300px;
+    top: 200px;
+  }
+  @media (max-width: 425px) {
+    top: 150px;
   }
 `;
 
@@ -319,6 +325,10 @@ const WinnerRowTwo = styled.div`
   }
 `;
 
+const TitleContainer = styled.div`
+  width: 100%;
+`;
+
 const WinnerText = styled.div`
   font-family: Monument Extended;
   background-color: #fc9238;
@@ -327,6 +337,7 @@ const WinnerText = styled.div`
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   font-weight: 900;
@@ -343,21 +354,71 @@ const WinnerText = styled.div`
       opacity: 0.2;
       z-index: 1;
     `}
+  @media(max-width: 600px) {
+    font-size: 44px;
+    line-height: 44px;
+  }
 `;
 
+const TextAnim = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0,
+    },
+  },
+};
+
+const ImageAnim = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.1,
+    },
+  },
+};
+
 function Analytics() {
-  const n = 22;
+  const n = 30;
+
+  const { observe, inView } = useInView({
+    threshold: 0.2,
+  });
+
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setAnimate(true);
+    }
+  }, [inView]);
 
   return (
     <ContentOuterContainer>
       <AnalyticsOuterContainer>
         <Container style={{ height: "100%" }}>
           <AnalyticsInnerContainer>
-            <SectionTitle text={"START BEING ITK"} title />
-            <SectionTitle text={"THANKS TO ANALYTICS"} marginTop={"-3%"} />
-            <ContentSection>
+            <TitleContainer>
+              <SectionTitle text={"START BEING ITK"} title />
+              <SectionTitle text={"THANKS TO ANALYTICS"} marginTop={"-3%"} />
+            </TitleContainer>
+            <ContentSection ref={observe}>
               <LeftContent>
-                <ImageContainer>
+                <ImageContainer
+                  variants={ImageAnim}
+                  initial="hidden"
+                  animate={animate ? "show" : "hidden"}
+                >
                   <ImageItem
                     src={"/images/itkImage.png"}
                     alt={"Analytics Illustration"}
@@ -365,7 +426,11 @@ function Analytics() {
                 </ImageContainer>
               </LeftContent>
               <RightContent>
-                <Paragraph>
+                <Paragraph
+                  variants={TextAnim}
+                  initial="hidden"
+                  animate={animate ? "show" : "hidden"}
+                >
                   <span>Understand your team better.</span> LunaDesk comes chock
                   with built-in analytics to help you understand which Office
                   days are the busiest, maximise face-to-face contact without

@@ -45,7 +45,7 @@ const item = {
 };
 
 function StageOne({ email, setEmail, progress, active }) {
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const [animate, setAnimate] = useState(active);
   const [input, setInput] = useState("");
 
@@ -56,6 +56,20 @@ function StageOne({ email, setEmail, progress, active }) {
       progress();
     }, 400);
   }
+
+  function validEmail(email) {
+    var re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+  useEffect(() => {
+    if (validEmail(input)) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [input]);
 
   return (
     <InputContainer

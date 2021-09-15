@@ -80,8 +80,12 @@ const FooterMenuItem = styled.div`
   letter-spacing: 0.5px;
   color: #ffffff;
   text-decoration: none;
-
+  cursor: pointer;
   margin-left: 15px;
+  @media (max-width: 350px) {
+    font-size: 10px;
+    margin-left: 7.5px;
+  }
 `;
 
 const SocialItems = styled.div`
@@ -93,6 +97,7 @@ const SocialItems = styled.div`
 const SocialItem = styled.div`
   height: 18px;
   width: 18px;
+  cursor: pointer;
   margin-right: 15px;
 `;
 

@@ -18,6 +18,10 @@ const HeaderOuterContainer = styled.div`
   top: 0;
   left: 0;
   z-index: 200;
+  @-moz-document url-prefix() {
+    background: #060606;
+    border-width: 0;
+  }
 `;
 
 const HeaderContainer = styled.div`

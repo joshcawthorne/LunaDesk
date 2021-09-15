@@ -27,7 +27,7 @@ const IntroWinnerTooltipContainer = styled.div`
     margin-left: -60px;
     box-sizing: border-box;
   }
-  @media (max-width: 480px) {
+  @media (max-width: 500px) {
     display: none;
   }
 `;
@@ -75,6 +75,7 @@ const SupabaseLogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
   @media (max-width: 550px) {
     margin: 0;
     height: 55px;

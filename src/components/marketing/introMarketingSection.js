@@ -19,11 +19,8 @@ const OuterContainer = styled(motion.div)`
   position: relative;
   overflow: hidden;
   padding-top: 160px;
-  @media (max-width: 550px) {
-    padding-top: 215px;
-  }
-  @media (max-width: 480px) {
-    padding-top: 120px;
+  @media (max-width: 650px) {
+    padding-top: 100px;
   }
 `;
 
@@ -34,6 +31,9 @@ const ContentContainerSpacer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 650px) {
+    height: unset;
+  }
 `;
 
 const ContentContainer = styled(motion.div)`
@@ -106,6 +106,7 @@ const Title = styled(motion.h1)`
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   max-width: 646px;
@@ -129,6 +130,10 @@ const Title = styled(motion.h1)`
   @media (max-width: 650px) {
     font-size: 32px;
     line-height: 37px;
+  }
+  @media (max-width: 350px) {
+    font-size: 26px;
+    line-height: 32px;
   }
 `;
 
@@ -267,7 +272,7 @@ const ImageAnim = {
 
     transition: {
       duration: 2.5,
-      delay: 1.7,
+      delay: 1.2,
       type: "spring",
       velocity: 100,
       stiffness: 700,
@@ -287,7 +292,7 @@ const TitleAnim = {
 
     transition: {
       duration: 1.5,
-      delay: 1.3,
+      delay: 0.8,
       type: "spring",
       velocity: 100,
       stiffness: 700,
@@ -307,7 +312,7 @@ const SubtextAnim = {
 
     transition: {
       duration: 1.5,
-      delay: 1.4,
+      delay: 0.9,
       type: "spring",
       velocity: 100,
       stiffness: 700,
@@ -327,7 +332,7 @@ const ButtonAnim = {
 
     transition: {
       duration: 1.5,
-      delay: 1.5,
+      delay: 1,
       type: "spring",
       velocity: 100,
       stiffness: 700,
@@ -347,7 +352,7 @@ const TooltipAnim = {
 
     transition: {
       duration: 1.5,
-      delay: 1.8,
+      delay: 1.3,
       type: "spring",
       velocity: 100,
       stiffness: 700,

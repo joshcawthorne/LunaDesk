@@ -43,7 +43,7 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 function StageThree({ company, setCompany, progress, active }) {
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const [animate, setAnimate] = useState(active);
   const [input, setInput] = useState("");
 
@@ -54,6 +54,14 @@ function StageThree({ company, setCompany, progress, active }) {
       progress();
     }, 400);
   }
+
+  useEffect(() => {
+    if (input.length > 0) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [input]);
 
   return (
     <InputContainer

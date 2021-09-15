@@ -11,7 +11,7 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  cursor: pointer;
   user-select: none;
   transition: 400ms;
   ${(props) =>

@@ -15,6 +15,7 @@ const EarlyAccessOuterContainer = styled.div`
   z-index: 0;
   @media (max-width: 1000px) {
     padding-top: 0px;
+    padding-bottom: 20px;
   }
 `;
 
@@ -55,6 +56,12 @@ const EarlyAccessInnerContainer = styled.div`
   @media (max-width: 600px) {
     padding: 48px 20px;
   }
+  @media (max-width: 425px) {
+    padding: 48px 10px;
+  }
+  @media (max-width: 350px) {
+    padding: 20px 10px;
+  }
 `;
 
 const IconContainer = styled.div`
@@ -87,6 +94,13 @@ const Title = styled.div`
     font-size: 30px;
     line-height: 36px;
   }
+  @media (max-width: 425px) {
+    font-size: 26px;
+    line-height: 30px;
+  }
+  @media (max-width: 350px) {
+    font-size: 22px;
+  }
 `;
 
 const Desc = styled.div`
@@ -101,6 +115,9 @@ const Desc = styled.div`
     width: unset;
     font-size: 20px;
     line-height: 26px;
+  }
+  @media (max-width: 425px) {
+    font-size: 16px;
   }
 `;
 

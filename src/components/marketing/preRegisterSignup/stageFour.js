@@ -44,7 +44,7 @@ const item = {
 };
 
 function StageFour({ companyRole, setCompanyRole, progress, active }) {
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const [animate, setAnimate] = useState(active);
   const [input, setInput] = useState("");
 
@@ -55,6 +55,14 @@ function StageFour({ companyRole, setCompanyRole, progress, active }) {
       progress(input);
     }, 1000);
   }
+
+  useEffect(() => {
+    if (input.length > 0) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [input]);
 
   return (
     <InputContainer

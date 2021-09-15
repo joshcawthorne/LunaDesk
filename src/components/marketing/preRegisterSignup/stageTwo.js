@@ -44,7 +44,7 @@ const item = {
 };
 
 function StageTwo({ name, setName, progress, active }) {
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const [animate, setAnimate] = useState(active);
   const [input, setInput] = useState("");
 
@@ -55,6 +55,19 @@ function StageTwo({ name, setName, progress, active }) {
       progress();
     }, 400);
   }
+
+  function validName(name) {
+    var re = /^([\w]{3,})+\s+([\w\s]{3,})+$/i;
+    return re.test(name);
+  }
+
+  useEffect(() => {
+    if (validName(input)) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [input]);
 
   return (
     <InputContainer

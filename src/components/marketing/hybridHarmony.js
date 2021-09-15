@@ -14,6 +14,9 @@ const HybridHarmonyContainer = styled(motion.div)`
   @media (max-width: 1000px) {
     padding-top: 50px;
   }
+  @media (max-width: 800px) {
+    padding-top: 0;
+  }
 `;
 
 const InnerContainer = styled.div`
@@ -33,6 +36,18 @@ const SectionText = styled(motion.div)`
   color: #ffffff;
   text-align: center;
   margin-bottom: 75px;
+  @media (max-width: 900px) {
+    font-size: 20px;
+    line-height: 22px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-width: unset;
+  }
+  @media (max-width: 350px) {
+    font-size: 17px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 `;
 
 const Desktop = styled.div`
@@ -47,7 +62,8 @@ const Mobile = styled.div`
   width: 100%;
   display: none;
   @media (max-width: 600px) {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
