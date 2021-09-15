@@ -22,7 +22,7 @@ WorkFrom went on to win "Best Overall Project" at the Supabase hackathon.
 
 The LunaDesk team are currently hard at work on building a fully fleshed out Version One release, ready for launch later 2021.
 
-### How can I run LunaDesk on my local machine
+### How can I run LunaDesk on my local machine?
 
 You can't. Sorry. We have private keys that're needed to connect the code to relevant services. You're more than welcome to explore our codebase to see how it's built, though.
 
