@@ -22,10 +22,6 @@ WorkFrom went on to win "Best Overall Project" at the Supabase hackathon.
 
 The LunaDesk team are currently hard at work on building a fully fleshed out Version One release, ready for launch later 2021.
 
-### How does LunaDesk use Supabase?
-
-As stated above, this project uses quite a few features of Supabase. It uses Auth to allow users to both sign-up and login using either an email address, Google account or Apple account. It uses Supabase's databases to store all data, and uses storage to store avatars for companies.
-
 ### How can I run LunaDesk on my local machine
 
 You can't. Sorry. We have private keys that're needed to connect the code to relevant services. You're more than welcome to explore our codebase to see how it's built, though.
