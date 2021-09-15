@@ -111,16 +111,19 @@ function HybridHarmony({ introAnim }) {
     >
       <Container>
         <InnerContainer>
-          <SectionTitle text={"HYBRID HARMONY"} title />
           <Desktop>
+            <SectionTitle text={"HYBRID HARMONY"} title />
+
             <SectionTitle
               text={"YOUR TEAM'S NEVER KNOWN ANYTHING LIKE IT"}
               marginTop={"-2%"}
             />
           </Desktop>
           <Mobile>
+            <SectionTitle text={"HYBRID"} title />
+            <SectionTitle text={"HARMONY"} title marginTop={"-7%"} />
             <SectionTitle text={"YOUR TEAM'S NEVER"} />
-            <SectionTitle text={"KNOWN ANYTHING LIKE IT"} />
+            <SectionTitle text={"KNOWN ANYTHING LIKE IT"} marginTop={"-2%"} />
           </Mobile>
           <SectionText
             ref={observe}

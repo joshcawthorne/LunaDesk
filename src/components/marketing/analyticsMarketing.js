@@ -115,7 +115,7 @@ const Paragraph = styled(motion.div)`
     font-weight: 900;
   }
   @media (max-width: 900px) {
-    text-align: center;
+    text-align: left;
     max-width: unset;
   }
   @media (max-width: 768px) {
@@ -235,6 +235,7 @@ const WinnerSubtext = styled.div`
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     font-weight: 900;
+    white-space: nowrap;
   }
   a {
     font-weight: 900;
@@ -244,9 +245,11 @@ const WinnerSubtext = styled.div`
   @media (max-width: 1000px) {
     max-width: 100%;
   }
-  @media (max-width: 425px) {
+  @media (max-width: 768px) {
     font-size: 18px;
     line-height: 26px;
+  }
+  @media (max-width: 425px) {
     margin-top: 0;
   }
 `;

@@ -73,6 +73,7 @@ const Paragraph = styled(motion.div)`
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     letter-spacing: 0.3px;
+    white-space: nowrap;
   }
   @media (max-width: 1150px) {
     max-width: unset;
