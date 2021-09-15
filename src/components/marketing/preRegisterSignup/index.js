@@ -32,7 +32,7 @@ const PreRegsiterPromptOuter = styled(motion.div)`
 
 const PreRegsiterPromptInner = styled(motion.div)`
   padding: 40px;
-  background: rgba(21, 37, 50, 0.1);
+  background: rgba(21, 37, 50, 0.3);
   backdrop-filter: blur(24px);
   border-radius: 10px;
   padding: 30px;

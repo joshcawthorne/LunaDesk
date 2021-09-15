@@ -181,6 +181,7 @@ const TextBoxContainer = styled.div`
   }
   @media (max-width: 450px) {
     padding: 30px 10px;
+    padding: 30px 0;
   }
   @-moz-document url-prefix() {
     background: rgba(21, 37, 50, 1);
@@ -409,7 +410,7 @@ function Analytics() {
   return (
     <ContentOuterContainer>
       <AnalyticsOuterContainer>
-        <Container style={{ height: "100%" }}>
+        <Container style={{ height: "100%", overflow: "hidden" }}>
           <AnalyticsInnerContainer>
             <TitleContainer>
               <SectionTitle text={"START BEING ITK"} title />

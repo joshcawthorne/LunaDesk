@@ -25,6 +25,15 @@ const EmailInput = styled(motion.input)`
   line-height: 24px;
 `;
 
+const Subtext = styled.div`
+  color: #fff;
+  font-size: 12px;
+  margin-top: 15px;
+  width: 100%;
+  text-align: center;
+  opacity: 0.4;
+`;
+
 const ContainerAnim = {
   hidden: {
     opacity: 0,
@@ -65,30 +74,36 @@ function StageFour({ companyRole, setCompanyRole, progress, active }) {
   }, [input]);
 
   return (
-    <InputContainer
-      variants={ContainerAnim}
-      initial="hidden"
-      animate={animate ? "show" : "hidden"}
-    >
-      <EmailInput
-        placeholder={"Job Role"}
-        autoFocus
-        value={input}
-        onChange={(d) => setInput(d.currentTarget.value)}
-        variants={item}
-        key={0}
-      />
-      <motion.div variants={item} key={1}>
-        <Button
-          text={"Submit"}
-          action={handleClick}
-          color={"#fff"}
-          arrow
-          backgroundColor={"#010960"}
-          disabled={disabled}
+    <>
+      <InputContainer
+        variants={ContainerAnim}
+        initial="hidden"
+        animate={animate ? "show" : "hidden"}
+      >
+        <EmailInput
+          placeholder={"Job Role"}
+          autoFocus
+          value={input}
+          onChange={(d) => setInput(d.currentTarget.value)}
+          variants={item}
+          key={0}
         />
-      </motion.div>
-    </InputContainer>
+        <motion.div variants={item} key={1}>
+          <Button
+            text={"Submit"}
+            action={handleClick}
+            color={"#fff"}
+            arrow
+            backgroundColor={"#010960"}
+            disabled={disabled}
+          />
+        </motion.div>
+      </InputContainer>
+      <Subtext>
+        By clicking submit, you consent to us contacting you for marketing
+        purposes
+      </Subtext>
+    </>
   );
 }
 
