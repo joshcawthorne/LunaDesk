@@ -90,7 +90,8 @@ const StartedCardsMobile = styled(motion.div)`
 
 const StartedCard = styled(motion.div)`
   width: 340px;
-  height: 150px;
+  max-height: 180px;
+  min-height: 150px;
   background: rgba(24, 41, 57, 0.3);
   border: 2px solid ${(props) => props.borderColor};
   box-sizing: border-box;
@@ -110,6 +111,8 @@ const StartedCard = styled(motion.div)`
     margin-bottom: 40px;
     height: unset;
     padding: 20px;
+    max-height: unset;
+    min-height: unset;
   }
   @media (max-width: 768px) {
     margin-bottom: 20px;
@@ -118,10 +121,21 @@ const StartedCard = styled(motion.div)`
 
 const CardTitle = styled.div`
   font-size: 24px;
-  line-height: 24px;
+  line-height: 28px;
   color: #ffffff;
-  text-align: left;
-  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 5px;
+  color: #fc9238;
+  background-color: #fc9238;
+  background-image: linear-gradient(90deg, #e623bb 0%, #f8b84f 100%),
+    linear-gradient(0deg, #ffffff, #ffffff);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
   @media (max-width: 400px) {
     font-size: 22px;
   }
@@ -130,8 +144,8 @@ const CardTitle = styled.div`
 const CardText = styled.div`
   font-size: 16px;
   line-height: 21px;
-  color: #8a8f98;
-  text-align: left;
+  color: #ffffffc5;
+  text-align: center;
 `;
 
 const Background = styled.div`
@@ -256,7 +270,7 @@ function GetStarted() {
               borderColor={"#FFAA62"}
               margin={"100px 0 0 0"}
             >
-              <CardTitle>Register your Company</CardTitle>
+              <CardTitle>Register</CardTitle>
               <CardText>
                 You can register your company with LunaDesk in under two minutes
                 - we’ve timed it.
@@ -270,10 +284,10 @@ function GetStarted() {
               borderColor={"#F14DC6"}
               margin={"50px 25px 0px 25px"}
             >
-              <CardTitle>Invite your Team</CardTitle>
+              <CardTitle>Invite</CardTitle>
               <CardText>
-                You can invite your entire team to join you on LunaDesk with
-                just a few short clicks.
+                Invite your whole team to join in. More team members means more
+                visability over team schedules.
               </CardText>
             </StartedCard>
           </Parallax>
@@ -284,10 +298,11 @@ function GetStarted() {
               borderColor={"#C43BFE"}
               margin={"0"}
             >
-              <CardTitle>Enjoy Hybrid Harmony</CardTitle>
+              <CardTitle>Done!</CardTitle>
               <CardText>
-                That’s it! Your team can now enjoy something we like to call
-                “Hybrid Harmony” - pretty nifty, huh?
+                Plan team days, decide when to go into the office and achieve
+                Hybrid Harmony with your team’s hybrid working schedules in one
+                place.
               </CardText>
             </StartedCard>
           </Parallax>

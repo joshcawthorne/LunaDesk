@@ -434,9 +434,9 @@ function Analytics() {
                   initial="hidden"
                   animate={animate ? "show" : "hidden"}
                 >
-                  <span>Understand your team better.</span> LunaDesk comes chock
-                  with built-in analytics to help you understand which Office
-                  days are the busiest, maximise face-to-face contact without
+                  <span>Understand your team better.</span> LunaDesk comes with
+                  built-in analytics to help you understand which Office days
+                  are the busiest, maximise face-to-face contact without
                   reducing Home days, and discover how your team is adapting to
                   the new normal.
                 </Paragraph>

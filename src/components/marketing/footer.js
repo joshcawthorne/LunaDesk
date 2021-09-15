@@ -43,6 +43,8 @@ const LeftContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 5;
+  cursor: pointer;
 `;
 
 const RightContent = styled.div`
@@ -99,6 +101,8 @@ const SocialItem = styled.div`
   width: 18px;
   cursor: pointer;
   margin-right: 15px;
+
+  text-decoration: none;
 `;
 
 const MadeText = styled.div`
@@ -118,12 +122,14 @@ function Footer() {
       <Container>
         <FooterContainerInner>
           <UpperLayer>
-            <LeftContent>
-              <Logo></Logo>
-            </LeftContent>
+            <Link passHref href={"/"}>
+              <LeftContent>
+                <Logo></Logo>
+              </LeftContent>
+            </Link>
             <RightContent>
               <Link
-                href={"mailto:hello@joshcawthorne.com?subject=LunaDesk"}
+                href={"mailto:contact@lunadesk.co?subject=LunaDesk"}
                 passHref
                 className="link"
               >
@@ -139,13 +145,33 @@ function Footer() {
             <LowerLeftContent>
               <SocialItems>
                 <SocialItem className="link">
-                  <FacebookIcon />
+                  <a
+                    href="https://www.facebook.com/lunadeskapp"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FacebookIcon />
+                  </a>
                 </SocialItem>
+
                 <SocialItem className="link">
-                  <LinkedInIcon />
+                  <a
+                    href="https://www.linkedin.com/company/luna-desk"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <LinkedInIcon />
+                  </a>
                 </SocialItem>
+
                 <SocialItem className="link">
-                  <TwitterIcon />
+                  <a
+                    href="https://twitter.com/luna_desk"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <TwitterIcon />
+                  </a>
                 </SocialItem>
               </SocialItems>
             </LowerLeftContent>
