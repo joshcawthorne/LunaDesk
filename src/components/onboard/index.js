@@ -12,7 +12,7 @@ import OfficeSelect from "./officeSelect";
 import FinishOnboarding from "./finishOnboarding";
 import mq from "../../utils/mq";
 
-import Logo from "../../../assets/svg/logo.svg";
+import Logo from "../../../assets/svg/logoOld.svg";
 import profilePic from "../../../public/images/backgroundFallback.jpg";
 import backgroundImage from "../../../assets/images/backgroundFallback.jpg";
 

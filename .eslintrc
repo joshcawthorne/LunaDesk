@@ -1,8 +1,9 @@
 {
   "extends": ["next", "next/core-web-vitals"],
-  "rules" : {
+  "rules": {
     "react-hooks/exhaustive-deps": 0,
     "react/no-unescaped-entities": 0,
-    "@next/next/no-page-custom-font": 0
+    "@next/next/no-page-custom-font": 0,
+    "@next/next/no-img-element": 0,
   }
 }

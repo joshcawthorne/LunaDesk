@@ -3,23 +3,39 @@ import styled, { css } from "styled-components";
 
 import mq from "../../utils/mq";
 
-const StyledContainer = styled.div`
-  width: calc(100% - 240px);
-  //max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 10px 240px;
-  z-index: 3;
+const StyledContainerOuter = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
+const StyledContainer = styled.div`
+  width: 100%;
+  max-width: 1070px;
+  padding: 10px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   ${(props) =>
     props.relative &&
     css`
       position: relative;
     `}
+  ${(props) =>
+    props.noPadding &&
+    css`
+      padding: 0;
+    `}
 `;
 
 function Container(props) {
-  return <StyledContainer {...props} />;
+  return (
+    <StyledContainerOuter>
+      <StyledContainer {...props} />
+    </StyledContainerOuter>
+  );
 }
 
 export default Container;
