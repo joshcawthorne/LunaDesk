@@ -10,13 +10,17 @@ The core concept of the app is for employees to share which days they're working
 
 ### LET ME AT IT!
 
-You're eager! A link to a live version is available here: https://lunadesk.co, though perhaps you'd like to finish reading this readme first? Or don't, I'm a readme not your boss.
+You're eager! A link to the original version submitted for the Supabase Hackathon is available here: https://lunadesk-freeze.netlify.app/, though perhaps you'd like to finish reading this readme first? Or don't, I'm a readme not your boss.
 
-### How did you build LunaDesk?
+Alternatively, a link to the site which you can use to register for Early Access to our Closed Beta is availble here: https://lunadesk.co
 
-LunaDesk, originally named WorkFrom, was built as an entry for the Supabase Hackathon. This project was created using **NextJS** with **Supabase Auth, Storage and Database**. It also utilised libraries including (but not limited to) Framer Motion, easy-peasy, styled-components and recharts.
+### How is LunaDesk built?
 
-WorkFrom won the Supabase hackathon and the project is currently being rebuilt to make it even better.
+LunaDesk, originally named WorkFrom, was built by Josh Cawthorne as an entry for the Supabase Hackathon. This project was created using **NextJS** with **Supabase Auth, Storage and Database**. It also utilised libraries including (but not limited to) Framer Motion, easy-peasy, styled-components and recharts.
+
+WorkFrom went on to win "Best Overall Project" at the Supabase hackathon.
+
+The LunaDesk team are currently hard at work on building a fully fleshed out Version One release, ready for launch later 2021.
 
 ### How does LunaDesk use Supabase?
 
@@ -24,19 +28,11 @@ As stated above, this project uses quite a few features of Supabase. It uses Aut
 
 ### How can I run LunaDesk on my local machine
 
-To run the project, all you need to do is download the project to your local machine, followed by running `npm i` to install the required packages, and then `npm run-script dev` to boot it up. **Please note:** an `.env.local` file is required in the following structure to run locally:
-
-```
-PUBLIC_SUPABASE_URL=[your_url]
-PUBLIC_SUPABASE_ANON_KEY=[your_key]
-BASE_DOMAIN=http://localhost:3000/
-```
+You can't. Sorry. We have private keys that're needed to connect the code to relevant services. You're more than welcome to explore our codebase to see how it's built, though.
 
 For your convenience, you can use the following site to view the project live instead. Nifty, huh?
 https://lunadesk.co
 
-Alternatively, feel free to reach out to us via email (contact@lunadesk.co), and we'd be happy to provide you with the required keys to hook it up to the existing test database, plus the company banking details should you have any large sums of money from a recently deceased distant relative we've never heard of.
+### I want to contribute!
 
-### It isn't finished?!
-
-No. It's not. We're working on it though! Keep checking back in here to see how we're get on. Alternatively, if we're being too slow you can have a go yourself and submitting a PR.
+Awesome! We're on the lookout for people to contribute to the project. If you're interested, drop us a line via contact@lunadesk.co
