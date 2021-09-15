@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { ParallaxProvider } from "react-scroll-parallax";
 
 import Head from "next/head";
+import Script from "next/script";
 import ApplicationLayer from "../src/components/applicationLayer";
 import Marketing from "../src/components/marketing";
 import { StoreProvider } from "easy-peasy";
@@ -205,6 +206,23 @@ const WorkFromApp = ({ Component, pageProps }) => {
             />
             <meta name="msapplication-TileColor" content="#da532c" />
             <meta name="theme-color" content="#ffffff" />
+
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-B5HD0RJ9NL"
+            />
+
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-B5HD0RJ9NL');
+            `,
+              }}
+            />
           </Head>
           <GlobalStyle />
           <App component={Component} pageProps={pageProps} />
