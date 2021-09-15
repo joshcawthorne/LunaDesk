@@ -149,7 +149,10 @@ const WorkFromApp = ({ Component, pageProps }) => {
       <ParallaxProvider>
         <AppContainer>
           <Head>
-            <title>LunaDesk</title>
+            <meta
+              property="twitter:image"
+              content="https://lunadesk-preview.netlify.com/images/socialImage.jpg"
+            ></meta>
 
             <title>LunaDesk | Work From Anywhere</title>
             <meta name="title" content="LunaDesk | Work From Anywhere" />
@@ -176,10 +179,7 @@ const WorkFromApp = ({ Component, pageProps }) => {
               property="twitter:description"
               content="With LunaDesk, your team can instantly see who’s where, when. LunaDesk also makes it a breeze to organise meetings with others, or even full teams, using shared days."
             />
-            <meta
-              property="twitter:image"
-              content="https://lunadesk-preview.netlify.com/images/socialImage.jpg"
-            ></meta>
+
             <link
               rel="apple-touch-icon"
               sizes="180x180"
