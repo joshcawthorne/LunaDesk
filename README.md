@@ -1,4 +1,4 @@
-![LunaDesk Logo](https://lunadesk-freeze.netlify.app/images/githubPhoto.jpg)
+![LunaDesk Logo](http://lunadesk.co/images/socialImage.jpg)
 
 # LunaDesk
 
