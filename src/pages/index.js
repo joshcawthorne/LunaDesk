@@ -10,7 +10,7 @@ const PageContainer = styled.div`
 `;
 
 function index() {
-  return <PageContainer>You are not logged in.</PageContainer>;
+  return <PageContainer>Index page.</PageContainer>;
 }
 
 export default index;
