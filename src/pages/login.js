@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { loginUser } from "../services/auth";
+import { useState, useEffect } from "react";
+import { loginUser, getUserProfile } from "../services/auth";
 import { useRouter } from "next/router";
 import { supabase } from "../services/supabaseClient";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 function Login() {
   const router = useRouter();
@@ -11,7 +12,14 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const user = supabase.auth.user();
 
-  console.log(user);
+  const isLoggedIn = useStoreState((state) => state.auth.isLoggedIn);
+  const logIn = useStoreActions((actions) => actions.auth.logIn);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push("/user-settings");
+    }
+  }, [isLoggedIn]);
 
   async function handleLogin() {
     setError(false);
@@ -24,7 +32,18 @@ function Login() {
       setError(true);
       setErrorMessage(attemptLogin.errorData.message);
     } else {
-      router.push("/user-settings");
+      const userProfile = await getUserProfile();
+      console.log(userProfile);
+      if (userProfile.error) {
+      } else {
+        logIn({
+          firstName: userProfile.data.first_name,
+          lastName: userProfile.data.last_name,
+          email: userProfile.data.email,
+          avatar: userProfile.data.avatar,
+          hasAvatar: userProfile.data.has_avatar,
+        });
+      }
     }
   }
   return (

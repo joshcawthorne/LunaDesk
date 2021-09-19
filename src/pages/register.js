@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { supabase } from "../services/supabaseClient";
 import { registerUser } from "../services/auth";
 
 function Register() {

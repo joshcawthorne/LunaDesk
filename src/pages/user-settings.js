@@ -1,5 +1,6 @@
 import router from "next/router";
 import React, { useEffect, useState } from "react";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 import {
   getUserProfile,
@@ -9,6 +10,7 @@ import {
 } from "../services/auth";
 
 function UserSettings() {
+  const logOut = useStoreActions((actions) => actions.auth.logOut);
   const [userProfile, setUserProfile] = useState({});
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
@@ -60,6 +62,7 @@ function UserSettings() {
     const attemptLogout = await logoutUser();
     if (attemptLogout.error) {
     } else {
+      logOut();
       router.push("/login");
     }
   }
