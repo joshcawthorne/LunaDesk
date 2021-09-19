@@ -1,5 +1,4 @@
 /* eslint-disable react/display-name */
-import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 
 /* 
