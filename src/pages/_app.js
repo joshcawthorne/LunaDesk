@@ -24,6 +24,24 @@ const LunaDeskWithStore = ({ Component, pageProps }) => {
     margin: 0;
   `;
 
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        console.log("Detected change");
+        fetch("/api/auth", {
+          method: "POST",
+          headers: new Headers({ "Content-Type": "application/json" }),
+          credentials: "same-origin",
+          body: JSON.stringify({ event, session }),
+        }).then((res) => res.json());
+      }
+    );
+
+    return () => {
+      authListener.unsubscribe();
+    };
+  }, []);
+
   return (
     <StoreProvider store={store}>
       <AppContainer>

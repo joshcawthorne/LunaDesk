@@ -1,6 +1,7 @@
 import router from "next/router";
 import React, { useEffect, useState } from "react";
 import { useStoreState, useStoreActions } from "easy-peasy";
+import withAuth from "../utils/withAuth";
 
 import {
   getUserProfile,
@@ -120,4 +121,4 @@ function UserSettings() {
   );
 }
 
-export default UserSettings;
+export default withAuth(UserSettings);
