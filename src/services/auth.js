@@ -117,6 +117,37 @@ async function logoutUser() {
   }
 }
 
+async function setUserCompany(id) {
+  try {
+    const session = supabase.auth.session();
+    const { data, error } = await supabase
+      .from("profiles")
+      .update({ company_id: id })
+      .eq("user_uuid", session.user.id);
+
+    if (error && status !== 406) {
+      return { error: true, errorData: error, data: null };
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+async function removeEmployee(id) {
+  try {
+    const { data, error } = await supabase
+      .from("profiles")
+      .update({ company_id: null })
+      .eq("user_uuid", id);
+
+    if (error && status !== 406) {
+      return { error: true, errorData: error, data: null };
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
 export {
   registerUser,
   loginUser,
@@ -125,4 +156,6 @@ export {
   getUserProfile,
   updateUserEmail,
   updateUserPassword,
+  setUserCompany,
+  removeEmployee,
 };

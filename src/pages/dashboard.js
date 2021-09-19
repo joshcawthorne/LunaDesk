@@ -1,23 +1,18 @@
 import React from "react";
 import withAuth from "../utils/withAuth";
-import { useStoreState, useStoreActions } from "easy-peasy";
-import { logoutUser } from "../services/auth";
+import { useStoreActions } from "easy-peasy";
+import AppLayout from "../layouts/appLayout";
 
 function Dashboard() {
   const logOut = useStoreActions((actions) => actions.auth.logOut);
-  async function handleLogout() {
-    const attemptLogout = await logoutUser();
-    if (attemptLogout.error) {
-    } else {
-      logOut();
-    }
-  }
   return (
-    <div>
-      Hello, it's the dashboard :){" "}
-      <button onClick={() => handleLogout()}>Logout</button>
-    </div>
+    <AppLayout>
+      <div>
+        Hello, it's the dashboard :){" "}
+        <button onClick={() => logOut()}>Logout</button>
+      </div>
+    </AppLayout>
   );
 }
 
-export default withAuth(Dashboard);
+export default Dashboard;

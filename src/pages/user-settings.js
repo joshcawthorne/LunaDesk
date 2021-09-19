@@ -1,7 +1,7 @@
 import router from "next/router";
 import React, { useEffect, useState } from "react";
 import { useStoreState, useStoreActions } from "easy-peasy";
-import withAuth from "../utils/withAuth";
+import AppLayout from "../layouts/appLayout";
 
 import {
   getUserProfile,
@@ -69,56 +69,60 @@ function UserSettings() {
   }
 
   return (
-    <div>
-      <h1>User Settings</h1>
-      <button onClick={() => handleLogout()}>Logout</button>
+    <AppLayout>
       <div>
-        <h3>Name</h3>
-        <input
-          value={firstNameInput}
-          onChange={(e) => setFirstNameInput(e.target.value)}
-        />
-        <input
-          value={lastNameInput}
-          onChange={(e) => setLastNameInput(e.target.value)}
-        />
-      </div>
-      <div>
-        <h3>Email</h3>
-        {emailVerificationNeeded && (
-          <div>
-            Please confirm this change via the email sent to{" "}
-            <b>{activeEmail}</b>. Can't access that email?{" "}
-            <a href="mailto: contact@lunadesk.co">
-              Contact support for more help
-            </a>
-          </div>
-        )}
-        <input
-          value={emailInput}
-          onChange={(e) => setEmailInput(e.target.value)}
-        />
-        <button onClick={() => handleUpdateEmail()}>Update Email</button>
-      </div>
-      <div>
-        <h3>Update Password</h3>
-        <label>New Password</label>
-        <input
-          value={newPasswordInput}
-          type={"password"}
-          onChange={(e) => setNewPasswordInput(e.target.value)}
-        />
-        <label>Confirm New Password</label>
-        <input
-          value={newPasswordConfirmInput}
-          onChange={(e) => setNewPasswordConfirmInput(e.target.value)}
-          type={"password"}
-        />
+        <h1>User Settings</h1>
+        <button onClick={() => handleLogout()}>Logout</button>
+        <div>
+          <h3>Name</h3>
+          <input
+            value={firstNameInput}
+            onChange={(e) => setFirstNameInput(e.target.value)}
+          />
+          <input
+            value={lastNameInput}
+            onChange={(e) => setLastNameInput(e.target.value)}
+          />
+        </div>
+        <div>
+          <h3>Email</h3>
+          {emailVerificationNeeded && (
+            <div>
+              Please confirm this change via the email sent to{" "}
+              <b>{activeEmail}</b>. Can't access that email?{" "}
+              <a href="mailto: contact@lunadesk.co">
+                Contact support for more help
+              </a>
+            </div>
+          )}
+          <input
+            value={emailInput}
+            onChange={(e) => setEmailInput(e.target.value)}
+          />
+          <button onClick={() => handleUpdateEmail()}>Update Email</button>
+        </div>
+        <div>
+          <h3>Update Password</h3>
+          <label>New Password</label>
+          <input
+            value={newPasswordInput}
+            type={"password"}
+            onChange={(e) => setNewPasswordInput(e.target.value)}
+          />
+          <label>Confirm New Password</label>
+          <input
+            value={newPasswordConfirmInput}
+            onChange={(e) => setNewPasswordConfirmInput(e.target.value)}
+            type={"password"}
+          />
 
-        <button onClick={() => handleUpdatePassword()}>Update Password</button>
+          <button onClick={() => handleUpdatePassword()}>
+            Update Password
+          </button>
+        </div>
       </div>
-    </div>
+    </AppLayout>
   );
 }
 
-export default withAuth(UserSettings);
+export default UserSettings;

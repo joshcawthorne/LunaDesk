@@ -63,6 +63,9 @@ function Login() {
         onChange={(e) => setPasswordInput(e.target.value)}
       />
       <button onClick={() => handleLogin()}>Login</button>
+      <button onClick={() => handleForgotPassword()}>
+        Forgotten your password?
+      </button>
     </div>
   );
 }
