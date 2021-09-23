@@ -1,4 +1,5 @@
 import { supabase } from "./supabaseClient";
+import instance from "./config";
 
 async function createCompany({ companyName }) {
   try {
@@ -208,6 +209,41 @@ async function userIsAdmin(userId, companyid) {
   }
 }
 
+async function createUserInvite(email, companyId) {
+  try {
+    const session = supabase.auth.session();
+    const { data, error } = await instance.post("/company/invite", {
+      email: email,
+      company: companyId,
+      role: "user",
+      invited_by: session.user.id,
+      environment: "live",
+    });
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+async function getInviteTokenData(token) {
+  try {
+    const { data, error } = await supabase
+      .from("company_invites")
+      .select()
+      .eq("invite_key", token)
+      .single();
+    if (error && status !== 406) {
+      return { error: true, errorData: error, data: null };
+    }
+
+    if (data) {
+      return { error: false, errorData: null, data };
+    }
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
 export {
   createCompany,
   getAllCompanies,
@@ -217,4 +253,6 @@ export {
   getCompanyEmployees,
   getUserOwnedCompanies,
   makeUserAdmin,
+  createUserInvite,
+  getInviteTokenData,
 };

@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
-import { supabase } from "../services/supabaseClient";
-import { createUserProfile } from "../services/auth";
+import { supabase } from "../../services/supabaseClient";
+import { createUserProfile } from "../../services/auth";
 import { useRouter } from "next/router";
 
 function Welcome() {

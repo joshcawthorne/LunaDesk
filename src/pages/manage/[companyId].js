@@ -7,6 +7,7 @@ import {
   getCompanyEmployees,
   getUserOwnedCompanies,
   makeUserAdmin,
+  createUserInvite,
 } from "../../services/company";
 
 import { removeEmployee } from "../../services/auth";
@@ -17,6 +18,7 @@ function ManageCompany() {
   const [companyEmployees, setCompanyEmployees] = useState([]);
   const [ownedCompanies, setOwnedCompanies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [emailInput, setEmailInput] = useState("");
   const router = useRouter();
   const { companyId } = router.query;
 
@@ -49,6 +51,10 @@ function ManageCompany() {
     fetchCompanyData();
   }
 
+  async function handleInvite() {
+    await createUserInvite(emailInput, companyId);
+  }
+
   if (loading) {
     return <div>Loading</div>;
   }
@@ -72,8 +78,19 @@ function ManageCompany() {
           onChange={(e) => setCompanyNameInput(e.target.value)}
         />
       </div>
+      <h2>Invite a new user</h2>
       <div>
-        <p>Employees of {companyData.name}</p>
+        <label>Email Address</label>
+        <input
+          value={emailInput}
+          onChange={(e) => setEmailInput(e.target.value)}
+          type={"email"}
+          autofill={"no"}
+        />
+        <button onClick={() => handleInvite()}>Invite</button>
+      </div>
+      <div>
+        <h2>Employees of {companyData.name}</h2>
         {companyEmployees.length === 0 && (
           <div>{companyData.name} has no Employees</div>
         )}

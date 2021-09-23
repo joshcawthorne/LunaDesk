@@ -1,10 +1,10 @@
 import { supabase } from "./supabaseClient";
 
-async function registerUser({ email, password }) {
+async function registerUser({ email, password, inviteCode }) {
   try {
     const { error, data } = await supabase.auth.signUp(
       { email, password },
-      { redirectTo: process.env.BASE_DOMAIN + "welcome" }
+      { redirectTo: process.env.BASE_DOMAIN + "welcome/invite/" + inviteCode }
     );
     if (error && status !== 406) {
       return { error: true, errorData: error, data: null };
@@ -17,13 +17,23 @@ async function registerUser({ email, password }) {
   }
 }
 
-async function createUserProfile({ firstName, lastName, id, email }) {
+async function createUserProfile({
+  firstName,
+  lastName,
+  id,
+  email,
+  company_id,
+}) {
   try {
-    const { data, error } = await supabase
-      .from("profiles")
-      .insert([
-        { first_name: firstName, last_name: lastName, user_uuid: id, email },
-      ]);
+    const { data, error } = await supabase.from("profiles").insert([
+      {
+        first_name: firstName,
+        last_name: lastName,
+        user_uuid: id,
+        email,
+        company_id: company_id,
+      },
+    ]);
     if (error && status !== 406) {
       return { error: true, errorData: error, data: null };
     }

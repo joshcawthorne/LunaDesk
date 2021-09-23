@@ -28,7 +28,6 @@ function CompanyDirector() {
     const userCompany = await getUserCompanyData();
     let owned = await getUserOwnedCompanies();
     setOwnedCompanies(owned.data);
-    console.log(userCompany);
     if (userCompany.noCompany) {
       setNoCompany(true);
     } else {
@@ -62,7 +61,7 @@ function CompanyDirector() {
               <div style={{ marginRight: "10px" }}>{company.name}</div>
               {userCompanyData.id !== company.id ? (
                 <button onClick={() => handleJoinCompany(company.id)}>
-                  Join {company.name}
+                  [DEBUG] Join {company.name}
                 </button>
               ) : (
                 <div>

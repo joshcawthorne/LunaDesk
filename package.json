@@ -11,6 +11,7 @@
   "dependencies": {
     "@babel/runtime": "^7.14.8",
     "@supabase/supabase-js": "^1.22.6",
+    "axios": "^0.21.4",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.13.2",
     "easy-peasy": "^5.0.3",
