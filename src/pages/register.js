@@ -1,5 +1,13 @@
 import { useState } from "react";
+import { styled } from "@stitches/react";
+
 import { registerUser } from "../services/auth";
+import { Button } from "../components/shared";
+
+const Title = styled("h1", {
+  fontWeight: "bold",
+  fontSize: "44px",
+});
 
 function Register() {
   const [emailInput, setEmailInput] = useState("");
@@ -25,7 +33,7 @@ function Register() {
   }
   return (
     <div>
-      <h1>Register for LunaDesk</h1>
+      <Title>Register for LunaDesk</Title>
 
       {error && <div style={{ color: "red" }}>{errorMessage}</div>}
       {registerSuccess ? (
@@ -49,7 +57,7 @@ function Register() {
               onChange={(e) => setPasswordInput(e.target.value)}
             />
           </div>
-          <button onClick={() => handleRegister()}>Go</button>
+          <Button>Get Started</Button>
         </div>
       )}
     </div>

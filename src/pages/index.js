@@ -1,16 +1,14 @@
 import React from "react";
-import styled from "styled-components";
-
-const PageContainer = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import { styled } from "styled-components";
+import AppLayout from "../layouts/appLayout";
+import { Button } from "src/components/shared";
 
 function index() {
-  return <PageContainer>Index page.</PageContainer>;
+  return (
+    <AppLayout>
+      Index page. <Button>Cool</Button>
+    </AppLayout>
+  );
 }
 
 export default index;

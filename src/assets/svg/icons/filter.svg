@@ -1,0 +1,16 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/Filter">
+        <g id="Filter">
+            <path id="Stroke 1" d="M11.1437 17.8829H4.67114" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd"
+                d="M15.2051 17.8839C15.2051 19.9257 15.886 20.6057 17.9269 20.6057C19.9678 20.6057 20.6487 19.9257 20.6487 17.8839C20.6487 15.8421 19.9678 15.1621 17.9269 15.1621C15.886 15.1621 15.2051 15.8421 15.2051 17.8839Z"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="Stroke 5" d="M14.1768 7.39439H20.6484" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path id="Stroke 7" fill-rule="evenodd" clip-rule="evenodd"
+                d="M10.1154 7.39293C10.1154 5.35204 9.43448 4.67114 7.39358 4.67114C5.35179 4.67114 4.6709 5.35204 4.6709 7.39293C4.6709 9.43472 5.35179 10.1147 7.39358 10.1147C9.43448 10.1147 10.1154 9.43472 10.1154 7.39293Z"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+    </g>
+</svg>

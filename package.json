@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.14.8",
+    "@stitches/react": "^1.2.1",
     "@supabase/supabase-js": "^1.22.6",
     "axios": "^0.21.4",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.13.2",
+    "babel-plugin-transform-stitches-display-name": "^0.0.1",
     "easy-peasy": "^5.0.3",
     "framer-motion": "^4.1.17",
     "js-cookie": "^3.0.1",

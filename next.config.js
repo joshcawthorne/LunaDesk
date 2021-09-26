@@ -7,7 +7,10 @@ module.exports = withImages({
     PUBLIC_SUPABASE_ANON_KEY: process.env.PUBLIC_SUPABASE_ANON_KEY,
     BASE_DOMAIN: process.env.BASE_DOMAIN,
   },
-  exclude: path.resolve(__dirname, "assets/svg/"),
+  images: {
+    disableStaticImages: true,
+  },
+  exclude: path.resolve(__dirname, "src/assets/svg/"),
 
   esModule: true,
   webpack: (config) => {

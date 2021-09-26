@@ -1,0 +1,16 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/Add User">
+        <g id="Add User">
+            <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd"
+                d="M9.92234 21.8083C6.10834 21.8083 2.85034 21.2313 2.85034 18.9213C2.85034 16.6113 6.08734 14.5103 9.92234 14.5103C13.7363 14.5103 16.9943 16.5913 16.9943 18.9003C16.9943 21.2093 13.7573 21.8083 9.92234 21.8083Z"
+                stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd"
+                d="M9.92243 11.2159C12.4254 11.2159 14.4554 9.1859 14.4554 6.6829C14.4554 4.1789 12.4254 2.1499 9.92243 2.1499C7.41943 2.1499 5.38943 4.1789 5.38943 6.6829C5.38043 9.1769 7.39643 11.2069 9.89043 11.2159H9.92243Z"
+                stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="Stroke 5" d="M19.1313 8.12891V12.1389" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path id="Stroke 7" d="M21.1776 10.1338H17.0876" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </g>
+    </g>
+</svg>

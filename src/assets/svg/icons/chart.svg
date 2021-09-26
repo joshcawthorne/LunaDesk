@@ -1,0 +1,15 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/Chart">
+        <g id="Chart">
+            <path id="Stroke 1" d="M7.4831 10.261V16.9547" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path id="Stroke 2" d="M12.0368 7.05737V16.9553" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path id="Stroke 3" d="M16.5158 13.7983V16.9552" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path id="Stroke 4" fill-rule="evenodd" clip-rule="evenodd"
+                d="M2.30005 12.0369C2.30005 4.73479 4.73479 2.30005 12.0369 2.30005C19.339 2.30005 21.7737 4.73479 21.7737 12.0369C21.7737 19.339 19.339 21.7737 12.0369 21.7737C4.73479 21.7737 2.30005 19.339 2.30005 12.0369Z"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+    </g>
+</svg>

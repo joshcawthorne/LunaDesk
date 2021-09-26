@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react";
-import { useStoreActions, useStoreState } from "easy-peasy";
+import { useEffect } from "react";
 import { supabase } from "../services/supabaseClient";
-import styled, { createGlobalStyle } from "styled-components";
-import { useRouter } from "next/router";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import { StoreProvider, useStoreState } from "easy-peasy";
 
-import { StoreProvider } from "easy-peasy";
 import store from "../store";
+import { theme } from "../style/theme";
 
-const LunaDesk = ({ component: Component, pageProps }) => {
-  return <Component {...pageProps} />;
-};
+const AppContainer = styled.div``;
 
-const LunaDeskWithStore = ({ Component, pageProps }) => {
-  const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   body {
-    margin: 0
+    font-family: 'Inter', sans-serif;
   }
 `;
 
-  const AppContainer = styled.div`
-    font-family: "Inter", sans-serif;
-    padding: 0;
-    margin: 0;
-  `;
+const LunaDesk = ({ component: Component, pageProps }) => {
+  const lightMode = useStoreState((state) => state.preferences.lightMode);
+  return (
+    <ThemeProvider theme={theme[lightMode ? "light" : "dark"]}>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
+};
 
+const LunaDeskWithStore = ({ Component, pageProps }) => {
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
@@ -45,7 +45,7 @@ const LunaDeskWithStore = ({ Component, pageProps }) => {
   return (
     <StoreProvider store={store}>
       <AppContainer>
-        <GlobalStyle />
+        <GlobalStyle whiteColor />
         <LunaDesk component={Component} pageProps={pageProps} />
       </AppContainer>
     </StoreProvider>
