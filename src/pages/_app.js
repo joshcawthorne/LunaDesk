@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { supabase } from "../services/supabaseClient";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import { StoreProvider, useStoreState } from "easy-peasy";
+import "src/style/uplot.css";
 
 import store from "../store";
 import { theme } from "../style/theme";
@@ -36,7 +37,6 @@ const LunaDeskWithStore = ({ Component, pageProps }) => {
         }).then((res) => res.json());
       }
     );
-
     return () => {
       authListener.unsubscribe();
     };

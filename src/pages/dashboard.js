@@ -1,18 +1,14 @@
 import React from "react";
-import withAuth from "../utils/withAuth";
-import { useStoreActions } from "easy-peasy";
 import AppLayout from "../layouts/appLayout";
+import Chart from "src/components/chart";
 
-function Dashboard() {
-  const logOut = useStoreActions((actions) => actions.auth.logOut);
+function DashboardApp() {
   return (
     <AppLayout>
-      <div>
-        Hello, it's the dashboard :){" "}
-        <button onClick={() => logOut()}>Logout</button>
-      </div>
+      hi
+      <Chart />
     </AppLayout>
   );
 }
 
-export default Dashboard;
+export default DashboardApp;
