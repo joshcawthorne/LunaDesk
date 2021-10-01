@@ -2,7 +2,7 @@ import { useState } from "react";
 import { styled } from "@stitches/react";
 
 import { registerUser } from "../services/auth";
-import { Button } from "../components/shared";
+import Button from "../components/shared/button";
 
 const Title = styled("h1", {
   fontWeight: "bold",
