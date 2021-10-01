@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { styled } from "@stitches/react";
+import styled from "styled-components";
 
 import { registerUser } from "../services/auth";
 import Button from "../components/shared/button";
