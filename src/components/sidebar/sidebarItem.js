@@ -55,8 +55,34 @@ const Pill = styled.div`
   opacity: 0.8;
 `;
 
-function SidebarItem({ title, link, Icon, themeContext, hasSubItems, pill }) {
-  console.log(themeContext);
+const ActionItem = styled.div``;
+
+function SidebarItem({
+  title,
+  link,
+  action,
+  Icon,
+  themeContext,
+  hasSubItems,
+  pill,
+}) {
+  if (action) {
+    return (
+      <ActionItem onClick={() => action()}>
+        <SidebarItemContainerOuter hasSubItems={hasSubItems}>
+          <SidebarItemContainer>
+            <Icon stroke={themeContext.text400} strokeWidth={2.25} />
+            <ItemText>{title}</ItemText>
+          </SidebarItemContainer>
+          {pill && (
+            <PillContainer>
+              <Pill>{pill}</Pill>
+            </PillContainer>
+          )}
+        </SidebarItemContainerOuter>
+      </ActionItem>
+    );
+  }
   return (
     <Link href={link} passHref>
       <SidebarItemContainerOuter hasSubItems={hasSubItems}>

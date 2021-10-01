@@ -3,12 +3,7 @@ import AppLayout from "../layouts/appLayout";
 import Chart from "src/components/chart";
 
 function DashboardApp() {
-  return (
-    <AppLayout>
-      hi
-      <Chart />
-    </AppLayout>
-  );
+  return <AppLayout>hi</AppLayout>;
 }
 
 export default DashboardApp;

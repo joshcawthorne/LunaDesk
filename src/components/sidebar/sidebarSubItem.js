@@ -49,7 +49,28 @@ const LinkContainer = styled.div`
     `}
 `;
 
-function SidebarSubItem({ title, link, Icon, themeContext, lastSubItem }) {
+const ActionItem = styled.div``;
+
+function SidebarSubItem({
+  title,
+  link,
+  action,
+  Icon,
+  themeContext,
+  lastSubItem,
+}) {
+  if (action) {
+    return (
+      <ActionItem onClick={() => action()}>
+        <LinkContainer lastSubItem={lastSubItem}>
+          <Branch />
+          <SidebarItemContainer>
+            <ItemText>{title}</ItemText>
+          </SidebarItemContainer>
+        </LinkContainer>
+      </ActionItem>
+    );
+  }
   return (
     <Link href={link} passHref>
       <LinkContainer lastSubItem={lastSubItem}>

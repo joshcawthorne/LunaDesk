@@ -132,6 +132,13 @@ function Sidebar() {
   const { lightMode, sidebarCollapsed } = useStoreState(
     (state) => state.preferences
   );
+  const { setDisplayCompanySettings } = useStoreActions(
+    (actions) => actions.app
+  );
+
+  function handleOpenCompanySettings() {
+    setDisplayCompanySettings(true);
+  }
 
   return (
     <SidebarContainer>
@@ -187,7 +194,7 @@ function Sidebar() {
           />
           <SidebarSubItem
             title={"Manage Lucky Duck"}
-            link={"/company/manage"}
+            action={handleOpenCompanySettings}
             themeContext={themeContext}
           />
 

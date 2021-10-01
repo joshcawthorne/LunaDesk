@@ -4,6 +4,7 @@ import { useStoreState } from "easy-peasy";
 import Header from "../features/header";
 import Sidebar from "../features/sidebar";
 import withAuth from "../utils/withAuth";
+import CompanySettings from "../features/companySettings";
 
 const LunaDeskContainer = styled.div``;
 
@@ -18,10 +19,13 @@ const ContentContainer = styled.div`
 `;
 
 const AppLayout = ({ children }) => {
+  const { displayCompanySettings } = useStoreState((state) => state.app);
+
   return (
     <LunaDeskContainer>
       <Header />
       <Sidebar />
+      {displayCompanySettings && <CompanySettings />}
       <ContentContainer>{children}</ContentContainer>
     </LunaDeskContainer>
   );

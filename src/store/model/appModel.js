@@ -5,6 +5,10 @@ const app = {
   setDisplayModifyDayStatus: action((state, payload) => {
     state.displayModifyDayStatus = payload;
   }),
+  displayCompanySettings: false,
+  setDisplayCompanySettings: action((state, payload) => {
+    state.displayCompanySettings = payload;
+  }),
 };
 
 export default app;
