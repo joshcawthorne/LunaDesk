@@ -4,6 +4,9 @@ import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import { StoreProvider, useStoreState } from "easy-peasy";
 import "src/style/uplot.css";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import store from "../store";
 import { theme } from "../style/theme";
 
@@ -15,11 +18,21 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const StyledToastContainer = styled(ToastContainer)`
+  .Toastify__close-button--light {
+    color: ${(props) => props.theme.text100};
+  }
+  .Toastify__toast {
+    background-color: ${(props) => props.theme.surface100};
+  }
+`;
+
 const LunaDesk = ({ component: Component, pageProps }) => {
   const lightMode = useStoreState((state) => state.preferences.lightMode);
   return (
     <ThemeProvider theme={theme[lightMode ? "light" : "dark"]}>
       <Component {...pageProps} />
+      <StyledToastContainer />
     </ThemeProvider>
   );
 };

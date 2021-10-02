@@ -132,12 +132,22 @@ function Sidebar() {
   const { lightMode, sidebarCollapsed } = useStoreState(
     (state) => state.preferences
   );
-  const { setDisplayCompanySettings } = useStoreActions(
-    (actions) => actions.app
-  );
+  const {
+    setDisplayCompanySettings,
+    setDisplayUserSettings,
+    setDisplayInviteModal,
+  } = useStoreActions((actions) => actions.app);
 
   function handleOpenCompanySettings() {
     setDisplayCompanySettings(true);
+  }
+
+  function handleOpenUserSettings() {
+    setDisplayUserSettings(true);
+  }
+
+  function handleOpenInviteModal() {
+    setDisplayInviteModal(true);
   }
 
   return (
@@ -146,7 +156,7 @@ function Sidebar() {
         <UpperLayer>
           <LogoContainer>
             <Logo
-              fill={"#fff"}
+              fill={themeContext.text100}
               style={{ zIndex: "2" }}
               width={"150px"}
               filter={"drop-shadow(4px 6px 4px rgba(0, 0, 0, 0.25))"}
@@ -193,6 +203,11 @@ function Sidebar() {
             hasSubItems
           />
           <SidebarSubItem
+            title={"Invite people"}
+            action={handleOpenInviteModal}
+            themeContext={themeContext}
+          />
+          <SidebarSubItem
             title={"Manage Lucky Duck"}
             action={handleOpenCompanySettings}
             themeContext={themeContext}
@@ -214,7 +229,7 @@ function Sidebar() {
             Icon={Settings}
             themeContext={themeContext}
             title={"Settings"}
-            link={"/create-company"}
+            action={handleOpenUserSettings}
           />
         </SidebarBottomContentContainerInner>
         <UserIndicator themeContext={themeContext} />

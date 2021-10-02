@@ -9,6 +9,14 @@ const app = {
   setDisplayCompanySettings: action((state, payload) => {
     state.displayCompanySettings = payload;
   }),
+  displayUserSettings: false,
+  setDisplayUserSettings: action((state, payload) => {
+    state.displayUserSettings = payload;
+  }),
+  displayInviteModal: false,
+  setDisplayInviteModal: action((state, payload) => {
+    state.displayInviteModal = payload;
+  }),
 };
 
 export default app;

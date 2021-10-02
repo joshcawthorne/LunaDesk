@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { useStoreActions, useStoreState } from "easy-peasy";
-import useOnclickOutside from "react-cool-onclickoutside";
+
+import Modal from "src/components/shared/modal";
 import Tabs from "src/components/shared/tabs";
+import CompanyDetailsSettings from "src/features/settings/companySettings/companyDetailsSettings";
+import CompanyAdminSettings from "src/features/settings/companySettings/companyAdminSettings";
+import CompanyInviteSettings from "src/features/settings/companySettings/companyInviteSettings";
 
 const CompanySettingsOuterContainer = styled.div`
   position: absolute;
@@ -24,20 +28,25 @@ const CompanySettingsOuterContainer = styled.div`
 
 const CompanySettingsModal = styled.div`
   padding: 40px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.surface100};
+  color: ${(props) => props.theme.text100};
   cursor: initial;
   border-radius: 10px;
+  width: 95%;
+  max-width: 800px;
 `;
 
 const Title = styled.div`
   font-size: 32px;
-  color: #000000;
+  color: ${(props) => props.theme.text100};
   font-weight: 500;
   margin-bottom: 20px;
   span {
     font-weight: bold;
   }
 `;
+
+const SettingsContentContainer = styled.div``;
 
 function CompanySettings() {
   const { setDisplayCompanySettings } = useStoreActions(
@@ -46,35 +55,49 @@ function CompanySettings() {
   const { displayCompanySettings } = useStoreState((state) => state.app);
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const ref = useOnclickOutside(() => {
-    if (displayCompanySettings) {
-      setDisplayCompanySettings(false);
+  function RenderSettingsTab() {
+    switch (selectedTab) {
+      case 0:
+        return <CompanyDetailsSettings />;
+      case 1:
+        return <CompanyAdminSettings />;
+      case 2:
+        return <CompanyInviteSettings />;
+      default:
+        return <div>Unexpected tab :(</div>;
     }
-  });
+  }
 
   return (
-    <CompanySettingsOuterContainer>
-      <CompanySettingsModal ref={ref}>
-        <Title>
-          Manage <span>Lucky Duck</span>
-        </Title>
-        <Tabs
-          tabs={[
-            {
-              id: 0,
-              title: "Settings",
-            },
-            {
-              id: 1,
-              title: "More Settings",
-            },
-          ]}
-          activeTab={selectedTab}
-          updateTab={setSelectedTab}
-          minWidth={"100px"}
-        />
-      </CompanySettingsModal>
-    </CompanySettingsOuterContainer>
+    <Modal
+      title={"Manage Lucky Duck"}
+      modalVisible={displayCompanySettings}
+      setModal={setDisplayCompanySettings}
+    >
+      <Tabs
+        tabs={[
+          {
+            id: 0,
+            title: "Company Details",
+          },
+          {
+            id: 1,
+            title: "Company Admins",
+          },
+          {
+            id: 2,
+            title: "Company Invites",
+          },
+        ]}
+        activeTab={selectedTab}
+        updateTab={setSelectedTab}
+        minWidth={"100px"}
+        maxWidth={"170px"}
+      />
+      <SettingsContentContainer>
+        <RenderSettingsTab />
+      </SettingsContentContainer>
+    </Modal>
   );
 }
 

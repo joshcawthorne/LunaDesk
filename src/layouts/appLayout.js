@@ -5,6 +5,8 @@ import Header from "../features/header";
 import Sidebar from "../features/sidebar";
 import withAuth from "../utils/withAuth";
 import CompanySettings from "../features/companySettings";
+import UserSettings from "../features/userSettings";
+import CompanyInvite from "../features/companyInvite";
 
 const LunaDeskContainer = styled.div``;
 
@@ -19,13 +21,16 @@ const ContentContainer = styled.div`
 `;
 
 const AppLayout = ({ children }) => {
-  const { displayCompanySettings } = useStoreState((state) => state.app);
+  const { displayCompanySettings, displayUserSettings, displayInviteModal } =
+    useStoreState((state) => state.app);
 
   return (
     <LunaDeskContainer>
       <Header />
       <Sidebar />
       {displayCompanySettings && <CompanySettings />}
+      {displayUserSettings && <UserSettings />}
+      {displayInviteModal && <CompanyInvite />}
       <ContentContainer>{children}</ContentContainer>
     </LunaDeskContainer>
   );

@@ -26,7 +26,9 @@
     "react-cool-onclickoutside": "^1.6.2",
     "react-dom": "17.0.2",
     "react-dropzone": "^11.4.0",
+    "react-hotkeys-hook": "^3.4.3",
     "react-svg-loader": "^3.0.3",
+    "react-toastify": "^8.0.3",
     "styled-components": "^5.3.1",
     "uplot": "^1.6.16",
     "uplot-react": "^1.1.1"

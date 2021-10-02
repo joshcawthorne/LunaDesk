@@ -212,16 +212,18 @@ async function userIsAdmin(userId, companyid) {
 async function createUserInvite(email, companyId) {
   try {
     const session = supabase.auth.session();
+    const userCompany = await getUserCompany();
+    console.log(userCompany);
     const { data, error } = await instance.post("/company/invite", {
       email: email,
-      company: companyId,
+      company: userCompany.data.id,
       role: "user",
       invited_by: session.user.id,
       environment: "live",
     });
-    return data;
+    return { error: false, errorData: null, data: data };
   } catch (e) {
-    console.log(e);
+    return { error: true, errorData: e, data: null };
   }
 }
 
