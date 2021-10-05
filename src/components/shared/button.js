@@ -1,77 +1,94 @@
 import styled, { css } from "styled-components";
+import { TailSpin } from "react-loading-icons";
+import { motion } from "framer-motion";
 
 const ButtonItem = styled.button`
   background-color: ${(props) => props.theme.surface200};
-  border-style: solid;
-  border-width: 0px;
-  padding: 24px 12px;
-  border-radius: 10px;
-  color: #fff;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20px;
-  margin-bottom: 15px;
   user-select: none;
   cursor: pointer;
-  font-size: 16px;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 1px;
   transition: 400ms;
+  max-width: 90vw;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin: 0px;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.3px;
 
+  -webkit-app-region: no-drag;
+  min-width: 32px;
+  height: 48px;
+  padding: 0px 24px;
+  width: 340px;
+  border: 1px solid rgb(110, 121, 214);
+  box-shadow: rgb(0 0 0 / 7%) 0px 1px 2px;
+  background: #0d1afc;
+  color: rgb(255, 255, 255);
   :hover {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
       rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   }
-  ${(props) =>
-    props.success &&
-    css`
-      background-color: ${props.theme.accentSuccess};
-    `}
 
   ${(props) =>
-    props.warning &&
-    css`
-      background-color: ${props.theme.accentWarning};
-      color: ${(props) => props.theme.text200};
-    `}
-
+    props.disabled ||
+    (props.loading &&
+      css`
+        opacity: 0.6;
+        transition: 400ms;
+        cursor: not-allowed;
+        :hover {
+          box-shadow: unset;
+        }
+      `)}
   ${(props) =>
-    props.gradient &&
+    props.skipButton &&
     css`
-      background-color: rgb(252, 146, 56);
-      background-image: linear-gradient(
-          90deg,
-          rgb(230, 35, 187) 0%,
-          rgb(248, 184, 79) 100%
-        ),
-        linear-gradient(0deg, rgb(255, 255, 255), rgb(255, 255, 255));
-    `}
-
-    ${(props) =>
-    props.disabled &&
-    css`
-      opacity: 0.6;
-      transition: 400ms;
-      cursor: not-allowed;
-      :hover {
-        box-shadow: unset;
-      }
+      width: 155px;
+      background-color: #636bfd;
     `}
 `;
 
-function Button({ text, action, style, warning, success, disabled, gradient }) {
+const LoadingContainer = styled(motion.div)`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
+function Button({ text, action, style, disabled, loading, skipButton }) {
   return (
     <ButtonItem
       onClick={() => action && !disabled && action()}
-      warning={warning}
-      success={success}
-      gradient={gradient}
       style={{ ...style }}
+      loading={loading}
       disabled={disabled}
+      skipButton={skipButton}
     >
       {text}
+      {loading && (
+        <LoadingContainer
+          initial={{ opacity: 0 }}
+          animate={
+            loading
+              ? { opacity: 1, transition: { duration: 0.5 } }
+              : { opacity: 0 }
+          }
+        >
+          <TailSpin stroke="#fff" width={"18px"} strokeWidth={4} />
+        </LoadingContainer>
+      )}
     </ButtonItem>
   );
 }

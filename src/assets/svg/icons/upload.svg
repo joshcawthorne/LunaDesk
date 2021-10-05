@@ -1,0 +1,16 @@
+<svg height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/Paper Plus">
+        <g id="Paper Plus">
+            <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd"
+                d="M20.1601 8.3L14.4901 2.9C13.7601 2.8 12.9401 2.75 12.0401 2.75C5.75015 2.75 3.65015 5.07 3.65015 12C3.65015 18.94 5.75015 21.25 12.0401 21.25C18.3401 21.25 20.4401 18.94 20.4401 12C20.4401 10.58 20.3501 9.35 20.1601 8.3Z"
+                stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="Stroke 3" d="M13.9341 2.83276V5.49376C13.9341 7.35176 15.4401 8.85676 17.2981 8.85676H20.2491"
+                stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="Stroke 5" d="M14.3124 12.9807H9.41235" stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path id="Stroke 7" d="M11.8633 15.4308V10.5308" stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </g>
+    </g>
+</svg>

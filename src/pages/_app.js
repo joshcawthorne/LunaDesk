@@ -15,6 +15,8 @@ const AppContainer = styled.div``;
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Inter', sans-serif;
+    padding: 0;
+    margin: 0;
   }
 `;
 

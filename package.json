@@ -27,6 +27,7 @@
     "react-dom": "17.0.2",
     "react-dropzone": "^11.4.0",
     "react-hotkeys-hook": "^3.4.3",
+    "react-loading-icons": "^1.0.6",
     "react-svg-loader": "^3.0.3",
     "react-toastify": "^8.0.3",
     "styled-components": "^5.3.1",

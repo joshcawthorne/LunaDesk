@@ -17,6 +17,7 @@ function Invite() {
   const [registerSuccess, setRegisterSuccess] = useState(false);
 
   useEffect(() => {
+    console.log(router.query);
     if (router.query.token) {
       setToken(router.query.token);
       setHasToken(true);
@@ -25,7 +26,7 @@ function Invite() {
       setHasToken(false);
       setLoading(false);
     }
-  }, []);
+  }, [router.query]);
 
   async function handleRegister() {
     setError(false);
@@ -46,6 +47,7 @@ function Invite() {
   async function fetchTokenData(token) {
     const userTokenData = await getInviteTokenData(token);
     setTokenData(userTokenData.data);
+    console.log(userTokenData);
     setLoading(false);
   }
 
@@ -54,7 +56,7 @@ function Invite() {
   }
 
   if (loading) {
-    <div>Loading</div>;
+    return <div>Loading</div>;
   }
   return (
     <div
