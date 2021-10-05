@@ -6,6 +6,7 @@ module.exports = withImages({
     PUBLIC_SUPABASE_URL: process.env.PUBLIC_SUPABASE_URL,
     PUBLIC_SUPABASE_ANON_KEY: process.env.PUBLIC_SUPABASE_ANON_KEY,
     BASE_DOMAIN: process.env.BASE_DOMAIN,
+    API_BASE_URL: process.env.API_BASE_URL,
   },
   images: {
     disableStaticImages: true,

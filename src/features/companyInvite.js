@@ -4,7 +4,7 @@ import { useStoreActions, useStoreState } from "easy-peasy";
 import { useHotkeys } from "react-hotkeys-hook";
 
 import Modal from "src/components/shared/modal";
-import TextField from "src/components/shared/textfield";
+import TextField from "src/components/shared/textField";
 import Button from "src/components/shared/button";
 import { createUserInvite } from "src/services/company";
 import LoadingIcon from "src/components/shared/loadingIcon";
