@@ -12,7 +12,7 @@ const TextFieldItem = styled.input`
   line-height: 24px;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid rgb(223, 225, 228);
+  border: 1px solid #dfe1e4;
   border-radius: 4px;
   font-size: 13px;
   color: #282a30;
@@ -21,17 +21,20 @@ const TextFieldItem = styled.input`
   height: 48px;
   padding: 12px;
   width: 100%;
+  background-color: #f4f5fc;
+  border-color: #2362dc;
   :focus {
-    border-color: #2362dc;
+    border-width: 3px;
     outline: none;
   }
 `;
 
-function TextField({ value, setValue, type }) {
+function TextField({ value, setValue, type, placeholder }) {
   return (
     <TextFieldItem
       value={value}
       onChange={(e) => setValue(e.currentTarget.value)}
+      placeholder={placeholder}
       name="new-password"
       id="new-password"
       autocomplete="new-password"

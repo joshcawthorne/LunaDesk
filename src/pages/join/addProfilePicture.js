@@ -113,9 +113,13 @@ function Welcome({ firstName, setonboardingPosition }) {
   function handleContinue() {
     setLoading(true);
     setTimeout(() => {
-      setonboardingPosition(1);
+      setonboardingPosition(0);
       setLoading(false);
     }, 1500);
+  }
+
+  function handleSkip() {
+    setonboardingPosition(2);
   }
 
   return (
@@ -128,6 +132,7 @@ function Welcome({ firstName, setonboardingPosition }) {
       buttonAction={handleContinue}
       buttonLoading={loading}
       buttonActive={true}
+      skipAction={handleSkip}
       skipButton
     >
       <UploadBox>

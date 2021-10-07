@@ -86,7 +86,12 @@ function Button({ text, action, style, disabled, loading, skipButton }) {
               : { opacity: 0 }
           }
         >
-          <TailSpin stroke="#fff" width={"18px"} strokeWidth={4} />
+          <TailSpin
+            stroke="#fff"
+            width={"18px"}
+            strokeWidth={4}
+            style={{ overflow: "visible" }}
+          />
         </LoadingContainer>
       )}
     </ButtonItem>
