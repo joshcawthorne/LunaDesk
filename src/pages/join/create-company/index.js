@@ -1,9 +1,8 @@
-import react from "react";
+import React from "react";
+import AppLayout from "../layouts/appLayout";
 
 function CreateCompany() {
-  return(
-    <div>Temp</div>
-  )
+  return <AppLayout>hi</AppLayout>;
 }
 
 export default CreateCompany;
