@@ -38,16 +38,25 @@ const ButtonItem = styled.button`
   }
 
   ${(props) =>
-    props.disabled ||
-    (props.loading &&
-      css`
-        opacity: 0.6;
-        transition: 400ms;
-        cursor: not-allowed;
-        :hover {
-          box-shadow: unset;
-        }
-      `)}
+    props.disabled &&
+    css`
+      opacity: 0.4;
+      transition: 400ms;
+      cursor: not-allowed;
+      :hover {
+        box-shadow: unset;
+      }
+    `}
+  ${(props) =>
+    props.loading &&
+    css`
+      opacity: 0.4;
+      transition: 400ms;
+      cursor: not-allowed;
+      :hover {
+        box-shadow: unset;
+      }
+    `}
   ${(props) =>
     props.skipButton &&
     css`

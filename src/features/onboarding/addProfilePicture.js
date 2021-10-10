@@ -107,19 +107,19 @@ const UploadSubtext = styled.div`
   font-weight: 500;
 `;
 
-function Welcome({ firstName, setonboardingPosition }) {
+function Welcome({ firstName, setOnboardingPosition }) {
   const [loading, setLoading] = useState(false);
 
   function handleContinue() {
     setLoading(true);
     setTimeout(() => {
-      setonboardingPosition(0);
+      setOnboardingPosition(0);
       setLoading(false);
     }, 1500);
   }
 
   function handleSkip() {
-    setonboardingPosition(2);
+    setOnboardingPosition(2);
   }
 
   return (

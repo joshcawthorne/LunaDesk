@@ -6,6 +6,7 @@ import "src/style/uplot.css";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "src/style/selectSearchStyle.css";
 
 import store from "../store";
 import { theme } from "../style/theme";

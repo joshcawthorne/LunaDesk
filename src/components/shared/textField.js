@@ -23,6 +23,10 @@ const TextFieldItem = styled.input`
   width: 100%;
   background-color: #f4f5fc;
   border-color: #2362dc;
+
+  ::placeholder {
+    opacity: 0.4;
+  }
   :focus {
     border-width: 3px;
     outline: none;

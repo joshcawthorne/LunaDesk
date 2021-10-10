@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 const uPlot = dynamic(() => import("uplot"), {
   ssr: false,
 });
+
 const UplotReact = dynamic(() => import("uplot-react"), {
   ssr: false,
 });

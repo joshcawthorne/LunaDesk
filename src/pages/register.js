@@ -4,10 +4,10 @@ import styled from "styled-components";
 import { registerUser } from "../services/auth";
 import Button from "../components/shared/button";
 
-const Title = styled("h1", {
-  fontWeight: "bold",
-  fontSize: "44px",
-});
+const Title = styled.div`
+  font-weight: bold;
+  font-size: 44px;
+`;
 
 function Register() {
   const [emailInput, setEmailInput] = useState("");
@@ -57,7 +57,7 @@ function Register() {
               onChange={(e) => setPasswordInput(e.target.value)}
             />
           </div>
-          <Button>Get Started</Button>
+          <button onClick={() => handleRegister()}> Get Started </button>
         </div>
       )}
     </div>

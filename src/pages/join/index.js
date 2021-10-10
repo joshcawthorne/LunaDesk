@@ -1,11 +1,21 @@
 import { useState } from "react";
-import Layout from "src/layouts/onboardingLayout";
+import dynamic from "next/dynamic";
 
-import Welcome from "./welcome";
-import AddProfilePicture from "./addProfilePicture";
+import Layout from "src/layouts/onboardingLayout";
+import Welcome from "../../features/onboarding/welcome";
+import CreateCompany from "./create-company";
+import JoinCompany from "../../features/onboarding/joinCompany";
+import CompanyUserOnboard from "../../features/onboarding/companyUserOnboard.js";
+
+const CompanyOnboard = dynamic(
+  () => import("../../features/onboarding/companyOnboard"),
+  {
+    ssr: false,
+  }
+);
 
 function Join() {
-  const [onboardingPosition, setonboardingPosition] = useState(0);
+  const [onboardingPosition, setOnboardingPosition] = useState(0);
 
   const [userFullName, setUserFullName] = useState("");
 
@@ -16,35 +26,31 @@ function Join() {
           <Welcome
             nameInput={userFullName}
             setNameInput={setUserFullName}
-            setonboardingPosition={setonboardingPosition}
+            setOnboardingPosition={setOnboardingPosition}
           />
         );
         break;
 
       case 1:
-        return (
-          <AddProfilePicture
-            firstName={"Josh"}
-            setonboardingPosition={setonboardingPosition}
-          />
-        );
+        return <CompanyOnboard setOnboardingPosition={setOnboardingPosition} />;
         break;
 
       case 2:
-        return (
-          <AddProfilePicture
-            firstName={"Josh"}
-            setonboardingPosition={setonboardingPosition}
-          />
-        );
+        return <CreateCompany setOnboardingPosition={setOnboardingPosition} />;
         break;
-
+      case 3:
+        return <JoinCompany setOnboardingPosition={setOnboardingPosition} />;
+        break;
+      case 4:
+        return (
+          <CompanyUserOnboard setOnboardingPosition={setOnboardingPosition} />
+        );
       default:
         return (
           <Welcome
             nameInput={userFullName}
             setNameInput={setUserFullName}
-            setonboardingPosition={setonboardingPosition}
+            setOnboardingPosition={setOnboardingPosition}
           />
         );
         break;

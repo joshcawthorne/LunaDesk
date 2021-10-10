@@ -38,6 +38,7 @@ function ProfilePictureUpload({
   url,
   size,
   onUpload,
+  targetBucket,
 }) {
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -57,7 +58,7 @@ function ProfilePictureUpload({
       const filePath = `${fileName}`;
 
       let { error: uploadError } = await supabase.storage
-        .from("user-avatars")
+        .from(targetBucket)
         .upload(filePath, file);
 
       if (uploadError) {
