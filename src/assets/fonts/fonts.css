@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "Roobert";
+  font-weight: 400;
+  font-style: normal;
+  src: url("./Roobert-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roobert";
+  font-weight: 400;
+  font-style: italic;
+  src: url("./Roobert-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roobert";
+  font-weight: 600;
+  font-style: normal;
+  src: url("./Roobert-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roobert";
+  font-weight: 600;
+  font-style: italic;
+  src: url("./Roobert-SemiBoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "InputMono";
+  src: url("./InputMono-Regular.woff2") format("woff2"),
+    url("./InputMono-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "InputMono";
+  src: url("./InputMono-Bold.woff2") format("woff2"),
+    url("./InputMono-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "InputMono";
+  src: url("./InputMono-BoldItalic.woff2") format("woff2"),
+    url("./InputMono-BoldItalic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "InputMono";
+  src: url("./InputMono-Italic.woff2") format("woff2"),
+    url("./InputMono-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}

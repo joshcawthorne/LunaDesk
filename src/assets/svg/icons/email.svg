@@ -1,0 +1,13 @@
+<svg height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/Message">
+        <g id="Message">
+            <path id="Stroke 1"
+                d="M17.5448 9.01904C17.5448 9.01904 14.3348 12.8717 11.9869 12.8717C9.64004 12.8717 6.39392 9.01904 6.39392 9.01904"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd"
+                d="M2.45203 11.9688C2.45203 5.13075 4.83298 2.85205 11.9758 2.85205C19.1187 2.85205 21.4996 5.13075 21.4996 11.9688C21.4996 18.8059 19.1187 21.0856 11.9758 21.0856C4.83298 21.0856 2.45203 18.8059 2.45203 11.9688Z"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+    </g>
+</svg>

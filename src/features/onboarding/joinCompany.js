@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
+import Image from "next/image";
+import { useStoreActions, useStoreState } from "easy-peasy";
 
+import { supabase } from "src/services/supabaseClient";
 import OnboardingCard from "src/layouts/onboardingCard";
 import ArrowRight from "src/assets/svg/icons/arrowRight.svg";
 import LunaDeskLogo from "src/assets/svg/logoCollapsed.svg";
@@ -42,7 +45,10 @@ const CompanyLogo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0d1afc;
+  background-color: #25262a;
+  border-color: #25262a;
+  border-style: solid;
+  border-width: 2px;
 `;
 
 const UserAvatarContainer = styled.div`
@@ -52,7 +58,10 @@ const UserAvatarContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0d1afc;
+  overflow: hidden;
+  border-color: #25262a;
+  border-style: solid;
+  border-width: 2px;
 `;
 
 const ArrowContainer = styled.div`
@@ -63,8 +72,19 @@ const ArrowContainer = styled.div`
   height: 100%;
 `;
 
+const UserAvatar = styled(Image)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+`;
+
 function JoinCompany({ setOnboardingPosition }) {
   const [loading, setLoading] = useState(false);
+  const [avatarSrc, setAvatarSrc] = useState("");
+  const [loadedAvatar, setLoadedAvatar] = useState(false);
+
+  const { userAvatarUrl } = useStoreState((state) => state.user);
   function handleBack() {
     setOnboardingPosition(1);
   }
@@ -77,6 +97,31 @@ function JoinCompany({ setOnboardingPosition }) {
     }, 1500);
   }
 
+  useEffect(() => {
+    downloadImage();
+  }, []);
+
+  async function downloadImage(path) {
+    try {
+      const { data, error } = await supabase.storage
+        .from("user-avatars")
+        .download(userAvatarUrl);
+      if (error) {
+        throw error;
+      }
+      const url = URL.createObjectURL(data);
+      setAvatarSrc(url);
+
+      console.log(url);
+
+      setLoadedAvatar(true);
+    } catch (error) {
+      console.log("Error downloading image: ", error.message);
+    }
+  }
+
+  console.log();
+
   return (
     <OnboardingCard
       description={""}
@@ -85,13 +130,25 @@ function JoinCompany({ setOnboardingPosition }) {
       buttonAction={handleJoin}
       buttonLoading={loading}
       subButton
-      subButtonText={"Back"}
+      subButtonText={"Cancel"}
       subButtonActive
       subButtonDanger
       subButtonAction={handleBack}
     >
       <AvatarContainer>
-        <UserAvatarContainer></UserAvatarContainer>
+        <UserAvatarContainer>
+          {loadedAvatar && (
+            <>
+              <UserAvatar
+                src={avatarSrc}
+                width={"100%"}
+                height={"100%"}
+                fill={"cover"}
+              />
+            </>
+          )}
+        </UserAvatarContainer>
+
         <ArrowContainer>
           <ArrowRight stroke={"#130F26"} width={"25px"} />
         </ArrowContainer>

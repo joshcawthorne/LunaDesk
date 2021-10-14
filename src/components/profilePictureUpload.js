@@ -14,7 +14,7 @@ const CameraIconContainer = styled.div`
   width: 35px;
   background-color: #dfe1e4;
   border-radius: 50%;
-  border-color: #ffffff;
+  border-color: #0d1afc;
   border-width: 3px;
   border-style: solid;
   display: flex;

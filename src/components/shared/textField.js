@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const TextFieldItem = styled.input`
   margin-right: 8px;
@@ -8,6 +8,8 @@ const TextFieldItem = styled.input`
   border-radius: 6px;
   transition: 0.2s;
   color: ${(props) => props.theme.text100};
+  font-family: "Roobert", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 16px;
   line-height: 24px;
   width: 100%;
@@ -23,17 +25,32 @@ const TextFieldItem = styled.input`
   width: 100%;
   background-color: #f4f5fc;
   border-color: #2362dc;
-
+  background: rgb(255 255 255 / 25%);
+  z-index: 1;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-sizing: border-box;
+  transition: 400ms;
   ::placeholder {
-    opacity: 0.4;
+    opacity: 1;
   }
   :focus {
-    border-width: 3px;
+    border-width: 2px;
+    border-color: #2362dc;
     outline: none;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transition: 400ms;
   }
+  ${(props) =>
+    props.error &&
+    css`
+      border-color: #e02f3c;
+    `}
 `;
 
-function TextField({ value, setValue, type, placeholder }) {
+function TextField({ value, setValue, type, placeholder, error }) {
   return (
     <TextFieldItem
       value={value}
@@ -44,6 +61,7 @@ function TextField({ value, setValue, type, placeholder }) {
       autocomplete="new-password"
       list="autocompleteOff"
       type={type}
+      error={error}
     />
   );
 }

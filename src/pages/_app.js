@@ -7,6 +7,7 @@ import "src/style/uplot.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "src/style/selectSearchStyle.css";
+import "src/assets/fonts/fonts.css";
 
 import store from "../store";
 import { theme } from "../style/theme";
@@ -15,7 +16,8 @@ const AppContainer = styled.div``;
 
 const GlobalStyle = createGlobalStyle`
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: "Roobert", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     padding: 0;
     margin: 0;
   }

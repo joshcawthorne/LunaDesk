@@ -1,9 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import * as htmlToImage from "html-to-image";
 
 import { supabase } from "src/services/supabaseClient";
 import ProfilePictureUpload from "src/components/profilePictureUpload";
+import EyeDropper from "src/assets/svg/icons/customise.svg";
+import Dice from "src/assets/svg/icons/dice.svg";
+import CustomiseAvatar from "src/components/onboarding/customiseAvatar";
 
 import StarOne from "src/assets/svg/starOne.svg";
 import StarTwo from "src/assets/svg/starTwo.svg";
@@ -16,7 +20,8 @@ const InputProfilePictureItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px 0 20px 0;
+  margin: 30px 0 30px 0;
+  flex-direction: column;
 `;
 
 const ProfilePictureContainer = styled.div`
@@ -25,8 +30,7 @@ const ProfilePictureContainer = styled.div`
   border-radius: 50%;
   border-width: 2.5x;
   border-style: solid;
-  background-color: #0d1afc;
-  border-color: #0d1afc;
+  border-color: #25262a;
   position: relative;
   z-index: 2;
   user-select: none;
@@ -37,10 +41,16 @@ const ProfilePicture = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
+  border-radius: 50%;
   font-size: 42px;
+  line-height: 42px;
   font-weight: 600;
-  color: #fff;
+  background: ${(props) => props.backgroundColor};
+  color: ${(props) => props.fontColor};
   z-index: 2;
+  box-sizing: border-box;
+  padding-bottom: 5px;
 `;
 
 const UserProfileImage = styled.img`
@@ -92,7 +102,7 @@ const StarThreeContainer = styled(motion.div)`
 `;
 const StarFourContainer = styled(motion.div)`
   position: absolute;
-  bottom: 5px;
+  bottom: 35px;
   right: -35px;
 `;
 
@@ -105,7 +115,7 @@ const StarFiveContainer = styled(motion.div)`
 
 const StarSixContainer = styled(motion.div)`
   position: absolute;
-  top: 24px;
+  top: 9px;
   right: -30px;
 `;
 
@@ -182,7 +192,7 @@ const starFiveAnim = {
 };
 
 const starSixAnim = {
-  hidden: { opacity: 0, x: -25, y: 10 },
+  hidden: { opacity: 0, x: -25, y: 20 },
   visible: {
     opacity: 1,
     x: 0,
@@ -192,6 +202,95 @@ const starSixAnim = {
   },
 };
 
+const CustomiseButton = styled.div`
+  position: absolute;
+  bottom: 0;
+  border-width: 3px;
+  left: 110px;
+  border-style: solid;
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: #000;
+  border: 1px solid rgb(110, 121, 214);
+  box-shadow: rgb(0 0 0 / 7%) 0px 1px 2px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  background: #25262a;
+  color: #fff;
+  -webkit-app-region: no-drag;
+  padding: 6.5px;
+  border-radius: 50%;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  transition: 400ms;
+  height: 20px;
+  width: 20px;
+  :hover {
+    transition: 400ms;
+    background-color: #0d19fc;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+      rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  }
+`;
+
+const CustomiseButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const RandomiseButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const RandomiseButton = styled.div`
+  position: absolute;
+  bottom: 0;
+  border-width: 3px;
+  left: 150px;
+  border-style: solid;
+  margin-top: 10px;
+
+  display: flex;
+  height: 20px;
+  width: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: #000;
+  border: 1px solid rgb(110, 121, 214);
+  box-shadow: rgb(0 0 0 / 7%) 0px 1px 2px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  background: #25262a;
+  color: #fff;
+  -webkit-app-region: no-drag;
+  padding: 6.5px;
+  border-radius: 50%;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  transition: 400ms;
+  :hover {
+    transition: 400ms;
+    background-color: #0d19fc;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+      rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  }
+`;
+
+const CustomiseText = styled.div`
+  font-size: 14px;
+`;
+
 function UploadAvatar({
   hasInitials,
   initials,
@@ -199,9 +298,16 @@ function UploadAvatar({
   displayAvatar,
   avatarSrc,
   targetBucket,
+  avatarRef,
+  userHasProfilePicture,
+  setUserHasProfilePicture,
+  displayCustomiseAvatar,
+  setDisplayCustomiseAvatar,
+  avatarBackgroundColor,
+  avatarFontColor,
 }) {
   const [loading, setLoading] = useState(false);
-  const [userHasProfilePicture, setUserHasProfilePicture] = useState(false);
+
   const [runAnim, setRunAnim] = useState(false);
 
   return (
@@ -217,7 +323,7 @@ function UploadAvatar({
             setUserHasProfilePicture(true);
           }}
         />
-        {displayAvatar ? (
+        {userHasProfilePicture ? (
           <>
             <ProfilePictureAnim
               initial="hidden"
@@ -279,14 +385,23 @@ function UploadAvatar({
             </StarsContainer>
           </>
         ) : (
-          <ProfilePicture>
+          <ProfilePicture
+            ref={avatarRef}
+            backgroundColor={avatarBackgroundColor}
+            fontColor={avatarFontColor}
+          >
             {hasInitials ? (
               <div>{initials}</div>
             ) : (
-              <LunaDeskLogo fill={"#fff"} width={"40px"} />
+              <LunaDeskLogo fill={"#fff"} width={"30px"} />
             )}
           </ProfilePicture>
         )}
+        <CustomiseButtonContainer>
+          <CustomiseButton onClick={() => setDisplayCustomiseAvatar(true)}>
+            <EyeDropper stroke={"#fff"} width={"22.5px"} strokeWidth={"2px"} />
+          </CustomiseButton>
+        </CustomiseButtonContainer>
       </ProfilePictureContainer>
     </InputProfilePictureItem>
   );

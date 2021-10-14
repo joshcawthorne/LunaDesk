@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import styled from "styled-components";
+import { Gradient } from "whatamesh";
+import { motion } from "framer-motion";
 
 import Layout from "src/layouts/onboardingLayout";
-import Welcome from "../../features/onboarding/welcome";
+import Welcome from "src/features/onboarding/welcome";
 import CreateCompany from "./create-company";
-import JoinCompany from "../../features/onboarding/joinCompany";
-import CompanyUserOnboard from "../../features/onboarding/companyUserOnboard.js";
+import JoinCompany from "src/features/onboarding/joinCompany";
+import CompanyUserRoleSelect from "src/features/onboarding/companyUserRoleSelect";
+import UserDefaultWorkingHours from "src/features/onboarding/userDefaultWorkingHours";
+import UserDefaultWorkingDays from "src/features/onboarding/userDefaultWorkingDays";
+import UserSelectPrimaryOffice from "src/features/onboarding/userSelectPrimaryOffice";
+import CompleteOnboarding from "src/features/onboarding/completeOnboarding";
+import colorOptions from "src/data/avatarColourOptions";
 
 const CompanyOnboard = dynamic(
   () => import("../../features/onboarding/companyOnboard"),
@@ -14,19 +22,66 @@ const CompanyOnboard = dynamic(
   }
 );
 
+const CanvasContainer = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #dfdfee;
+  #gradient-canvas {
+    width: 100%;
+    height: 100%;
+    --gradient-color-1: #dfdfee;
+    --gradient-color-2: #e7d194;
+    --gradient-color-3: #dfdfee;
+    --gradient-color-4: #dd9dc2;
+  }
+`;
+
+const variants = {
+  visible: { opacity: 1, transition: { duration: 0.6 } },
+  hidden: { opacity: 0 },
+};
+
 function Join() {
   const [onboardingPosition, setOnboardingPosition] = useState(0);
-
+  const [canvasReady, setCanvasReady] = useState(false);
+  const [animate, setAnimate] = useState(false);
   const [userFullName, setUserFullName] = useState("");
+  const [userLocation, setUserLocation] = useState("");
+  const [userBio, setUserBio] = useState("");
+  const [userAvatarTmp, setUserAvatarTmp] = useState("");
+  const [initialAvatarBg, setInitialAvatarBg] = useState("");
+  const [initialAvatarFont, setInitialAvatarFont] = useState("");
+
+  useEffect(() => {
+    const gradient = new Gradient();
+    gradient.initGradient("#gradient-canvas");
+    setTimeout(() => {
+      setCanvasReady(true);
+    }, 400);
+    setTimeout(() => {
+      setAnimate(true);
+    }, 500);
+  }, []);
+
+  useEffect(() => {
+    const randomTheme = Math.floor(
+      Math.random() * (colorOptions.length - 0 + 1) + 0
+    );
+    setInitialAvatarBg(colorOptions[randomTheme].background);
+    setInitialAvatarFont(colorOptions[randomTheme].color);
+  }, []);
 
   const OnboardingStageRender = () => {
     switch (onboardingPosition) {
       case 0:
         return (
           <Welcome
-            nameInput={userFullName}
-            setNameInput={setUserFullName}
             setOnboardingPosition={setOnboardingPosition}
+            initialAvatarBg={initialAvatarBg}
+            initialAvatarFont={initialAvatarFont}
           />
         );
         break;
@@ -39,12 +94,39 @@ function Join() {
         return <CreateCompany setOnboardingPosition={setOnboardingPosition} />;
         break;
       case 3:
-        return <JoinCompany setOnboardingPosition={setOnboardingPosition} />;
+        return (
+          <JoinCompany
+            userAvatarTmp={userAvatarTmp}
+            setOnboardingPosition={setOnboardingPosition}
+          />
+        );
         break;
       case 4:
         return (
-          <CompanyUserOnboard setOnboardingPosition={setOnboardingPosition} />
+          <CompanyUserRoleSelect
+            setOnboardingPosition={setOnboardingPosition}
+          />
         );
+      case 5:
+        return (
+          <UserDefaultWorkingHours
+            setOnboardingPosition={setOnboardingPosition}
+          />
+        );
+      case 6:
+        return (
+          <UserDefaultWorkingDays
+            setOnboardingPosition={setOnboardingPosition}
+          />
+        );
+      case 7:
+        return (
+          <UserSelectPrimaryOffice
+            setOnboardingPosition={setOnboardingPosition}
+          />
+        );
+      case 8:
+        return <CompleteOnboarding />;
       default:
         return (
           <Welcome
@@ -60,6 +142,13 @@ function Join() {
   return (
     <Layout>
       <OnboardingStageRender />
+      <CanvasContainer
+        initial="hidden"
+        animate={canvasReady ? "visible" : "hidden"}
+        variants={variants}
+      >
+        <canvas id="gradient-canvas" data-transition-in />
+      </CanvasContainer>
     </Layout>
   );
 }

@@ -64,23 +64,65 @@ const ArrowContainer = styled.div`
 `;
 
 const SearchContainer = styled.div`
-  width: 100%;
+  width: 460px;
   display: flex;
   justify-content: center;
   align-items: center;
+  .select-search {
+    width: 100%;
+  }
+  .select-search__input {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgb(255 255 255 / 25%);
+    backdrop-filter: blur(20px);
+    width: 100%;
+    padding: 26px;
+    color: "#25262a";
+    font-family: "Roobert", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+  }
+  .select-search__select {
+    font-size: 13px;
+    line-height: 24px;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #f2f2f7;
+    margin-top: 20px;
+    color: "#25262a";
+  }
+  .select-search__row {
+    background-color: transparent;
+    color: "#25262a";
+    font-family: "Roobert", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    font-weight: 800;
+  }
+  .select-search__option,
+  .select-search__not-found {
+    background-color: transparent;
+    color: "#25262a";
+    font-family: "Roobert", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+  }
+  .select-search__option.is-selected {
+  }
 `;
 
-function CompanyUserOnboard({ setOnboardingPosition }) {
+function CompanyUserRoleSelect({ setOnboardingPosition }) {
   const [loading, setLoading] = useState(false);
   function handleBack() {
     setOnboardingPosition(1);
   }
 
-  function handleJoin() {
+  function handleSelectRole() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      setOnboardingPosition(4);
+      setOnboardingPosition(5);
     }, 1500);
   }
 
@@ -89,8 +131,9 @@ function CompanyUserOnboard({ setOnboardingPosition }) {
       description={""}
       buttonText={"Continue"}
       buttonActive={true}
-      buttonAction={handleJoin}
+      buttonAction={handleSelectRole}
       buttonLoading={loading}
+      style={{ width: "460px" }}
     >
       <InnerTitle>
         What is your role at <span>LunaDesk Incoporated</span>?
@@ -112,4 +155,4 @@ function CompanyUserOnboard({ setOnboardingPosition }) {
   );
 }
 
-export default CompanyUserOnboard;
+export default CompanyUserRoleSelect;

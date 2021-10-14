@@ -20,21 +20,33 @@ const ButtonItem = styled.button`
   flex-shrink: 0;
   margin: 0px;
   font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 0.3px;
+  font-size: 17px;
+  font-family: "Roobert", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  letter-spacing: 0.4px;
 
   -webkit-app-region: no-drag;
   min-width: 32px;
   height: 48px;
-  padding: 0px 24px;
+  padding: 30px 30px;
   width: 340px;
   border: 1px solid rgb(110, 121, 214);
   box-shadow: rgb(0 0 0 / 7%) 0px 1px 2px;
-  background: #0d1afc;
-  color: rgb(255, 255, 255);
+  font-weight: 800;
+  background: #25262a;
+  color: #fff;
+  z-index: 9999999999999999999999999999999;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+  transition: 400ms;
   :hover {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    transform: translate3d(-2px, -2px, 0);
+    transition: 400ms;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+      rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
   }
 
   ${(props) =>

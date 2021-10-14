@@ -1219,6 +1219,6 @@ const array = [
   { name: "Zoologist", value: "Zoologist" },
 ];
 
-export default array.map((country, idx) => {
-  return { ...country, id: idx };
+export default array.map((occupation, idx) => {
+  return { ...occupation, id: idx };
 });

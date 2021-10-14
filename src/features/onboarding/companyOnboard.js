@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import OnboardingCard from "src/layouts/onboardingCard";
 import Button from "src/components/shared/button";
 import InviteCodeInput from "./inviteCodeInput";
+import { validateInviteCode } from "src/services/onboarding";
 
 const InnerTitle = styled.div`
   font-size: 28px;
@@ -53,8 +54,13 @@ function CompanyOnboard({ setOnboardingPosition }) {
     }, 1100);
   }
 
-  function handleCodeSubmit() {
-    //TEMP DEBUG WHILE API UNDER CONSTRUCTION
+  function handleBackButton() {
+    setOnboardingPosition(0);
+  }
+
+  async function handleCodeSubmit() {
+    const inviteCodeData = await validateInviteCode();
+    console.log(inviteCodeData);
     setLoadingCodeCheck(true);
     setTimeout(() => {
       if (codeInputValue === "111111") {
@@ -85,7 +91,10 @@ function CompanyOnboard({ setOnboardingPosition }) {
         subButtonLoading={loadingCreate}
         subButtonActive={true}
         error={error}
+        backButton
+        backAction={handleBackButton}
         errorMessage={errorMessage}
+        userDisplay
       >
         <InnerTitle>Enter your invite code</InnerTitle>
         <InnerDesc>
