@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Image from "next/image";
 import { useStoreActions, useStoreState } from "easy-peasy";
 
-import { supabase } from "src/services/supabaseClient";
-import OnboardingCard from "src/layouts/onboardingCard";
-import ArrowRight from "src/assets/svg/icons/arrowRight.svg";
-import LunaDeskLogo from "src/assets/svg/logoCollapsed.svg";
+import { supabase } from "services/supabaseClient";
+import OnboardingCard from "layouts/onboardingCard";
+import ArrowRight from "assets/svg/icons/arrowRight.svg";
+import LunaDeskLogo from "assets/svg/logoCollapsed.svg";
 
 const InnerTitle = styled.div`
   font-size: 28px;

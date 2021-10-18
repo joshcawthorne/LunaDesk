@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import TextField from "src/components/shared/textField";
-import InviteItem from "src/components/settings/inviteUserItem";
+import TextField from "components/shared/textField";
+import InviteItem from "components/settings/inviteUserItem";
 
 const ContentContainer = styled.div`
   margin-top: 30px;

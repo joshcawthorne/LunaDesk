@@ -1,11 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
-import OnboardingCard from "src/layouts/onboardingCard";
-import Button from "src/components/shared/button";
+import OnboardingCard from "layouts/onboardingCard";
 import InviteCodeInput from "./inviteCodeInput";
-import { validateInviteCode } from "src/services/onboarding";
+import { validateInviteCode } from "services/onboarding";
 
 const InnerTitle = styled.div`
   font-size: 28px;

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styled, { css } from "styled-components";
 import Link from "next/link";
 
-import BranchEnd from "src/assets/svg/branchEnd.svg";
+import BranchEnd from "assets/svg/branchEnd.svg";
 
 const SidebarItemContainer = styled.div`
   text-decoration: none;

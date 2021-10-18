@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useStoreState, useStoreActions } from "easy-peasy";
 
-import RadioButton from "src/components/shared/radioButton";
+import RadioButton from "components/shared/radioButton";
 
 const ContentContainer = styled.div``;
 

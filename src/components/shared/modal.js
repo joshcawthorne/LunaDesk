@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import useOnclickOutside from "react-cool-onclickoutside";
 import { motion } from "framer-motion";
 
-import BackArrow from "src/assets/svg/backArrow.svg";
+import BackArrow from "assets/svg/backArrow.svg";
 
 const ModalOuterContainer = styled.div`
   position: absolute;

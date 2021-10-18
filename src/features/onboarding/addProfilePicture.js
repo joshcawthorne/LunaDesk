@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
-import OnboardingCard from "src/layouts/onboardingCard";
-import UploadIcon from "src/assets/svg/icons/upload.svg";
-import TextField from "src/components/shared/textField";
+import OnboardingCard from "layouts/onboardingCard";
+import UploadIcon from "assets/svg/icons/upload.svg";
+import TextField from "components/shared/textField";
 
 const Label = styled.div`
   font-weight: 500;

@@ -5,14 +5,14 @@ import * as htmlToImage from "html-to-image";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 
-import { supabase } from "src/services/supabaseClient";
-import colorOptions from "src/data/avatarColourOptions";
-import { createUser } from "src/services/user";
-import OnboardingCard from "src/layouts/onboardingCard";
-import TextField from "src/components/shared/textField";
-import UploadAvatar from "src/components/onboarding/uploadAvatar";
-import CustomiseAvatar from "src/components/onboarding/customiseAvatar";
-import { validateFullName } from "src/utils/validators";
+import { supabase } from "services/supabaseClient";
+import colorOptions from "data/avatarColourOptions";
+import { createUser } from "services/user";
+import OnboardingCard from "layouts/onboardingCard";
+import TextField from "components/shared/textField";
+import UploadAvatar from "components/onboarding/uploadAvatar";
+import CustomiseAvatar from "components/onboarding/customiseAvatar";
+import { validateFullName } from "utils/validators";
 
 const Label = styled.div`
   font-weight: 500;

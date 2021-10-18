@@ -3,15 +3,15 @@ import styled, { ThemeContext } from "styled-components";
 import { useStoreActions, useStoreState } from "easy-peasy";
 import { useHotkeys } from "react-hotkeys-hook";
 
-import Modal from "src/components/shared/modal";
-import TextField from "src/components/shared/textField";
-import Button from "src/components/shared/button";
-import { createUserInvite } from "src/services/company";
-import LoadingIcon from "src/components/shared/loadingIcon";
-import { DisplaySuccessToast } from "src/components/shared/toast";
+import Modal from "components/shared/modal";
+import TextField from "components/shared/textField";
+import Button from "components/shared/button";
+import { createUserInvite } from "services/company";
+import LoadingIcon from "components/shared/loadingIcon";
+import { DisplaySuccessToast } from "components/shared/toast";
 
-import InviteIcon from "src/assets/svg/icons/addUser.svg";
-import Tick from "src/assets/svg/icons/tick.svg";
+import InviteIcon from "assets/svg/icons/addUser.svg";
+import Tick from "assets/svg/icons/tick.svg";
 
 const CompanyInviteContainer = styled.div`
   width: 100%;

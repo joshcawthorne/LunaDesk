@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { useStoreState } from "easy-peasy";
 
-import withAuth from "../utils/withAuth";
-
 const LunaDeskContainer = styled.div``;
 
 const ContentContainer = styled.div`
@@ -11,7 +9,11 @@ const ContentContainer = styled.div`
   background: transparent;
 `;
 
-const AppLayout = ({ children }) => {
+interface AppLayout {
+  children: any,
+}
+
+const AppLayout = ({ children }: AppLayout) => {
   const { displayCompanySettings, displayUserSettings, displayInviteModal } =
     useStoreState((state) => state.app);
 

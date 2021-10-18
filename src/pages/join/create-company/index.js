@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import OnboardingCard from "src/layouts/onboardingCard";
-import UploadAvatar from "src/components/onboarding/uploadAvatar";
-import Button from "src/components/shared/button";
+import OnboardingCard from "layouts/onboardingCard";
+import UploadAvatar from "components/onboarding/uploadAvatar";
+import Button from "components/shared/button";
 
 const InnerTitle = styled.div`
   font-size: 28px;

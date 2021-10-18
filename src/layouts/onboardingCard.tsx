@@ -1,13 +1,40 @@
-import { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import Button from "src/components/shared/button";
+import Button from "components/shared/button";
 
-import BackArrow from "src/assets/svg/backArrow.svg";
-import ErrorIcon from "src/assets/svg/icons/error.svg";
-import EmailIcon from "src/assets/svg/icons/email.svg";
-import Logo from "src/assets/svg/logo.svg";
+import BackArrow from "assets/svg/backArrow.svg";
+import ErrorIcon from "assets/svg/icons/error.svg";
+import EmailIcon from "assets/svg/icons/email.svg";
+import Logo from "assets/svg/logo.svg";
+
+interface OnboardingCard {
+  title: string,
+  description: string,
+  buttonText: string,
+  buttonAction: object,
+  buttonLoading: boolean,
+  buttonActive: boolean,
+  skipButton: boolean
+  skipAction: object,
+  subButton: boolean,
+  subButtonText: string,
+  subButtonAction: object,
+  subButtonLoading: boolean,
+  subButtonActive: boolean,
+  subButtonDanger: boolean,
+  subText: string,
+  error: boolean,
+  errorMessage: string,
+  checkEmail: boolean,
+  email: string,
+  backButton: boolean,
+  backAction: object,
+  hideLogo: boolean,
+  animate: boolean,
+  style: object,
+  children: any,
+}
 
 const CreateCompanyOuterContainer = styled.div`
   display: flex;
@@ -326,9 +353,11 @@ function OnboardingCard({
           {skipButton && (
             <Button
               text={"Skip Step"}
-              skipButton
+              skipButton={false}
               style={{ marginTop: "42px", marginRight: "10px" }}
               action={skipAction}
+              loading={false}
+              disabled={false}
             />
           )}
 
@@ -338,6 +367,7 @@ function OnboardingCard({
             action={buttonAction}
             loading={buttonLoading}
             disabled={!buttonActive}
+            skipButton={false}
           />
         </ButtonContainer>
         {subButton && (
@@ -349,6 +379,7 @@ function OnboardingCard({
               action={subButtonAction}
               loading={subButtonLoading}
               disabled={!subButtonActive}
+              skipButton={false}
               style={{
                 marginTop: subText ? "0px" : "17px",
 

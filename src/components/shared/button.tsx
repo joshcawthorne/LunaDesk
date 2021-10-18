@@ -2,40 +2,39 @@ import styled, { css } from "styled-components";
 import { TailSpin } from "react-loading-icons";
 import { motion } from "framer-motion";
 
+interface Button {
+  text: string,
+  action: () => void,
+  style: object,
+  disabled: boolean,
+  loading: boolean,
+  skipButton: boolean
+}
+
 const ButtonItem = styled.button`
-  background-color: ${(props) => props.theme.surface200};
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   user-select: none;
   cursor: pointer;
-  transition: 400ms;
   max-width: 90vw;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  border-radius: 4px;
   flex-shrink: 0;
   margin: 0px;
-  font-weight: 500;
   font-size: 17px;
   font-family: "Roobert", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   letter-spacing: 0.4px;
-
   -webkit-app-region: no-drag;
   min-width: 32px;
   height: 48px;
   padding: 30px 30px;
   width: 340px;
-  border: 1px solid rgb(110, 121, 214);
   box-shadow: rgb(0 0 0 / 7%) 0px 1px 2px;
   font-weight: 800;
   background: #25262a;
   color: #fff;
-  z-index: 9999999999999999999999999999999;
+  z-index: 50;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 15px;
@@ -88,7 +87,7 @@ const LoadingContainer = styled(motion.div)`
   right: 0;
 `;
 
-function Button({ text, action, style, disabled, loading, skipButton }) {
+function Button({ text, action, style, disabled, loading, skipButton }: Button) {
   return (
     <ButtonItem
       onClick={() => action && !disabled && action()}

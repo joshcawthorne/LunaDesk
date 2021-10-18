@@ -4,10 +4,10 @@ import { Gradient } from "whatamesh";
 import { motion } from "framer-motion";
 
 import { registerUser } from "../services/auth";
-import TextField from "src/components/shared/textField";
-import OnboardingCard from "src/layouts/onboardingCard";
-import Logo from "src/assets/svg/logo.svg";
-import Button from "src/components/shared/button";
+import TextField from "components/shared/textField";
+import OnboardingCard from "layouts/onboardingCard";
+import Logo from "assets/svg/logo.svg";
+import Button from "components/shared/button";
 
 const RegistrationContainer = styled.div`
   position: absolute;

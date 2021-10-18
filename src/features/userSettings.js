@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { useStoreActions, useStoreState } from "easy-peasy";
 
-import Modal from "src/components/shared/modal";
-import Tabs from "src/components/shared/tabs";
+import Modal from "components/shared/modal";
+import Tabs from "components/shared/tabs";
 
-import UserPreferences from "src/features/settings/userSettings/userPreferences";
+import UserPreferences from "features/settings/userSettings/userPreferences";
 
 const SettingsContentContainer = styled.div`
   margin-top: 40px;

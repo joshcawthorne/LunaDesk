@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { supabase } from "../services/supabaseClient";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import { StoreProvider, useStoreState } from "easy-peasy";
-import "src/style/uplot.css";
+import * as uplot from "../style/uplot.css"; // eslint-disable-line
 
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "src/style/selectSearchStyle.css";
-import "src/assets/fonts/fonts.css";
+import * as toastify from "react-toastify/dist/ReactToastify.css"; // eslint-disable-line
+import * as searchStyle from "../style/selectSearchStyle.css"; // eslint-disable-line
+import * as fonts from "../assets/fonts/fonts.css"; // eslint-disable-line
 
 import store from "../store";
 import { theme } from "../style/theme";

@@ -4,16 +4,16 @@ import styled from "styled-components";
 import { Gradient } from "whatamesh";
 import { motion } from "framer-motion";
 
-import Layout from "src/layouts/onboardingLayout";
-import Welcome from "src/features/onboarding/welcome";
+import Layout from "layouts/onboardingLayout";
+import Welcome from "features/onboarding/welcome";
 import CreateCompany from "./create-company";
-import JoinCompany from "src/features/onboarding/joinCompany";
-import CompanyUserRoleSelect from "src/features/onboarding/companyUserRoleSelect";
-import UserDefaultWorkingHours from "src/features/onboarding/userDefaultWorkingHours";
-import UserDefaultWorkingDays from "src/features/onboarding/userDefaultWorkingDays";
-import UserSelectPrimaryOffice from "src/features/onboarding/userSelectPrimaryOffice";
-import CompleteOnboarding from "src/features/onboarding/completeOnboarding";
-import colorOptions from "src/data/avatarColourOptions";
+import JoinCompany from "features/onboarding/joinCompany";
+import CompanyUserRoleSelect from "features/onboarding/companyUserRoleSelect";
+import UserDefaultWorkingHours from "features/onboarding/userDefaultWorkingHours";
+import UserDefaultWorkingDays from "features/onboarding/userDefaultWorkingDays";
+import UserSelectPrimaryOffice from "features/onboarding/userSelectPrimaryOffice";
+import CompleteOnboarding from "features/onboarding/completeOnboarding";
+import colorOptions from "data/avatarColourOptions";
 
 const CompanyOnboard = dynamic(
   () => import("../../features/onboarding/companyOnboard"),
@@ -47,10 +47,7 @@ const variants = {
 function Join() {
   const [onboardingPosition, setOnboardingPosition] = useState(0);
   const [canvasReady, setCanvasReady] = useState(false);
-  const [animate, setAnimate] = useState(false);
   const [userFullName, setUserFullName] = useState("");
-  const [userLocation, setUserLocation] = useState("");
-  const [userBio, setUserBio] = useState("");
   const [userAvatarTmp, setUserAvatarTmp] = useState("");
   const [initialAvatarBg, setInitialAvatarBg] = useState("");
   const [initialAvatarFont, setInitialAvatarFont] = useState("");
@@ -61,9 +58,6 @@ function Join() {
     setTimeout(() => {
       setCanvasReady(true);
     }, 400);
-    setTimeout(() => {
-      setAnimate(true);
-    }, 500);
   }, []);
 
   useEffect(() => {
@@ -76,7 +70,7 @@ function Join() {
 
   const OnboardingStageRender = () => {
     switch (onboardingPosition) {
-      case 0:
+      case -1:
         return (
           <Welcome
             setOnboardingPosition={setOnboardingPosition}
@@ -107,7 +101,7 @@ function Join() {
             setOnboardingPosition={setOnboardingPosition}
           />
         );
-      case 5:
+      case 0:
         return (
           <UserDefaultWorkingHours
             setOnboardingPosition={setOnboardingPosition}

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import Modal from "../shared/modal";
-import colorOptions from "src/data/avatarColourOptions";
+import colorOptions from "data/avatarColourOptions";
 
 const CustomiseAvatarOuterContainer = styled.div`
   height: 100vh;

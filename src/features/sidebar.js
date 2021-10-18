@@ -2,19 +2,19 @@ import { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import SidebarItem from "../components/sidebar/sidebarItem";
-import SidebarSubItem from "src/components/sidebar/sidebarSubItem";
-import UserIndicator from "src/components/sidebar/userIndicator";
+import SidebarSubItem from "components/sidebar/sidebarSubItem";
+import UserIndicator from "components/sidebar/userIndicator";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import Home from "src/assets/svg/icons/category.svg";
-import Chart from "src/assets/svg/icons/chart.svg";
-import Calendar from "src/assets/svg/icons/calendar.svg";
-import Work from "src/assets/svg/icons/work.svg";
-import Team from "src/assets/svg/icons/teams.svg";
-import Settings from "src/assets/svg/icons/filter.svg";
-import Logo from "src/assets/svg/logo.svg";
-import logoBackground from "src/assets/background.png";
+import Home from "assets/svg/icons/category.svg";
+import Chart from "assets/svg/icons/chart.svg";
+import Calendar from "assets/svg/icons/calendar.svg";
+import Work from "assets/svg/icons/work.svg";
+import Team from "assets/svg/icons/teams.svg";
+import Settings from "assets/svg/icons/filter.svg";
+import Logo from "assets/svg/logo.svg";
+import logoBackground from "assets/background.png";
 
 let SidebarContainer = styled.div`
   position: fixed;

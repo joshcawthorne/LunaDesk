@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
-import OnboardingCard from "src/layouts/onboardingCard";
-import WorkWeekCustomise from "src/components/workWeekCustomise";
+import OnboardingCard from "layouts/onboardingCard";
+import WorkWeekCustomise from "components/workWeekCustomise";
 
 const InnerTitle = styled.div`
   font-size: 28px;

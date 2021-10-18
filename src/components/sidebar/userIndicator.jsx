@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import LogOut from "src/assets/svg/icons/logout.svg";
+import LogOut from "assets/svg/icons/logout.svg";
 
 const UserIndicatorContainer = styled.div`
   width: calc(100% - 40px);

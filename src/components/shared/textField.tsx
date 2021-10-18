@@ -2,29 +2,16 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 const TextFieldItem = styled.input`
-  margin-right: 8px;
-  margin-bottom: 0;
-  padding: 8px 16px;
-  border-radius: 6px;
-  transition: 0.2s;
-  color: ${(props) => props.theme.text100};
+  margin: 0 8px 0 0;
   font-family: "Roobert", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 16px;
   line-height: 24px;
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid #dfe1e4;
-  border-radius: 4px;
   font-size: 13px;
   color: #282a30;
   appearance: none;
-  transition: border 0.15s ease 0s;
   height: 48px;
   padding: 12px;
   width: 100%;
-  background-color: #f4f5fc;
-  border-color: #2362dc;
   background: rgb(255 255 255 / 25%);
   z-index: 1;
   backdrop-filter: blur(20px);
@@ -50,7 +37,15 @@ const TextFieldItem = styled.input`
     `}
 `;
 
-function TextField({ value, setValue, type, placeholder, error }) {
+interface TextField {
+  value: string,
+  setValue: (value) => void,
+  type?: string,
+  placeholder?: string,
+  error?: boolean,
+}
+
+function TextField({ value, setValue, type, placeholder, error }: TextField) {
   return (
     <TextFieldItem
       value={value}

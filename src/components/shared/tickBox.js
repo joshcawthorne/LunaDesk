@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 
-import Tick from "src/assets/svg/icons/tick.svg";
+import Tick from "assets/svg/icons/tick.svg";
 
 const TickboxContainer = styled.div`
   background-color: ${(props) => props.theme.surface400};

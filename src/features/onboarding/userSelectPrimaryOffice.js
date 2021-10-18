@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
-import OnboardingCard from "src/layouts/onboardingCard";
+import OnboardingCard from "layouts/onboardingCard";
 
 const InnerTitle = styled.div`
   font-size: 28px;

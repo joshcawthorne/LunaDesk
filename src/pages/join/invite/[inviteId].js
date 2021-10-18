@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "src/layouts/onboardingLayout";
+import Layout from "layouts/onboardingLayout";
 
 function InviteId() {
   return <Layout>Invited!</Layout>;

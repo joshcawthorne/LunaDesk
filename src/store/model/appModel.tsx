@@ -1,6 +1,17 @@
-import { action } from "easy-peasy";
+import { Action, action } from "easy-peasy";
 
-const app = {
+export interface App {
+  displayModifyDayStatus: boolean;
+  setDisplayModifyDayStatus: Action<App, boolean>;
+  displayCompanySettings: boolean;
+  setDisplayCompanySettings: Action<App, boolean>;
+  displayUserSettings: boolean;
+  displayInviteModal: boolean;
+  setDisplayUserSettings: Action<App, boolean>;
+  setDisplayInviteModal: Action<App, boolean>;
+}
+
+const app: App = {
   displayModifyDayStatus: false,
   setDisplayModifyDayStatus: action((state, payload) => {
     state.displayModifyDayStatus = payload;

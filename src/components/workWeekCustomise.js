@@ -1,11 +1,11 @@
 import React from "react";
 
+import WorkingDayPicker from "components/settings/workingDayPicker";
+
 function WorkWeekCustomise() {
   return (
     <div>
-      Monday tuesday wednesday thursday friday <br />
-      Time to time <br />
-      Location
+      <WorkingDayPicker />
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { TailSpin } from "react-loading-icons";
-import { supabase } from "src/services/supabaseClient";
+import { supabase } from "services/supabaseClient";
 
-import UploadIcon from "src/assets/svg/icons/upload.svg";
-import RemoveUploadIcon from "src/assets/svg/icons/removeUpload.svg";
+import UploadIcon from "assets/svg/icons/upload.svg";
+import RemoveUploadIcon from "assets/svg/icons/removeUpload.svg";
 
 const CameraIconContainer = styled.div`
   position: absolute;

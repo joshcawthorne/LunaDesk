@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { useStoreActions, useStoreState } from "easy-peasy";
 
-import Modal from "src/components/shared/modal";
-import Tabs from "src/components/shared/tabs";
-import CompanyDetailsSettings from "src/features/settings/companySettings/companyDetailsSettings";
-import CompanyAdminSettings from "src/features/settings/companySettings/companyAdminSettings";
-import CompanyInviteSettings from "src/features/settings/companySettings/companyInviteSettings";
+import Modal from "components/shared/modal";
+import Tabs from "components/shared/tabs";
+import CompanyDetailsSettings from "features/settings/companySettings/companyDetailsSettings";
+import CompanyAdminSettings from "features/settings/companySettings/companyAdminSettings";
+import CompanyInviteSettings from "features/settings/companySettings/companyInviteSettings";
 
 const CompanySettingsOuterContainer = styled.div`
   position: absolute;

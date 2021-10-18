@@ -3,9 +3,9 @@ import { createCompany } from "../services/company";
 import Link from "next/link";
 import styled from "styled-components";
 
-import TextField from "src/components/shared/textField";
-import Button from "src/components/shared/button";
-import Logo from "src/assets/svg/logoCollapsedGradient.svg";
+import TextField from "components/shared/textField";
+import Button from "components/shared/button";
+import Logo from "assets/svg/logoCollapsedGradient.svg";
 
 const CreateCompanyOuterContainer = styled.div`
   display: flex;
