@@ -4,14 +4,20 @@ import { motion } from "framer-motion";
 
 interface Button {
   text: string,
-  action: () => void,
+  action: () => void;
   style: object,
   disabled: boolean,
   loading: boolean,
   skipButton: boolean
 }
 
-const ButtonItem = styled.button`
+interface Props {
+  skipButton?: boolean;
+  loading?: number;
+  disabled?: boolean;
+}
+
+const ButtonItem = styled.button<Props>`
   user-select: none;
   cursor: pointer;
   max-width: 90vw;
@@ -30,15 +36,15 @@ const ButtonItem = styled.button`
   height: 48px;
   padding: 30px 30px;
   width: 340px;
-  box-shadow: rgb(0 0 0 / 7%) 0px 1px 2px;
+  box-shadow: ${props => props.theme.buttonBoxShadow};
   font-weight: 800;
-  background: #25262a;
-  color: #fff;
+  background: ${props => props.theme.buttonColor};
+  color: ${props => props.theme.buttonText};
   z-index: 50;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  border: 1px solid ${props => props.theme.modalBorder};
   position: relative;
   transition: 400ms;
   :hover {
@@ -92,7 +98,7 @@ function Button({ text, action, style, disabled, loading, skipButton }: Button) 
     <ButtonItem
       onClick={() => action && !disabled && action()}
       style={{ ...style }}
-      loading={loading}
+      loading={loading ? 1 : 0}
       disabled={disabled}
       skipButton={skipButton}
     >

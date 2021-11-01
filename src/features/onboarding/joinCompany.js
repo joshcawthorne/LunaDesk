@@ -1,32 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import { useStoreActions, useStoreState } from "easy-peasy";
+import { useStoreState } from "store/hooks";
+import { InnerTitle, InnerDesc } from "components/shared";
 
 import { supabase } from "services/supabaseClient";
 import OnboardingCard from "layouts/onboardingCard";
 import ArrowRight from "assets/svg/icons/arrowRight.svg";
 import LunaDeskLogo from "assets/svg/logoCollapsed.svg";
-
-const InnerTitle = styled.div`
-  font-size: 28px;
-  text-align: center;
-  span {
-    font-weight: 600;
-  }
-`;
-
-const InnerDesc = styled.div`
-  font-size: 14px;
-  text-align: center;
-  font-weight: 500;
-  opacity: 0.6;
-  margin: auto;
-  margin-bottom: 24px;
-  margin-top: 8px;
-  max-width: 360px;
-  letter-spacing: 0.5px;
-`;
 
 const AvatarContainer = styled.div`
   width: 100%;

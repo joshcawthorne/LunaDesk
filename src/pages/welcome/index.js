@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useState } from "react";
 import { supabase } from "../../services/supabaseClient";
 import { createUserProfile } from "../../services/auth";
 import { useRouter } from "next/router";

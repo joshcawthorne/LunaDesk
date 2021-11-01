@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import LogOut from "assets/svg/icons/logout.svg";
+import { useStoreActions } from "store/hooks";
+import router from "next/router";
+
+import { logoutUser } from "services/auth";
 
 const UserIndicatorContainer = styled.div`
   width: calc(100% - 40px);
@@ -54,6 +58,17 @@ const LogoutIconContainer = styled.div`
 `;
 
 function UserIndicator({ themeContext }) {
+  const logOut = useStoreActions((actions) => actions.auth.logOut);
+
+  async function handleLogout() {
+    const attemptLogout = await logoutUser();
+    if (attemptLogout.error) {
+    } else {
+      logOut();
+      router.push("/login");
+    }
+  }
+
   return (
     <UserIndicatorContainer>
       <MainContent>
@@ -64,7 +79,11 @@ function UserIndicator({ themeContext }) {
         </UserInfoContainer>
       </MainContent>
       <LogoutIconContainer>
-        <LogOut stroke={themeContext.text100} strokeWidth={"2.5px"} />
+        <LogOut
+          stroke={themeContext.text100}
+          strokeWidth={"2.5px"}
+          onClick={() => handleLogout()}
+        />
       </LogoutIconContainer>
     </UserIndicatorContainer>
   );

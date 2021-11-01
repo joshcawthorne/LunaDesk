@@ -1,8 +1,30 @@
 import { useState, useEffect } from "react";
-import { loginUser, getUserProfile } from "../services/auth";
 import { useRouter } from "next/router";
 import { supabase } from "../services/supabaseClient";
-import { useStoreState, useStoreActions } from "easy-peasy";
+import { Gradient } from "whatamesh";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+
+import Layout from "layouts/onboardingLayout";
+import LoginComponent from "features/login";
+import BackgroundAnimation from "features/onboarding/backgroundAnimation";
+
+const CanvasContainer = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #dfdfee;
+  #gradient-canvas {
+    width: 100%;
+    height: 100%;
+    --gradient-color-1: #dfdfee;
+    --gradient-color-2: #e7d194;
+    --gradient-color-3: #dfdfee;
+    --gradient-color-4: #dd9dc2;
+  }
+`;
 
 function Login() {
   const router = useRouter();
@@ -12,61 +34,26 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const user = supabase.auth.user();
 
-  const isLoggedIn = useStoreState((state) => state.auth.isLoggedIn);
-  const logIn = useStoreActions((actions) => actions.auth.logIn);
+  const [canvasReady, setCanvasReady] = useState(false);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      router.push("/user-settings");
-    }
-  }, [isLoggedIn]);
+    const gradient = new Gradient();
+    gradient.initGradient("#gradient-canvas");
+    setTimeout(() => {
+      setCanvasReady(true);
+    }, 400);
+  }, []);
 
-  async function handleLogin() {
-    setError(false);
-    setErrorMessage("");
-    const attemptLogin = await loginUser({
-      email: emailInput,
-      password: passwordInput,
-    });
-    if (attemptLogin.error) {
-      setError(true);
-      setErrorMessage(attemptLogin.errorData.message);
-    } else {
-      const userProfile = await getUserProfile();
-      console.log(userProfile);
-      if (userProfile.error) {
-      } else {
-        logIn({
-          firstName: userProfile.data.first_name,
-          lastName: userProfile.data.last_name,
-          email: userProfile.data.email,
-          avatar: userProfile.data.avatar,
-          hasAvatar: userProfile.data.has_avatar,
-        });
-      }
-    }
-  }
+  const variants = {
+    visible: { opacity: 1, transition: { duration: 0.6 } },
+    hidden: { opacity: 0 },
+  };
+
   return (
-    <div>
-      <h1>Login</h1>
-      <label>Email</label>
-      <input
-        type="email"
-        autofill="email"
-        value={emailInput}
-        onChange={(e) => setEmailInput(e.target.value)}
-      />
-      <label>Password</label>
-      <input
-        type="password"
-        value={passwordInput}
-        onChange={(e) => setPasswordInput(e.target.value)}
-      />
-      <button onClick={() => handleLogin()}>Login</button>
-      <button onClick={() => handleForgotPassword()}>
-        Forgotten your password?
-      </button>
-    </div>
+    <Layout>
+      <LoginComponent />
+      <BackgroundAnimation />
+    </Layout>
   );
 }
 

@@ -4,24 +4,7 @@ import styled from "styled-components";
 import OnboardingCard from "layouts/onboardingCard";
 import InviteCodeInput from "./inviteCodeInput";
 import { validateInviteCode } from "services/onboarding";
-
-const InnerTitle = styled.div`
-  font-size: 28px;
-  text-align: center;
-  font-weight: 600;
-`;
-
-const InnerDesc = styled.div`
-  font-size: 14px;
-  text-align: center;
-  font-weight: 500;
-  opacity: 0.6;
-  margin: auto;
-  margin-bottom: 24px;
-  margin-top: 4px;
-  max-width: 360px;
-  letter-spacing: 0.5px;
-`;
+import { InnerTitle, InnerDesc } from "components/shared";
 
 const ErrorMessage = styled.div`
   width: 100%;
@@ -48,7 +31,7 @@ function CompanyOnboard({ setOnboardingPosition }) {
   function handleCreateCompany() {
     setLoadingCreate(true);
     setTimeout(() => {
-      setOnboardingPosition(2);
+      setOnboardingPosition(10);
     }, 1100);
   }
 

@@ -1,6 +1,6 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
-import { useStoreActions, useStoreState } from "easy-peasy";
+import { useStoreActions, useStoreState } from "store/hooks";
 import { useHotkeys } from "react-hotkeys-hook";
 
 import Modal from "components/shared/modal";
@@ -11,7 +11,6 @@ import LoadingIcon from "components/shared/loadingIcon";
 import { DisplaySuccessToast } from "components/shared/toast";
 
 import InviteIcon from "assets/svg/icons/addUser.svg";
-import Tick from "assets/svg/icons/tick.svg";
 
 const CompanyInviteContainer = styled.div`
   width: 100%;

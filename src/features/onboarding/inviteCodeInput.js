@@ -12,6 +12,7 @@ const Title = styled.div`
   font-weight: 500;
   font-size: 13px;
   margin-bottom: 12px;
+  color: ${(props) => props.theme.textPrimary};
 `;
 
 const NumberInput = styled.div`
@@ -23,18 +24,18 @@ const NumberInput = styled.div`
 const NumberInputItem = styled.input`
   width: 47px;
   height: 47px;
-  background: #eee;
+  background: ${(props) => props.theme.gradientPlaceholder};
   border-radius: 6px;
   border-style: solid;
-  border-width: 0px;
-  border-color: #0c1afc;
+  border-color: ${(props) => props.theme.gradientColor2};
+  border-width: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   font-size: 36px;
   line-height: 36px;
-  color: #000;
+  color: ${(props) => props.theme.textPrimary};
   margin-right: 10px;
   text-align: center;
 `;

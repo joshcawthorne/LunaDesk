@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useStoreState } from "easy-peasy";
+import { useStoreState } from "store/hooks";
 
 import Header from "../features/header";
 import Sidebar from "../features/sidebar";
@@ -20,7 +20,11 @@ const ContentContainer = styled.div`
   color: ${(props) => props.theme.text100};
 `;
 
-const AppLayout = ({ children }) => {
+interface AppLayout {
+  children: any
+}
+
+const AppLayout = ({ children }: AppLayout) => {
   const { displayCompanySettings, displayUserSettings, displayInviteModal } =
     useStoreState((state) => state.app);
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components";
-import { useStoreActions, useStoreState } from "easy-peasy";
+import styled from "styled-components";
+import { useStoreActions, useStoreState } from "store/hooks";
 
 import Modal from "components/shared/modal";
 import Tabs from "components/shared/tabs";

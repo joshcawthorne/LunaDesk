@@ -1,19 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
-import styled from "styled-components";
-import { Gradient } from "whatamesh";
-import { motion } from "framer-motion";
+import styled, { ThemeContext } from "styled-components";
+import { useStoreActions } from "store/hooks";
+
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 import Layout from "layouts/onboardingLayout";
 import Welcome from "features/onboarding/welcome";
-import CreateCompany from "./create-company";
+import CreateCompanyName from "features/onboarding/createCompany/createCompanyName";
+import CreateCompanyImageLocation from "features/onboarding/createCompany/createCompanyImageLocation";
+import SetCompanyDefaultTimes from "features/onboarding/createCompany/setCompanyDefaultTimes";
 import JoinCompany from "features/onboarding/joinCompany";
 import CompanyUserRoleSelect from "features/onboarding/companyUserRoleSelect";
 import UserDefaultWorkingHours from "features/onboarding/userDefaultWorkingHours";
-import UserDefaultWorkingDays from "features/onboarding/userDefaultWorkingDays";
 import UserSelectPrimaryOffice from "features/onboarding/userSelectPrimaryOffice";
+import UserPreferences from "features/onboarding/userPreferences";
 import CompleteOnboarding from "features/onboarding/completeOnboarding";
+import CreateCompanyHQ from "features/onboarding/createCompany/createCompanyHQ";
 import colorOptions from "data/avatarColourOptions";
+import OnboardingBackground from "features/onboarding/backgroundAnimation";
 
 const CompanyOnboard = dynamic(
   () => import("../../features/onboarding/companyOnboard"),
@@ -22,43 +28,34 @@ const CompanyOnboard = dynamic(
   }
 );
 
-const CanvasContainer = styled(motion.div)`
+const DebugController = styled.div`
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #dfdfee;
-  #gradient-canvas {
-    width: 100%;
-    height: 100%;
-    --gradient-color-1: #dfdfee;
-    --gradient-color-2: #e7d194;
-    --gradient-color-3: #dfdfee;
-    --gradient-color-4: #dd9dc2;
-  }
+  right: 0;
+  z-index: 100;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-const variants = {
-  visible: { opacity: 1, transition: { duration: 0.6 } },
-  hidden: { opacity: 0 },
-};
+const StyledDropdown = styled(Dropdown)`
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  margin: auto;
+  letter-spacing: 0.5px;
+  margin-right: 10px;
+  color: #232632;
+`;
 
 function Join() {
-  const [onboardingPosition, setOnboardingPosition] = useState(0);
-  const [canvasReady, setCanvasReady] = useState(false);
+  const [onboardingPosition, setOnboardingPosition] = useState(1);
   const [userFullName, setUserFullName] = useState("");
   const [userAvatarTmp, setUserAvatarTmp] = useState("");
   const [initialAvatarBg, setInitialAvatarBg] = useState("");
   const [initialAvatarFont, setInitialAvatarFont] = useState("");
-
-  useEffect(() => {
-    const gradient = new Gradient();
-    gradient.initGradient("#gradient-canvas");
-    setTimeout(() => {
-      setCanvasReady(true);
-    }, 400);
-  }, []);
+  const [debugOption, setDebugOption] = useState("1");
 
   useEffect(() => {
     const randomTheme = Math.floor(
@@ -70,7 +67,7 @@ function Join() {
 
   const OnboardingStageRender = () => {
     switch (onboardingPosition) {
-      case -1:
+      case 1:
         return (
           <Welcome
             setOnboardingPosition={setOnboardingPosition}
@@ -79,13 +76,8 @@ function Join() {
           />
         );
         break;
-
-      case 1:
-        return <CompanyOnboard setOnboardingPosition={setOnboardingPosition} />;
-        break;
-
       case 2:
-        return <CreateCompany setOnboardingPosition={setOnboardingPosition} />;
+        return <CompanyOnboard setOnboardingPosition={setOnboardingPosition} />;
         break;
       case 3:
         return (
@@ -101,7 +93,7 @@ function Join() {
             setOnboardingPosition={setOnboardingPosition}
           />
         );
-      case 0:
+      case 5:
         return (
           <UserDefaultWorkingHours
             setOnboardingPosition={setOnboardingPosition}
@@ -109,18 +101,36 @@ function Join() {
         );
       case 6:
         return (
-          <UserDefaultWorkingDays
+          <UserSelectPrimaryOffice
             setOnboardingPosition={setOnboardingPosition}
           />
         );
       case 7:
         return (
-          <UserSelectPrimaryOffice
-            setOnboardingPosition={setOnboardingPosition}
-          />
+          <UserPreferences setOnboardingPosition={setOnboardingPosition} />
         );
       case 8:
         return <CompleteOnboarding />;
+      case 9:
+        return (
+          <CreateCompanyImageLocation
+            setOnboardingPosition={setOnboardingPosition}
+          />
+        );
+      case 10:
+        return (
+          <CreateCompanyName setOnboardingPosition={setOnboardingPosition} />
+        );
+      case 11:
+        return (
+          <SetCompanyDefaultTimes
+            setOnboardingPosition={setOnboardingPosition}
+          />
+        );
+      case 12:
+        return (
+          <CreateCompanyHQ setOnboardingPosition={setOnboardingPosition} />
+        );
       default:
         return (
           <Welcome
@@ -133,16 +143,32 @@ function Join() {
     }
   };
 
+  const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const defaultOption = options[0];
+
+  const setLightMode = useStoreActions(
+    (actions) => actions.preferences.setLightMode
+  );
+
+  const themeContext = useContext(ThemeContext);
+
   return (
-    <Layout>
+    <Layout style={{ position: "relative" }}>
+      <DebugController>
+        <StyledDropdown
+          options={options}
+          onChange={(e) => {
+            setOnboardingPosition(e.value);
+            setDebugOption(e.value.toString());
+          }}
+          value={debugOption}
+          placeholder="Debug select stage"
+        />
+        <button onClick={() => setLightMode(false)}>Dark Theme</button>
+        <button onClick={() => setLightMode(true)}>Light Theme</button>
+      </DebugController>
       <OnboardingStageRender />
-      <CanvasContainer
-        initial="hidden"
-        animate={canvasReady ? "visible" : "hidden"}
-        variants={variants}
-      >
-        <canvas id="gradient-canvas" data-transition-in />
-      </CanvasContainer>
+      <OnboardingBackground key={themeContext} theme={themeContext} />
     </Layout>
   );
 }

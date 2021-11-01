@@ -7,7 +7,6 @@ import { registerUser } from "../services/auth";
 import TextField from "components/shared/textField";
 import OnboardingCard from "layouts/onboardingCard";
 import Logo from "assets/svg/logo.svg";
-import Button from "components/shared/button";
 
 const RegistrationContainer = styled.div`
   position: absolute;

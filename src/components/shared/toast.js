@@ -1,4 +1,4 @@
-import { ToastContainer, toast, Slide } from "react-toastify";
+import { toast, Slide } from "react-toastify";
 
 function DisplayToast(message) {
   toast(message, {

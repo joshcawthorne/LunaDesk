@@ -1,6 +1,31 @@
-import { action } from "easy-peasy";
+import { action, Action } from "easy-peasy";
 
-const auth = {
+export interface AuthModel {
+  isLoggedIn: boolean;
+  setIsLoggedIn: Action<AuthModel, boolean>;
+  userFirstName: string;
+  setUserFirstName: Action<AuthModel, string>;
+  userLastName: string;
+  setUserLastName: Action<AuthModel, string>;
+  userEmail: string;
+  setUserEmail: Action<AuthModel, string>;
+  userAvatar: string;
+  setUserAvatar: Action<AuthModel, string>;
+  userHasAvatar: boolean;
+  setUserHasAvatar: Action<AuthModel, boolean>;
+  logOut: Action<AuthModel, any>;
+  logIn: Action<AuthModel, LogIn>;
+}
+
+export interface LogIn {
+  firstName: string;
+  lastName: string;
+  email: string;
+  avatar: string;
+  hasAvatar: boolean;
+}
+
+const auth: AuthModel = {
   isLoggedIn: false,
   setIsLoggedIn: action((state, payload) => {
     state.isLoggedIn = payload;

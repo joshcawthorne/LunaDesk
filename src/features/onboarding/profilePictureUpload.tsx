@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { TailSpin } from "react-loading-icons";
 import { supabase } from "services/supabaseClient";
@@ -32,6 +32,15 @@ const IconContainer = styled.div`
   align-items: center;
 `;
 
+interface ProfilePictureUpload {
+  userHasProfilePicture?: boolean,
+  setUserHasProfilePicture: () => void,
+  url?: string,
+  size?: string,
+  onUpload?: (url: any) => void,
+  targetBucket?: string,
+}
+
 function ProfilePictureUpload({
   userHasProfilePicture,
   setUserHasProfilePicture,
@@ -39,7 +48,7 @@ function ProfilePictureUpload({
   size,
   onUpload,
   targetBucket,
-}) {
+}: ProfilePictureUpload) {
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -65,7 +74,7 @@ function ProfilePictureUpload({
         throw uploadError;
       }
 
-      onUpload(filePath);
+      onUpload({ url: filePath });
     } catch (error) {
       alert(error.message);
     } finally {

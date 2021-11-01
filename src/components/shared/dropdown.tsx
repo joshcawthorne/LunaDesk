@@ -29,14 +29,18 @@ const DropdownTriggerContainer = styled.div`
 
 const DropdownBox = styled.div`
   background-color: transparent;
-  padding: 5px 10px;
+  padding: 6px;
   border-radius: 5px;
-  border: 1px solid #25262a;
   box-sizing: border-box;
   z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #f3eff0;
+  font-family: "Roobert", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 24px;
+  font-size: 13px;
 `;
 
 const DropdownContainer = styled(motion.div)`
@@ -47,6 +51,7 @@ const DropdownContainer = styled(motion.div)`
   margin-top: 5px;
   padding: 0px 5px;
   overflow: hidden;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 `;
 
 const DropdownBoxText = styled.div`

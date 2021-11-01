@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import styled from "styled-components";
 
 import Dropdown from "components/shared/dropdown";
@@ -21,7 +21,24 @@ const LocationText = styled.div`
   line-height: 0;
 `;
 
-function DayLocationSelector({ }) {
+interface DayLocationSelector {
+  dayUpdate: (day: Day) => void;
+  day: Day
+}
+
+
+interface Day {
+  id: number;
+  state: number;
+  prettyName: string;
+  initial: string;
+  startTime: string;
+  endTime: string;
+  location: any;
+  arrLocation: number;
+}
+
+function DayLocationSelector({ dayUpdate, day }: DayLocationSelector) {
   const [selected, setSelected] = useState(0);
   const DropdownOptions = [
     {
@@ -41,9 +58,10 @@ function DayLocationSelector({ }) {
     },
   ];
 
-  function handleSelected(id, value) {
-    console.log(id);
+  function handleSelected(id: SetStateAction<number>, value: any) {
+    const updatedDay = { ...day, location: id };
     setSelected(id);
+    dayUpdate(updatedDay);
   }
 
   return (

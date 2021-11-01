@@ -3,6 +3,11 @@ import styled, { css } from "styled-components";
 
 import TextField from "../shared/textField";
 
+interface Props {
+  firstItem?: boolean
+}
+
+
 const InviteUserContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -19,7 +24,7 @@ const InviteUserContainerInner = styled.div`
   border-radius: 15px;
 `;
 
-const Label = styled.div`
+const Label = styled.div<Props>`
   margin-top: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;

@@ -1,14 +1,37 @@
-import { useState } from "react";
 import styled, { css } from "styled-components";
 import update from "immutability-helper";
+import { motion, AnimatePresence } from "framer-motion";
 
 import DayCustomiser from "./dayCustomiser";
+
+interface Props {
+  active?: boolean;
+  id?: any
+}
+
+interface WorkingDayPicker {
+  workingDayState: any,
+  setworkingDayState: any,
+  hideLocation?: boolean,
+}
+
+interface Day {
+  id: number;
+  state: number;
+  prettyName: string;
+  initial: string;
+  startTime: string;
+  endTime: string;
+  location: number;
+  arrLocation: number,
+}
 
 const WorkingDayPickerContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  transition: max-height 0.25s ease-in;
 `;
 
 const DaysContainer = styled.div`
@@ -17,12 +40,12 @@ const DaysContainer = styled.div`
   align-items: center;
 `;
 
-const DayItem = styled.div`
+const DayItem = styled.div<Props>`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #25262a;
-  color: #fff;
+  background-color: ${props => props.theme.gradientColor1};
+  color: ${props => props.theme.textPrimary};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,6 +57,7 @@ const DayItem = styled.div`
     props.active &&
     css`
       transition: 400ms;
+      color: #fff;
       background-color: #636bfd;
     `}
 `;
@@ -43,75 +67,11 @@ const WorkingDaysCustomiser = styled.div`
   width: 100%;
 `;
 
-function WorkingDayPicker({ }) {
-  const [workingDayState, setworkingDayState] = useState([
-    {
-      id: 1,
-      state: 1,
-      prettyName: "Monday",
-      initial: "M",
-      startTime: "08:00",
-      endTime: "17:00",
-      location: 0,
-    },
-    {
-      id: 2,
-      state: 1,
-      prettyName: "Tuesday",
-      initial: "T",
-      startTime: "08:00",
-      endTime: "17:00",
-      location: 0,
-    },
-    {
-      id: 3,
-      state: 1,
-      prettyName: "Wednesday",
-      initial: "W",
-      startTime: "08:00",
-      endTime: "17:00",
-      location: 0,
-    },
-    {
-      id: 4,
-      state: 1,
-      prettyName: "Thursday",
-      initial: "T",
-      startTime: "08:00",
-      endTime: "17:00",
-      location: 0,
-    },
-    {
-      id: 5,
-      state: 1,
-      prettyName: "Friday",
-      initial: "F",
-      startTime: "08:00",
-      endTime: "17:00",
-      location: 0,
-    },
-    {
-      id: 6,
-      state: 0,
-      prettyName: "Saturday",
-      initial: "S",
-      startTime: "08:00",
-      endTime: "17:00",
-      location: 0,
-    },
-    {
-      id: 7,
-      state: 0,
-      prettyName: "Sunday",
-      initial: "S",
-      startTime: "08:00",
-      endTime: "17:00",
-      location: 0,
-    },
-  ]);
+function WorkingDayPicker({ workingDayState, setworkingDayState, hideLocation }: WorkingDayPicker) {
 
-  const updateDay = (day) => {
-    const index = workingDayState.findIndex((d) => d.id === day.id);
+
+  const updateDay = (day: Day) => {
+    const index = workingDayState.findIndex((d: any) => d.id === day.id);
     let updateData;
     if (day.state === 0) {
       updateData = { ...day, state: 1 };
@@ -127,7 +87,7 @@ function WorkingDayPicker({ }) {
   return (
     <WorkingDayPickerContainer>
       <DaysContainer>
-        {workingDayState.map((day, i) => (
+        {workingDayState.map((day: Day, i: number) => (
           <DayItem
             active={day.state === 1}
             key={i}
@@ -138,14 +98,19 @@ function WorkingDayPicker({ }) {
           </DayItem>
         ))}
       </DaysContainer>
-      <WorkingDaysCustomiser>
-        {workingDayState.map((day, i) => {
-          if (day.state !== 0) {
-            return <DayCustomiser day={day} key={i} />;
-          }
-        })}
-      </WorkingDaysCustomiser>
-    </WorkingDayPickerContainer>
+      <AnimatePresence>
+        <WorkingDaysCustomiser>
+          {workingDayState.map((day: Day, i: number) => {
+            if (day.state !== 0) {
+              return (<motion.div
+                initial={{ opacity: 0, x: -60, }}
+                animate={{ opacity: 1, x: 0, transition: { duration: 0.3 } }}
+                exit={{ opacity: 0 }}><DayCustomiser day={day} workingDayState={workingDayState} setworkingDayState={setworkingDayState} key={i} /></motion.div>);
+            }
+          })}
+        </WorkingDaysCustomiser>
+      </AnimatePresence>
+    </WorkingDayPickerContainer >
   );
 }
 

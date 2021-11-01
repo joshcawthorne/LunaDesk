@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useStoreState } from "store/hooks"
 
 import Button from "components/shared/button";
 
@@ -7,33 +9,37 @@ import BackArrow from "assets/svg/backArrow.svg";
 import ErrorIcon from "assets/svg/icons/error.svg";
 import EmailIcon from "assets/svg/icons/email.svg";
 import Logo from "assets/svg/logo.svg";
+import React from "react";
 
 interface OnboardingCard {
-  title: string,
-  description: string,
+  title?: string,
+  description?: string,
   buttonText: string,
-  buttonAction: object,
-  buttonLoading: boolean,
-  buttonActive: boolean,
-  skipButton: boolean
-  skipAction: object,
-  subButton: boolean,
-  subButtonText: string,
-  subButtonAction: object,
-  subButtonLoading: boolean,
-  subButtonActive: boolean,
-  subButtonDanger: boolean,
-  subText: string,
-  error: boolean,
-  errorMessage: string,
-  checkEmail: boolean,
-  email: string,
-  backButton: boolean,
-  backAction: object,
-  hideLogo: boolean,
-  animate: boolean,
-  style: object,
-  children: any,
+  buttonAction?: () => void,
+  buttonLoading?: boolean,
+  buttonActive?: boolean,
+  skipButton?: boolean
+  skipAction?: () => void,
+  subButton?: boolean,
+  subButtonText?: string,
+  subButtonAction?: () => void,
+  subButtonLoading?: boolean,
+  subButtonActive?: boolean,
+  subButtonDanger?: boolean,
+  subText?: string,
+  error?: boolean,
+  errorMessage?: string,
+  checkEmail?: boolean,
+  email?: string,
+  backButton?: boolean,
+  backAction?: () => void,
+  hideLogo?: boolean,
+  animate?: boolean,
+  style?: object,
+  belowButtonText?: boolean,
+  belowButtonTextContent?: string,
+  belowButtonAction?: () => void,
+  children?: any,
 }
 
 const CreateCompanyOuterContainer = styled.div`
@@ -73,12 +79,14 @@ const CreateBoxContainer = styled(motion.div)`
   padding: 60px;
   width: 460px;
   padding: 35px;
-  background: rgb(255 255 255 / 25%);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background: ${props => props.theme.modalBackground};
+  box-shadow: ${props => props.theme.boxShadow};
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid;
+  border-color: ${props => props.theme.modalBorder};
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   position: relative;
   z-index: 15;
 `;
@@ -110,9 +118,10 @@ const SubtextContainer = styled.div`
   align-items: center;
   text-transform: uppercase;
   overflow: hidden;
+  color: ${props => props.theme.textPrimary};
   &:before,
   &:after {
-    background-color: #000;
+    background-color: ${props => props.theme.textPrimary};
     opacity: 0.6;
     content: "";
     display: inline-block;
@@ -187,12 +196,14 @@ const BackButtonContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px;
+  width: fit-content;
+  user-select: none;
   cursor: pointer;
 `;
 
 const BackButtonText = styled.div`
   font-size: 14px;
-  color: #25262a;
+  color: ${(props) => props.theme.textPrimary};
   font-weight: 500;
   line-height: 14px;
   margin-left: 5px;
@@ -225,6 +236,30 @@ const LogoContainer = styled.div`
 const AnimLayer = styled(motion.div)`
   z-index: 10;
 `;
+
+const ButtonInnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const BelowButtonText = styled.div`
+  margin-top: 15px;
+  cursor: pointer;
+  color: ${props => props.theme.textPrimary};
+`;
+
+const BelowButtonTextContent = styled.div``;
+
+const ThemeToggleTransitionLayerContainer = styled(motion.div)`
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background-color:${props => props.theme.gradientColor1};
+    z-index: 200;
+`;
+
 
 const ContainerAnim = {
   hidden: { opacity: 0, y: 0 },
@@ -267,6 +302,15 @@ const SubButtonAnim = {
   },
 };
 
+const ThemeTransitionAnim = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+
+
+  },
+};
+
 function OnboardingCard({
   title,
   description,
@@ -292,13 +336,43 @@ function OnboardingCard({
   hideLogo,
   animate = true,
   style,
+  belowButtonText,
+  belowButtonTextContent,
+  belowButtonAction,
   children,
-}) {
+}: OnboardingCard) {
+
+  const lightMode = useStoreState((state) => state.preferences.lightMode);
+  const [themeTransition, setThemeTransition] = useState(false);
+  const [themeTransitioning, setThemeTransitioning] = useState(false);
+  const [initialLoad, setInitialLoad] = useState(true);
+
+  useEffect(() => {
+    if (initialLoad) {
+      setInitialLoad(false);
+    } else {
+      setThemeTransition(true);
+      setThemeTransitioning(false);
+      setTimeout(() => {
+        setThemeTransitioning(true);
+      }, 500);
+      setTimeout(() => {
+        setThemeTransition(false);
+      }, 700);
+    }
+
+  }, [lightMode]);
+
   return (
     <CreateCompanyOuterContainer>
+      {themeTransition && (
+        <ThemeToggleTransitionLayerContainer initial="show"
+          animate={themeTransitioning ? "hidden" : "show"}
+          variants={ThemeTransitionAnim} />
+      )}
       {!hideLogo && (
         <LogoContainer>
-          <Logo width={"130px"} fill={"#25262a"} />
+          <Logo width={"130px"} fill={lightMode ? "#25262a" : "#fff"} />
         </LogoContainer>
       )}
       <TitleContainer>
@@ -314,7 +388,7 @@ function OnboardingCard({
       >
         {backButton && (
           <BackButtonContainer onClick={() => backAction()}>
-            <BackArrow width={"20px"} stroke={"#25262a"} />
+            <BackArrow width={"20px"} stroke={lightMode ? "#25262a" : "#fff"} />
             <BackButtonText>Back</BackButtonText>
           </BackButtonContainer>
         )}
@@ -360,15 +434,21 @@ function OnboardingCard({
               disabled={false}
             />
           )}
-
-          <Button
-            text={buttonText}
-            style={{ marginTop: "42px" }}
-            action={buttonAction}
-            loading={buttonLoading}
-            disabled={!buttonActive}
-            skipButton={false}
-          />
+          <ButtonInnerContainer>
+            <Button
+              text={buttonText}
+              style={{ marginTop: "42px" }}
+              action={buttonAction}
+              loading={buttonLoading}
+              disabled={!buttonActive}
+              skipButton={false}
+            />
+            {belowButtonText && (
+              <BelowButtonText onClick={() => belowButtonAction()}>
+                <BelowButtonTextContent>{belowButtonTextContent}</BelowButtonTextContent>
+              </BelowButtonText>
+            )}
+          </ButtonInnerContainer>
         </ButtonContainer>
         {subButton && (
           <SubButtonContainer>

@@ -1,17 +1,17 @@
-import { Action, action } from "easy-peasy";
+import { action, Action } from "easy-peasy";
 
-export interface App {
+export interface AppModel {
   displayModifyDayStatus: boolean;
-  setDisplayModifyDayStatus: Action<App, boolean>;
+  setDisplayModifyDayStatus: Action<AppModel, boolean>;
   displayCompanySettings: boolean;
-  setDisplayCompanySettings: Action<App, boolean>;
+  setDisplayCompanySettings: Action<AppModel, boolean>;
   displayUserSettings: boolean;
   displayInviteModal: boolean;
-  setDisplayUserSettings: Action<App, boolean>;
-  setDisplayInviteModal: Action<App, boolean>;
+  setDisplayUserSettings: Action<AppModel, boolean>;
+  setDisplayInviteModal: Action<AppModel, boolean>;
 }
 
-const app: App = {
+const app: AppModel = {
   displayModifyDayStatus: false,
   setDisplayModifyDayStatus: action((state, payload) => {
     state.displayModifyDayStatus = payload;
@@ -31,3 +31,7 @@ const app: App = {
 };
 
 export default app;
+
+
+
+

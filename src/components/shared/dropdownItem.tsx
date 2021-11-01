@@ -9,10 +9,14 @@ export interface IDropdownItemProps {
     value: any,
     id: number,
     selected: boolean
-    onSelect: (id, value) => void,
+    onSelect: (id: number, value: any) => void,
 }
 
-const DropdownItemContainer = styled.div`
+interface Props {
+    selected?: boolean;
+}
+
+const DropdownItemContainer = styled.div <Props>`
   color: #68676c;
   z-index: 2;
   width: 150px;

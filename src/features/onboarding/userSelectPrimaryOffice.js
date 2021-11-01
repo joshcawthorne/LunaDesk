@@ -2,26 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import OnboardingCard from "layouts/onboardingCard";
-
-const InnerTitle = styled.div`
-  font-size: 28px;
-  text-align: center;
-  span {
-    font-weight: 600;
-  }
-`;
-
-const InnerDesc = styled.div`
-  font-size: 14px;
-  text-align: center;
-  font-weight: 500;
-  opacity: 0.6;
-  margin: auto;
-  margin-bottom: 24px;
-  margin-top: 8px;
-  max-width: 360px;
-  letter-spacing: 0.5px;
-`;
+import { InnerTitle, InnerDesc } from "components/shared";
 
 function UserSelectPrimaryOffice({ setOnboardingPosition }) {
   const [loading, setLoading] = useState(false);

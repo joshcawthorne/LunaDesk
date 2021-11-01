@@ -1,13 +1,20 @@
-import appModel from "./appModel";
-import authModel from "./authModel";
-import preferencesModel from "./preferencesModel";
-import userModel from "./userModel";
+import app, { AppModel } from './appModel';
+import auth, { AuthModel } from "./authModel";
+import preferences, { PreferencesModel } from "./preferencesModel";
+import user, { UserModel } from "./userModel";
 
-const globalModel = {
-  app: appModel,
-  auth: authModel,
-  preferences: preferencesModel,
-  user: userModel,
+export interface StoreModel {
+  app: AppModel,
+  auth: AuthModel,
+  preferences: PreferencesModel,
+  user: UserModel,
+}
+
+const model: StoreModel = {
+  app,
+  auth,
+  preferences,
+  user
 };
 
-export default globalModel;
+export default model;

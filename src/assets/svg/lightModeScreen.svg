@@ -1,0 +1,28 @@
+<svg height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 332 203" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <mask id="mask0_240:277" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="332" height="203">
+        <rect width="332" height="203" rx="15" fill="white" />
+    </mask>
+    <g mask="url(#mask0_240:277)">
+        <rect width="352" height="222" fill="white" />
+        <rect x="77" y="7" width="2" height="190" fill="#F1F2F5" />
+        <rect x="73" y="103" width="2" height="64" transform="rotate(90 73 103)" fill="#F7F9F9" />
+        <rect x="9" y="37" width="12" height="12" rx="2" fill="#F7F9F9" />
+        <rect x="9" y="59" width="12" height="12" rx="2" fill="#F7F9F9" />
+        <rect x="9" y="81" width="12" height="12" rx="2" fill="#F7F9F9" />
+        <rect x="26" y="40" width="43" height="6" rx="2" fill="#F7F9F9" />
+        <rect x="32" y="14" width="40" height="6" rx="2" fill="#F7F9F9" />
+        <rect x="9" y="177" width="59" height="17" rx="2" fill="#F7F9F9" />
+        <rect x="89" y="17" width="103" height="16" rx="6" fill="#F7F9F9" />
+        <rect x="89" y="48" width="233" height="61" rx="6" fill="#F7F9F9" />
+        <rect x="89" y="119" width="233" height="114" rx="6" fill="#F7F9F9" />
+        <rect x="26" y="62" width="43" height="6" rx="2" fill="#F7F9F9" />
+        <rect x="26" y="84" width="43" height="6" rx="2" fill="#F7F9F9" />
+        <rect x="9" y="111" width="47" height="4" rx="2" fill="#F7F9F9" />
+        <rect x="9" y="120" width="33" height="3" rx="1.5" fill="#F7F9F9" />
+        <circle cx="17.5" cy="17.5" r="7.5" fill="#5E5852" />
+        <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M20.6427 18.3461C20.2867 20.4437 18.6756 21.954 16.7956 22.1431C17.8826 21.4894 18.7002 20.3377 18.9414 18.9163C19.3702 16.3889 17.8143 13.9658 15.4662 13.5042C15.0669 13.4257 14.6704 13.4089 14.2852 13.4477C15.131 12.939 16.14 12.7319 17.1675 12.9339C19.5156 13.3955 21.0715 15.8186 20.6427 18.3461Z"
+            fill="white" />
+    </g>
+</svg>

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useStoreState, useStoreActions } from "easy-peasy";
+import { useStoreState, useStoreActions } from "store/hooks";
 
 import RadioButton from "components/shared/radioButton";
 

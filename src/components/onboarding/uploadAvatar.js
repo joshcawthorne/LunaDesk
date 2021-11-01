@@ -1,18 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import * as htmlToImage from "html-to-image";
 
-import { supabase } from "services/supabaseClient";
 import ProfilePictureUpload from "components/profilePictureUpload";
-import EyeDropper from "assets/svg/icons/customise.svg";
-import Dice from "assets/svg/icons/dice.svg";
-import CustomiseAvatar from "components/onboarding/customiseAvatar";
 
+import EyeDropper from "assets/svg/icons/customise.svg";
 import StarOne from "assets/svg/starOne.svg";
 import StarTwo from "assets/svg/starTwo.svg";
 import StarThree from "assets/svg/starThree.svg";
-import StarFour from "assets/svg/starFour.svg";
 import LunaDeskLogo from "assets/svg/logoCollapsed.svg";
 
 const InputProfilePictureItem = styled.div`

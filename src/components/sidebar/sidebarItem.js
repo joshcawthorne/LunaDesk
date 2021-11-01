@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import styled, { css } from "styled-components";
 import Link from "next/link";
 
@@ -71,7 +70,12 @@ function SidebarItem({
       <ActionItem onClick={() => action()}>
         <SidebarItemContainerOuter hasSubItems={hasSubItems}>
           <SidebarItemContainer>
-            <Icon stroke={themeContext.text400} strokeWidth={2.25} />
+            <Icon
+              stroke={themeContext.text400}
+              strokeWidth={2.25}
+              width={"20px"}
+              height={"20px"}
+            />
             <ItemText>{title}</ItemText>
           </SidebarItemContainer>
           {pill && (
@@ -87,7 +91,11 @@ function SidebarItem({
     <Link href={link} passHref>
       <SidebarItemContainerOuter hasSubItems={hasSubItems}>
         <SidebarItemContainer>
-          <Icon stroke={themeContext.text400} strokeWidth={2.25} />
+          <Icon
+            stroke={themeContext.text400}
+            strokeWidth={2.25}
+            width={"25px"}
+          />
           <ItemText>{title}</ItemText>
         </SidebarItemContainer>
         {pill && (

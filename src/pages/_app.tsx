@@ -1,13 +1,19 @@
 import { useEffect } from "react";
 import { supabase } from "../services/supabaseClient";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
-import { StoreProvider, useStoreState } from "easy-peasy";
-import * as uplot from "../style/uplot.css"; // eslint-disable-line
-
+import { StoreProvider } from "easy-peasy";
+import { useStoreState } from "store/hooks"
+import { useRouter } from 'next/router'
 import { ToastContainer } from "react-toastify";
-import * as toastify from "react-toastify/dist/ReactToastify.css"; // eslint-disable-line
-import * as searchStyle from "../style/selectSearchStyle.css"; // eslint-disable-line
-import * as fonts from "../assets/fonts/fonts.css"; // eslint-disable-line
+import { QueryClient, QueryClientProvider } from "react-query";
+import { useScript } from 'use-script'
+
+//CSS Imports
+const t = require('react-toastify/dist/ReactToastify.css');
+const s = require('../style/selectSearchStyle.css')
+const f = require("../assets/fonts/fonts.css");
+const u = require("../style/uplot.css")
+
 
 import store from "../store";
 import { theme } from "../style/theme";
@@ -32,17 +38,28 @@ const StyledToastContainer = styled(ToastContainer)`
   }
 `;
 
-const LunaDesk = ({ component: Component, pageProps }) => {
+interface LunaDeskInterface {
+  component?: any;
+  Component?: any;
+  pageProps?: any;
+}
+
+const queryClient = new QueryClient();
+
+const LunaDesk = ({ component: Component, pageProps }: LunaDeskInterface) => {
   const lightMode = useStoreState((state) => state.preferences.lightMode);
+  const router = useRouter()
   return (
+
     <ThemeProvider theme={theme[lightMode ? "light" : "dark"]}>
       <Component {...pageProps} />
       <StyledToastContainer />
     </ThemeProvider>
+
   );
 };
 
-const LunaDeskWithStore = ({ Component, pageProps }) => {
+const LunaDeskWithStore = ({ Component, pageProps }: LunaDeskInterface) => {
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
@@ -56,17 +73,23 @@ const LunaDeskWithStore = ({ Component, pageProps }) => {
       }
     );
     return () => {
-      authListener.unsubscribe();
+      authListener!.unsubscribe();
     };
   }, []);
 
+  const { loading } = useScript({
+    src: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=places`,
+  })
+
   return (
-    <StoreProvider store={store}>
-      <AppContainer>
-        <GlobalStyle whiteColor />
-        <LunaDesk component={Component} pageProps={pageProps} />
-      </AppContainer>
-    </StoreProvider>
+    <QueryClientProvider client={queryClient}>
+      <StoreProvider store={store}>
+        <AppContainer>
+          <GlobalStyle />
+          <LunaDesk component={Component} pageProps={pageProps} />
+        </AppContainer>
+      </StoreProvider >
+    </QueryClientProvider>
   );
 };
 

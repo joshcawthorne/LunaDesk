@@ -1,31 +1,86 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 import OnboardingCard from "layouts/onboardingCard";
-import WorkWeekCustomise from "components/workWeekCustomise";
-
-const InnerTitle = styled.div`
-  font-size: 28px;
-  text-align: center;
-  span {
-    font-weight: 600;
-  }
-`;
-
-const InnerDesc = styled.div`
-  font-size: 14px;
-  text-align: center;
-  font-weight: 500;
-  opacity: 0.6;
-  margin: auto;
-  margin-bottom: 24px;
-  margin-top: 8px;
-  max-width: 360px;
-  letter-spacing: 0.5px;
-`;
+import WorkingDayPicker from "components/settings/workingDayPicker";
+import { InnerTitle, InnerDesc } from "components/shared";
 
 function UserDefaultWorkingHours({ setOnboardingPosition }) {
   const [loading, setLoading] = useState(false);
+
+  const [workingDayState, setworkingDayState] = useState([
+    {
+      arrLocation: 0,
+      id: 1,
+      state: 1,
+      prettyName: "Monday",
+      initial: "M",
+      startTime: "08:00",
+      endTime: "17:00",
+      location: 0,
+    },
+    {
+      arrLocation: 1,
+      id: 2,
+      state: 1,
+      prettyName: "Tuesday",
+      initial: "T",
+      startTime: "08:00",
+      endTime: "17:00",
+      location: 0,
+    },
+    {
+      arrLocation: 2,
+      id: 3,
+      state: 1,
+      prettyName: "Wednesday",
+      initial: "W",
+      startTime: "08:00",
+      endTime: "17:00",
+      location: 0,
+    },
+    {
+      arrLocation: 3,
+      id: 4,
+      state: 1,
+      prettyName: "Thursday",
+      initial: "T",
+      startTime: "08:00",
+      endTime: "17:00",
+      location: 0,
+    },
+    {
+      arrLocation: 4,
+      id: 5,
+      state: 1,
+      prettyName: "Friday",
+      initial: "F",
+      startTime: "08:00",
+      endTime: "17:00",
+      location: 0,
+    },
+    {
+      arrLocation: 5,
+      id: 6,
+      state: 0,
+      prettyName: "Saturday",
+      initial: "S",
+      startTime: "08:00",
+      endTime: "17:00",
+      location: 0,
+    },
+    {
+      arrLocation: 6,
+      id: 7,
+      state: 0,
+      prettyName: "Sunday",
+      initial: "S",
+      startTime: "08:00",
+      endTime: "17:00",
+      location: 0,
+    },
+  ]);
+
   function handleJoin() {
     setLoading(true);
     setTimeout(() => {
@@ -33,6 +88,7 @@ function UserDefaultWorkingHours({ setOnboardingPosition }) {
       setOnboardingPosition(6);
     }, 1500);
   }
+
   return (
     <OnboardingCard
       description={""}
@@ -48,7 +104,10 @@ function UserDefaultWorkingHours({ setOnboardingPosition }) {
         You can tweak each week as much as you'd like, and can edit these
         settings later.
       </InnerDesc>
-      <WorkWeekCustomise />
+      <WorkingDayPicker
+        workingDayState={workingDayState}
+        setworkingDayState={setworkingDayState}
+      />
     </OnboardingCard>
   );
 }

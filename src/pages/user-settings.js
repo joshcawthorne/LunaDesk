@@ -1,6 +1,6 @@
 import router from "next/router";
 import React, { useEffect, useState } from "react";
-import { useStoreState, useStoreActions } from "easy-peasy";
+import { useStoreActions } from "store/hooks";
 import AppLayout from "../layouts/appLayout";
 
 import {
