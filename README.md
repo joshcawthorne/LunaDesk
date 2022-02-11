@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://lunadesk.co">
     <img width="1500" alt="image" src="https://lunadesk-asset-store.netlify.app/assets/images/notionCover.png" height="auto">
-    <h1 align="center" style="border-bottom: none">Cosmos</h1>
+    <h1 align="center" style="border-bottom: none">LunaDesk</h1>
   </a>
 </p>
 
