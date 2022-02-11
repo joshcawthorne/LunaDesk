@@ -1,9 +1,10 @@
 <p align="center">
   <a href="https://lunadesk.co">
-    <img src="https://lunadesk.co/images/githubCircle.png" height="128">
-    <h1 align="center" style="border-bottom: none">LunaDesk</h1>
+    <img width="1500" alt="image" src="https://lunadesk-asset-store.netlify.app/assets/images/notionCover.png" height="auto">
+    <h1 align="center" style="border-bottom: none">Cosmos</h1>
   </a>
 </p>
+
 
 <div align="center">
   <img src="https://img.shields.io/github/stars/joshcawthorne/LunaDesk?style=flat" height="20">
@@ -43,5 +44,3 @@ https://lunadesk.co
 ## I want to contribute!
 
 Awesome! We're on the lookout for people to contribute to the project. If you're interested, drop us a line via contact@lunadesk.co
-
-![LunaDesk Logo](http://lunadesk.co/images/socialImage.jpg)
