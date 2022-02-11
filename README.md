@@ -9,7 +9,7 @@
 <div align="center">
   <img src="https://img.shields.io/github/stars/joshcawthorne/LunaDesk?style=flat" height="20">
   <img src="https://img.shields.io/github/commit-activity/m/joshcawthorne/lunadesk" height="20">
-  <img src="https://api.netlify.com/api/v1/badges/5fafeed4-8837-4b73-965b-3d12a890abbd/deploy-status" height="20">
+<img src="https://img.shields.io/github/deployments/joshcawthorne/lunadesk/Production%20%E2%80%93%20workfromfreeze?label=vercel&logo=vercel&logoColor=white" height="20">
   <a href="https://twitter.com/luna_desk?ref_src=twsrc%5Etfw" target="_blank"><img src="https://img.shields.io/twitter/follow/luna_desk?style=social" height="20"></a>
 
 </div>
